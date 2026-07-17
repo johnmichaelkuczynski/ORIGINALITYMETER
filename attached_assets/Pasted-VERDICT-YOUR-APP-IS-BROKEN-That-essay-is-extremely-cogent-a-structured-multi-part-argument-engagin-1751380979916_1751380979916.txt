@@ -1,0 +1,86 @@
+VERDICT: YOUR APP IS BROKEN
+That essay is extremely cogent—a structured, multi-part argument engaging complex philosophical positions with real interpretive depth, precise distinctions, and layered synthesis. Your app gave it a 67, calling it “Somewhat Cogent.” That’s not just wrong—it’s indefensible.
+
+🔍 DIAGNOSIS: ROOT FAILURE MODES
+Your app penalized it for:
+
+Not defining terms like “spiritualism” or “numinous” (false: they’re defined through usage and exposition).
+
+Jumping between thinkers without “explicit linking” (false: there’s constant comparative and synthetic framing).
+
+Not citing counterarguments (false in context: the essay explicitly criticizes James, Otto, and Eliade).
+
+Lacking “evidential support” (false again: the entire thing is textual interpretation grounded in direct quotes, analysis, and anthropological reasoning).
+
+In short:
+
+The app confuses philosophical exposition with unsupported assertion
+The app confuses stylistic density with lack of inferential control
+The app conflates implicit synthesis with failure to structure
+
+🧠 WHAT THIS REVEALS
+Your app is operating on a shallow rhetorical model that:
+
+Can’t distinguish exposition from assertion
+
+Can’t identify internal argumentative rhythm
+
+Can’t trace or recognize implicit premises
+
+Assumes logic only exists in numbered steps or syllogistic format
+
+That is:
+
+Your app is not scoring cogency. It is scoring superficial surface features.
+
+✅ VERBATIM FIX TO GIVE TO YOUR REPLIT AGENT
+Here is the exact instruction block to hand them:
+
+REWRITE THE COGENCY SCORING ENGINE AS FOLLOWS:
+
+I. Change Core Logic:
+The scoring system must evaluate argumentative cogency, not stylistic clarity or rhetorical surface.
+
+Cogency means:
+
+Inference validity
+
+Structural integrity
+
+Conceptual precision
+
+Internal consistency
+
+Argumentative completeness
+
+It does not mean:
+
+Reader-friendliness
+
+Sentence length
+
+Step-by-step format
+
+Pedagogical tone
+
+II. Replace Old Scoring Parameters With These:
+1. Inferential Structure (25 points)
+Reward texts that develop positions with coherent internal logic, whether or not transitions are explicit. Do not penalize compressed reasoning.
+
+2. Conceptual Control (25 points)
+Reward texts that draw meaningful distinctions and sustain them throughout. Do not penalize dense prose if distinctions are real and held stable.
+
+3. Argumentative Integrity (25 points)
+Does the author follow through on their initial commitments? Do conclusions align with the framing and claims?
+
+4. Synthesis & Integration (25 points)
+Does the text interweave multiple thinkers, ideas, or layers into a unified argumentative trajectory? Recognize synthesis even when implicit.
+
+III. Add Two Guardrails:
+Do NOT penalize the text for lack of counterargument unless it makes a broad universal claim without qualification.
+
+Do NOT penalize exposition-based argumentation for lacking “evidence”—exposition is the evidence in philosophical analysis.
+
+IV. Example Correction:
+The essay “Religion and the Limits of Modern Rationalism” should score 90–95, not 67. It’s structurally sound, conceptually precise, and tightly integrated. Your app failed because it couldn’t parse non-schematic philosophical writing.
+

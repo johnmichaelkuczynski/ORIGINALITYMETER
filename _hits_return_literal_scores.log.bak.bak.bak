@@ -1,0 +1,8 @@
+client/src/lib/reportGenerator.ts:1035:      return 8;
+client/src/lib/reportGenerator.ts:1037:      return 5;
+client/src/lib/reportGenerator.ts:1039:      return 2;
+client/src/lib/reportGenerator.ts:1041:      return 5;
+client/src/components/SummarySection.tsx:43:    if (scores.length === 0) return 0;
+client/src/components/SummarySection.tsx:62:    if (scores.length === 0) return 0;
+.git/hooks/fsmonitor-watchman.sample:154:		return 0;
+.git/hooks/fsmonitor-watchman.sample:160:	return 1;

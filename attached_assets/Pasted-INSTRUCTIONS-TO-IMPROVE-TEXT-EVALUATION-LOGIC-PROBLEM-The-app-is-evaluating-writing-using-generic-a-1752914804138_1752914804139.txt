@@ -1,0 +1,39 @@
+INSTRUCTIONS TO IMPROVE TEXT EVALUATION LOGIC
+PROBLEM:
+The app is evaluating writing using generic academic rubrics that reward superficial structure (e.g., topic clarity, sentence organization) while ignoring deeper signals of intelligence, originality, and cogency. This causes the app to misjudge highly original and conceptually rich material as “average” simply because it lacks traditional scaffolding or doesn’t spell everything out.
+
+🔧 WHAT THE APP IS DOING WRONG
+It assumes surface clarity is more important than depth of insight.
+→ As a result, subtle, advanced arguments that challenge the reader are penalized.
+
+It equates unfamiliar structure with poor structure.
+→ Passages that skip traditional essay format or move fluidly between registers are marked down.
+
+It doesn't reward strategic asymmetry or conceptual risk.
+→ Writing that makes complex analogies, uses clinical framing (e.g., OCD as epistemic lens), or shifts tone for effect is treated as erratic or incoherent.
+
+It lacks metacognitive sensitivity.
+→ It fails to recognize when a text is aware of its own argumentative architecture or is deliberately challenging norms.
+
+✅ WHAT THE APP SHOULD DO INSTEAD
+Analyze for strategic intent, not surface conformity.
+→ Ask: Is the deviation from standard format purposeful and effective?
+
+Reward cognitive compression and asymmetry.
+→ Recognize when an argument compresses difficult ideas efficiently, or embeds critiques within its structure.
+
+Distinguish between unclear writing and high-friction writing.
+→ High-friction writing is dense but intentional; unclear writing is confused. The app must tell the difference.
+
+Use the passage’s own internal logic to assess its success.
+→ If the passage is a critique of philosophical withdrawal, does it succeed by modeling engaged critique?
+
+Stop punishing texts for not over-explaining.
+→ Complex texts aimed at intelligent readers often leave implications unstated. This is not a flaw.
+
+Calibrate originality by idea structure, not just phrasing.
+→ Recognize originality in conceptual architecture (e.g., framing empiricism as recursive withdrawal into solipsism), not just in surface novelty.
+
+🧠 EXPLICIT GOAL SHIFT
+Tell the app:
+“Your job is not to reward safe, polished writing. Your job is to identify real cognitive labor, conceptual innovation, and epistemic friction—even if it’s messy or unconventional.”

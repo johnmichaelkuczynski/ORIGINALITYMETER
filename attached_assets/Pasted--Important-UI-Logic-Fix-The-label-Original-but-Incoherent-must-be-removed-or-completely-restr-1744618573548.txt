@@ -1,0 +1,52 @@
+⚠️ Important UI & Logic Fix: The label “Original but Incoherent” must be removed or completely restructured.
+
+Right now, the app displays a category label like “Original but Incoherent” as if it’s a standalone metric—a kind of hybrid verdict between originality and coherence.
+
+This is fundamentally confused. Here’s why:
+
+🔍 1. Originality and Coherence Are Distinct Metrics
+Originality (measured by Semantic Distance, Novelty, etc.) tells us how conceptually new the content is.
+
+Coherence (measured independently) tells us whether the passage makes sense structurally.
+
+These should remain strictly separate. There is no such thing as “originality with incoherence” being a third metric. That’s like saying “speed but without direction” is its own quantity.
+
+🛑 2. “Original but Incoherent” Is Not a Score
+It is currently being displayed as if it were a value or a rating, sometimes even with a visual bar.
+
+But it’s just a verbal mashup of two separate axes. It shouldn’t be rendered like a metric.
+
+This confuses users, who assume there’s a coherent basis or calculation behind that phrase. There isn’t.
+
+✅ 3. What to Do Instead
+Option A: Show Originality and Coherence Separately
+Just give the user:
+
+Originality Score (0–10)
+
+Coherence Score (0–10)
+
+Leave it to them to interpret.
+
+Option B: Add an Aggregate Score (But Be Transparent)
+Create an Aggregate Quality Score, calculated from weighted originality + coherence.
+
+E.g. Aggregate = 0.5 * originality + 0.5 * coherence
+
+Or even a smarter rule: “If coherence is below 4, originality is capped at 6”
+
+Show this aggregate as a separate, distinct field, e.g.:
+
+Overall Quality Score: 6.3/10
+
+Option C: Use a 2×2 Label Grid (if you insist on verbal categories)
+Map passages into:
+
+Coherent	Incoherent
+Original	✅ High Quality	⚠️ Promising but Fragmented
+Derivative	🟡 Clear but Unoriginal	❌ Low Value
+This keeps the categorical label but prevents it from being treated as a metric.
+
+🚫 Bottom Line:
+❌ “Original but Incoherent” should not be shown as a standalone metric or bar
+✅ Separate originality and coherence cleanly, or calculate a true aggregate if needed.

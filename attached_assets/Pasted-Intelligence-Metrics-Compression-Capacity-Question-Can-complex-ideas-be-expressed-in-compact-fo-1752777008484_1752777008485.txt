@@ -1,0 +1,82 @@
+Intelligence Metrics
+Compression Capacity
+• Question: Can complex ideas be expressed in compact form without loss?
+• High: High: Dense formulations yield insight with minimal words.
+• Low: Low: Rambling, bloated expression reveals conceptual weakness.
+Multi-Level Integration
+• Question: Can the author operate across multiple levels (abstract/concrete, meta/object)?
+• High: High: Seamless transitions between layers of analysis.
+• Low: Low: Stuck on one plane.
+Dynamic Constraint Handling
+• Question: Does the thinker maintain coherence under complex constraints?
+• High: High: Manages tradeoffs without collapsing precision.
+• Low: Low: Ignores or oversimplifies conflicting demands.
+Inference Architecture
+• Question: Are ideas constructed with deep, layered inferential scaffolding?
+• High: High: Multi-step reasoning with structural memory.
+• Low: Low: Shallow or linear logic.
+Epistemic Risk Management
+• Question: Does the thinker show awareness of the riskiness of their claims?
+• High: High: Risky claims managed with discipline.
+• Low: Low: Reckless or excessively cautious.
+Cognitive Friction Tolerance
+• Question: Can the thinker endure unresolved tensions?
+• High: High: Holds dissonance productively.
+• Low: Low: Rushes to resolution or avoids it.
+Strategic Ambiguity Deployment
+• Question: Can ambiguity be used intentionally and effectively?
+• High: High: Selective ambiguity to provoke thought.
+• Low: Low: Unintentional or incoherent.
+Representational Versatility
+• Question: Can the thinker switch formats as needed?
+• High: High: Moves between diagrams, prose, math, analogy.
+• Low: Low: Rigidly sticks to one mode.
+Recursive Self-Monitoring
+• Question: Does the thinker reflect on their own moves?
+• High: High: Meta-awareness present.
+• Low: Low: Blind to own method.
+Conceptual Novelty with Coherence
+• Question: Are new ideas viable and structured?
+• High: High: Original and operationalizable.
+• Low: Low: Performative or incoherent.
+Noise Suppression
+• Question: Can the thinker focus on signal?
+• High: High: Ignores distractions.
+• Low: Low: Chases tangents.
+Abductive Strength
+• Question: Are best-explanation arguments creatively but plausibly formed?
+• High: High: Surprising but cogent hypotheses.
+• Low: Low: Appealing but unsupported.
+Causal Finesse
+• Question: Are causal relations modeled with nuance?
+• High: High: Layered causal logic.
+• Low: Low: Simple linear cause-effect.
+Boundary Perception
+• Question: Are the limits of scope/method recognized?
+• High: High: Aware of constraints.
+• Low: Low: Overreach or blind spots.
+Temporal Layering
+• Question: Can change over time be tracked structurally?
+• High: High: Coherent historical/evolutionary logic.
+• Low: Low: Timeless or inert.
+Intellectual Empathy
+• Question: Are opposing views reconstructed fairly?
+• High: High: Strong steelmanning.
+• Low: Low: Straw men.
+Conceptual Mobility
+• Question: Can the thinker shift between domains?
+• High: High: Fluid conceptual transitions.
+• Low: Low: Stuck in one paradigm.
+Error Assimilation
+• Question: Can mistakes be integrated into thinking?
+• High: High: Errors are processed productively.
+• Low: Low: Hidden or denied.
+Pattern Extraction
+• Question: Can deep structure be detected across variation?
+• High: High: Generalizes across difference.
+• Low: Low: Stays at surface.
+Semantic Topology Awareness
+• Question: Are dependencies between ideas tracked?
+• High: High: Conceptual terrain is mapped.
+• Low: Low: Flat or meandering flow.
+

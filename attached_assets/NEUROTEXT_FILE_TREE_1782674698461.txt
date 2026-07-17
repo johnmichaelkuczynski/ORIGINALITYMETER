@@ -1,0 +1,361 @@
+NEUROTEXT — Application Blueprint
+A multi-model AI evaluation and generation platform. This blueprint documents the full architecture, with deep focus on how large-text generation works (Universal Expansion, Conservative Reconstruction, Screenplay Generator, Signal Refiner, MAXINTEL, Objections, Bullet-Proof Rewrite, Full Suite Pipeline, Coherence Meter).
+
+1. High-Level Architecture
+NEUROTEXT is a TypeScript monorepo with three top-level surfaces:
+
+client/        React + Vite + TailwindCSS + shadcn/ui + wouter + React Query + Chart.js
+server/        Express + Drizzle ORM + Anthropic / OpenAI / DeepSeek / Perplexity / Grok / Venice
+shared/        Drizzle schema + Zod validators (source of truth for both sides)
+
+Both frontend and backend run on the same port via Vite middleware (see server/vite.ts). The frontend is a single SPA driven by client/src/App.tsx, with the bulk of UX concentrated in one ~10,900-line page: client/src/pages/HomePage.tsx (tabbed view: Analysis, Universal Expansion, Reconstruction, Objections, Bullet-Proof Rewrite, Full Suite Pipeline, Screenplay, Signal Refiner, Coherence Meter, AI Chat, MAXINTEL, GPT Bypass, Job History).
+
+Server surface
+Subsystem	Path
+All HTTP routes	server/routes.ts (75 routes, ~6,900 lines)
+Auth (username/password + Google OAuth via Passport)	server/auth.ts
+Drizzle DB client	server/db.ts (Neon-backed Postgres)
+Storage adapter (IStorage)	server/storage.ts
+WebSocket / streaming	server/services/ccStreamingService.ts (broadcastGenerationChunk, setupWebSocketServer)
+Generation services	server/services/*.ts (~50 files)
+Client surface
+Concern	Path
+Routing	client/src/App.tsx (wouter)
+Main UI	client/src/pages/HomePage.tsx
+Job History page	client/src/pages/JobHistoryPage.tsx
+Persistent job viewer	client/src/components/JobViewerModal.tsx
+Active-job global state	client/src/contexts/ActiveJobContext.tsx
+Streaming UIs	CCStreamingUI.tsx, StreamingReconstruction.tsx, StreamingOutputModal.tsx, PipelineUI.tsx
+HTTP/query client	client/src/lib/queryClient.ts
+2. Data Model (shared/schema.ts)
+The schema combines transactional models (users, credits, transactions) with content models (documents, analyses, jobs, chunks). Key tables, what they hold, and which subsystems write to them:
+
+Table	Purpose	Written by
+users	Account + Google OAuth ID	Auth
+documents	Stored source/output text, word count, complexity	All upload + analysis paths
+analyses	Evaluation results (score, dimensions, cognitive patterns)	Four-phase intelligence evaluation
+intelligent_rewrites	Pair of (original, rewritten) analyses + report	MAXINTEL
+cognitive_profiles	Per-user cognitive fingerprint (writing patterns, intellectual interests, creativity index…)	Cognitive Profiler
+user_credits	Per-provider credit balance	Credit Manager / Stripe webhook
+credit_transactions	Stripe payment intents and status	/api/stripe/*
+reconstruction_projects + reconstruction_documents + reconstruction_chunks	Persistent state for long async reconstructions (skeleton + per-chunk deltas)	dbEnforcedReconstruction.ts
+coherence_documents + coherence_chunks	Persistent state for Coherence Meter runs (GCS snapshots per chunk)	coherenceMeter.ts
+pipeline_jobs	Full-Suite pipeline stage outputs + status	pipelineOrchestrator.ts
+rewrite_jobs	GPT-Bypass humanizer jobs	gptBypassHumanizer.ts
+user_activities	Audit log used by analytics	Multiple
+Each table has a createInsertSchema(…) Zod validator next to it; routes validate inbound bodies with these before touching IStorage.
+
+The storage layer (server/storage.ts) exposes a single IStorage interface — every CRUD path in routes goes through it. Highlights:
+
+getUser, createUser, getUserByUsername, getUserByGoogleId, createGoogleUser, ...
+createDocument, getDocumentsByUser
+createAnalysis
+createIntelligentRewrite
+getCognitiveProfile, updateCognitiveProfile
+createRewriteJob, getRewriteJob, updateRewriteJob, listRewriteJobs
+getUserCredits, getAllUserCredits, updateUserCredits, getTotalUserCredits
+createCreditTransaction, getCreditTransaction, getCreditTransactionByStripeSession, updateCreditTransactionStatus
+createReconstructionProject, getReconstructionProject, updateReconstructionProject
+getAllJobs, getJobWithChunks, getJobChunks         ← powers Job History
+
+3. LLM Provider Layer (the “ZHI” system)
+NEUROTEXT abstracts six providers behind ZHI 1–6. Mapping lives in server/services/aiProviders.ts and the routes constant block (server/routes.ts ~63–74):
+
+Alias	Provider	Default model	SDK / endpoint
+ZHI 1	OpenAI	gpt-4o	openai SDK
+ZHI 2	Anthropic	claude-sonnet-4-20250514 / claude-3-7-sonnet-20250219	@anthropic-ai/sdk
+ZHI 3	DeepSeek	deepseek-chat	OpenAI-compatible HTTP
+ZHI 4	Perplexity	llama-3.1-sonar-small-128k-online	HTTPS
+ZHI 5	Grok (xAI)	grok-3	OpenAI-compatible HTTP
+ZHI 6	Venice	llama-3.3-70b	api.venice.ai
+server/services/llmRouter.ts and server/services/directLLM.ts provide the dispatch + failover layer; server/services/aiFailover.ts covers retry/back-off across providers when one fails. ZHI 1 (OpenAI) is the platform default; Screenplay Generator is hard-pinned to Claude (ZHI 2).
+
+Credit gating
+server/services/creditManager.ts enforces provider-specific token multipliers. Every long-form route calls checkAndDeductCredits(userId, username, provider, tokens) after a successful generation. Freemium users get a per-feature word cap via FREEMIUM_LIMITS in routes.ts; paid users pay only the deducted credits.
+
+Stripe is wired through /api/create-checkout-session + a Stripe webhook that calls updateCreditTransactionStatus and tops up user_credits. The price ID is STRIPE_PRICE_ID_100.
+
+4. Streaming + Job Infrastructure (how long jobs reach the browser)
+Long generations don’t block HTTP. The flow is:
+
+client POSTs → route returns {jobId} immediately
+service runs in background, calling broadcastGenerationChunk() per step
+client subscribes to WebSocket and/or polls GET /api/<feature>/status/:jobId
+client persists active jobId in ActiveJobContext → can be resumed across reloads
+
+Key building blocks:
+
+server/services/ccStreamingService.ts — owns the WebSocketServer (set up in server/index.ts). Exports broadcastGenerationChunk({ jobId, type, chunkIndex, content, … }). Almost every long-running service calls this.
+server/services/streamingProtocol.ts — small typed event envelope used by SSE endpoints (used by Reconstruction’s /api/reconstruction/stream).
+ActiveJobContext (client) — keeps the currently-running jobId in React state and localStorage, so a reload re-attaches.
+/api/jobs, /api/jobs/:documentId, /api/jobs/:documentId/resume — the Job History endpoints (server/routes.ts 1823–1908). Backed by getAllJobs / getJobWithChunks / getJobChunks in IStorage.
+JobViewerModal.tsx — a single component used everywhere to display a running or completed job (progress bar, chunk list, output, download).
+pipeline_jobs table — persistent stage state for the Full-Suite pipeline so it can resume mid-run after a crash.
+5. Intelligent Input Interpretation (the rule layer that sits in front of generation)
+All generation routes pre-process user instructions through interpretation helpers (server/routes.ts plus universalExpansion.ts). The system understands:
+
+Page → word conversion — “5-page paper” = 3000 words (1 page = 600 words; from replit.md).
+Length shorthand — 10k, 2.5k, ~2000 words, “twice as long”, “1.5×”.
+Instruction-only mode — when the user provides instructions but no source text, generation is treated as compose-from-scratch.
+Swap detection — when source text and instructions appear in the wrong fields, the system swaps them.
+Expansion-keyword detection — words like “rewrite all of it”, “do not omit a single fact”, “expand”, “elaborate” auto-set the target word count to at least the input length and route through Universal Expansion.
+Instruction-driven mode — instructions containing structural directives (REWRITE, DIVIDE, ORGANIZE, FORMAT, OUTLINE, BULLET, …) without academic keywords switch Universal Expansion to neutral transformation prompts with larger source excerpts (8 000 words instead of 3 000) so all facts survive.
+NO PUFFERY / NO HEDGING — injected into every long-form prompt so prose stays substantive.
+Auto-expand defaults — small inputs without explicit target expand to 5 000 words; large inputs expand to 1.5× input.
+6. Large-Text Generation — the heart of the system
+There are six distinct long-form generators. They all share the same general pattern but differ in chunking, coherence, and how the final output is stitched.
+
+Universal pattern
+INPUT
+  ↓
+Step 0  (optional)  Interpret user instructions (length, structure, mode)
+Step 1  Extract a SKELETON / OUTLINE of the document
+Step 2  Split work into CHUNKS (paragraph- or section-aware)
+Step 3  For each chunk:
+         a. Build prompt = SKELETON + PRIOR-CHUNK SUMMARIES + CURRENT-CHUNK SOURCE + INSTRUCTIONS
+         b. Call LLM (ZHI N)
+         c. Extract a DELTA / SUMMARY for the next chunk's context
+         d. broadcastGenerationChunk(...) → client UI updates live
+         e. Persist chunk in *_chunks table
+Step 4  STITCH PASS — second LLM call reconciles contradictions, terminology drift, missing premises
+Step 5  Word-count enforcement / safety truncation
+Step 6  Credit deduction; final JSON returned (or final WS event for streamed jobs)
+
+What changes per generator is chunk size, skeleton format, the coherence-state object, and the stitching strategy.
+
+6.1 Universal Expansion — protocol-based, three-pass cross-chunk coherence
+Route: POST /api/universal-expansion (with helpers /api/generate-strict-outline, /api/generate-full-document at routes.ts 6353 / 6453) Service: server/services/universalExpansion.ts (~1 785 lines) Default LLM: ZHI 1 (OpenAI), overridable.
+
+Three architectural passes:
+
+Pass 1 — Skeleton Extraction (extractSkeleton, lines 96–198).
+Truncates source to the first 15 000 words for the skeleton call.
+LLM returns a JSON DocumentSkeleton capturing ~2 000 tokens of the document’s “DNA”:
+thesis
+outline[] — 8 to 20 argument-arc steps
+keyTerms[] — { term, definition } (used to detect terminology drift later)
+commitmentLedger — { asserts[], rejects[], assumes[] } (used to detect contradictions)
+entities[] — names that must be referenced consistently
+Formatted via formatSkeletonForInjection (line 210) into a block prefixed by THESIS:, ARGUMENT ARC:, KEY TERMS:, ASSERTS / REJECTS / ASSUMES:, ENTITIES:, ending with CONSTRAINT: Every section you write MUST be consistent with this skeleton.
+Pass 2 — Constrained Chunk Processing (lines ~358–520).
+Instead of fixed-byte chunks, parses the user’s instructions to identify requested sections (Chapter 1, Introduction, Section II, …) and emits one section per chunk in order.
+Each chunk prompt = skeletonConstraint + priorDeltas + sourceExcerpt (≤8 000 words when in instruction-driven mode, otherwise ≤3 000) + sectionTarget + NO-PUFFERY rules.
+After each chunk, calls extractDeltaReport(sectionContent, sectionName, skeleton) (line 255). The LLM returns JSON:
+{
+  "newClaims":   [ … claims introduced this section … ],
+  "termsUsed":   [ … key-terms from the skeleton actually used … ],
+  "conflictsDetected": [ … statements that contradict the skeleton … ]
+}
+
+Each DeltaReport is concatenated into the PRIOR CHUNK SUMMARIES block injected into the next chunk’s prompt — this is the cross-chunk-coherence (CC) channel.
+Pass 3 — Stitch Pass. A final LLM call reads all section outputs + the skeleton + the accumulated deltas and emits a repair patch covering contradictions, terminology drift, and missing premises.
+Word-count targeting. When a single chunk gets > 50 000 words of source it’s rough-split (CHUNK_SIZE = 50000, line 1276). For overall length the orchestrator computes a per-section target = totalTarget / sections, then enforces exact word counts at the end by either truncating or appending a continuation prompt. Auto-expansion defaults: 5 000 words (small input) or 1.5× input (large input).
+
+Streaming. Per-section progress is pushed via broadcastGenerationChunk.
+
+Credit gating. Provider-multiplier-aware via creditManager; freemium users capped via FREEMIUM_LIMITS.universalExpansion.
+
+6.2 Conservative Reconstruction — DB-enforced cross-chunk coherence
+Route: POST /api/reconstruction/start (async; returns { documentId }) GET /api/reconstruction/:id (poll) POST /api/reconstruction/stream (SSE alternative) POST /api/reconstruction/abort/:sessionId Service: server/services/dbEnforcedReconstruction.ts (paired with outlineFirstReconstruction.ts for outline phase).
+
+Chunk size: CHUNK_SIZE_WORDS = 1000 (line 17), paragraph-aware splitter (lines 186–203) — never breaks mid-paragraph.
+Skeleton extraction: extractAndStoreSkeleton (lines 84–177) pulls thesis, outline (8–20 items), key terms, commitments, entities, and methodology, and writes them to reconstruction_documents so the run survives process restarts.
+Cross-chunk context: getPriorDeltas (lines 258–269) reads all prior chunk deltas from reconstruction_chunks and injects them as PRIOR CHUNK SUMMARIES into the next prompt (lines 325–352). Because deltas live in the DB, a crashed run can be resumed via /api/jobs/:documentId/resume.
+Stitch pass: performStitch (lines 447–555) takes all assembled chunks, detects contradictions / terminology drift / missing premises, and produces a final repair patch.
+Supported size: up to 100 000 words (matches the freemium hard cap).
+Streaming: per-chunk SSE events plus WS broadcast for UI; the persistent job is also visible in Job History.
+Default LLM: ZHI 1.
+6.3 HCC Service — Hierarchical Coherence Control (for book-length jobs)
+Service: server/services/hccService.ts
+
+When a request exceeds normal Universal-Expansion scale, the orchestrator falls back to HCC, which models the document as Book → Part → Chapter → Chunk:
+
+Constant	Value	Meaning
+VIRTUAL_PART_SIZE	25 000 words	size of each virtual “Part”
+VIRTUAL_CHAPTER_SIZE	5 000 words	size of each virtual “Chapter”
+TARGET_CHUNK_SIZE	500 words	atomic generation chunk
+MAX_CHUNK_RETRIES	2	per-chunk retry budget
+calculateLengthConfig (lines 144–181) computes lengthRatio = target/input and picks one of: heavy_compression / moderate_compression / maintain / moderate_expansion / heavy_expansion. Each mode adjusts prompt verbosity, allowed bloat, and stitch aggressiveness.
+
+buildVirtualParts (lines ~279) walks the source into Parts → Chapters → Chunks; each chunk carries enough adjacent-window context to keep references stable.
+
+6.4 Full Suite Pipeline — Reconstruction → Objections → Bullet-Proof Rewrite
+Routes: /api/pipeline/start, /api/pipeline/create, /api/pipeline/run/:jobId, /api/pipeline/status/:jobId, /api/pipeline/outputs/:jobId, /api/pipeline/resume/:jobId, /api/pipeline/list (routes.ts 6031–6351). Service: server/services/pipelineOrchestrator.ts (~1 244 lines). Persistence: pipeline_jobs (one row per run, JSONB stage outputs).
+
+Stages:
+
+Reconstruction — calls dbEnforcedReconstruction to produce a charitable interpretation.
+Objections — server/services/outlineFirstObjections.ts generates 25 likely objections, outline-first: a planning LLM call enumerates objection topics, then per-objection calls flesh out each with a counter-argument. Avoids one giant call.
+Bullet-Proof Rewrite — server/services/outlineFirstObjectionProof.ts (~1 209 lines) rewrites the document to preempt every objection from stage 2. Includes:
+Claim-aware sectioning — partitions the text so each rewrite block addresses a coherent set of objections.
+Header preservation — Markdown / academic headers are extracted, locked, and re-inserted post-rewrite.
+Paragraph-count enforcement — output paragraph count ≥ input paragraph count.
+Hedging detection — regex sweep refuses outputs that introduce “arguably / might / could be / one could say” bloat (NO HEDGING rule).
+Two-tier format preservation — Tier 1 protects code blocks / math / tables verbatim; Tier 2 re-applies header styling.
+Horizontal Coherence Check (HCC) — runs at line ~361 of the orchestrator across all stage outputs to verify global consistency.
+The whole pipeline is restartable from any stage via /api/pipeline/resume/:jobId because each stage’s output is persisted as it completes.
+
+6.5 Screenplay Generator — three-act, chunked, ElevenLabs-aware
+Routes: POST /api/screenplay-generator, POST /api/modify-screenplay (routes.ts 6593 / 6680). Service: server/services/screenplayGenerator.ts. LLM: Claude (claude-sonnet-4-20250514) via Anthropic SDK; credit-deducted under 'anthropic'.
+
+Pipeline:
+
+Outline pass. generateScreenplay (line 481) first asks Claude for a ScreenplayOutline describing the three acts: act-one beats (setup, inciting incident, plot point 1), act-two beats (rising action, midpoint, plot point 2), act-three beats (climax, resolution). This is the “skeleton” for screenplays.
+
+Chunked generation. WORDS_PER_CHUNK = 600 (line 7). Total chunks = ceil(effectiveTargetWords / 600); per-chunk target = target / chunks. Each chunk prompt gets:
+
+the outline (skeleton),
+previous-chunk tail (running screenplay so far, truncated to a budget),
+an instruction block enforcing visual storytelling, proper screenplay formatting (scene headings in INT./EXT., character cues in ALL CAPS, parentheticals sparingly, transitions for act breaks).
+Modify endpoint. modifyScreenplay (line 396) takes the existing screenplay + a modification instruction and re-emits. The frontend now always sends the canonical raw screenplay back to this endpoint even when the ElevenLabs toggle is on, so revisions never operate on stripped dialogue.
+
+Two output paths:
+
+Default — full screenplay with scene headings, action, transitions.
+ElevenLabs-Ready (toggle ON) — post-processed by formatAsElevenLabsDialogue (line 231). It:
+walks lines top-to-bottom,
+detects character cues (ALL CAPS, optional (V.O.) / (O.S.) / (CONT'D)),
+maps cues to Speaker 1 / Speaker 2 / … in first-appearance order,
+collects following dialogue lines, breaking on blank line, next character cue, scene heading, OR transition (hardened parser),
+strips markdown + parentheticals,
+validates each emitted line against /^Speaker \d+: .+$/ and drops malformed lines,
+joins with Unix \n and a blank line between turns.
+When EL mode is ON, the response carries both screenplay (the cleaned dialogue) and screenplayRaw (the full screenplay for re-modification).
+Frontend. The Switch sits above Generate. When ON, the output panel shows Copy + a Download .txt button that writes dialogue.txt as a UTF-8 Blob with \n endings, plus the helper note “Paste this into ElevenLabs Studio, then assign a voice to Speaker 1 and Speaker 2.”
+
+6.6 Signal Refiner — post-processing pass that maximises signal/noise
+Route: POST /api/signal-refiner (routes.ts 6770). Service: server/services/signalRefiner.ts (358 lines).
+
+Designed to run after any large-text generator to tighten the result.
+
+Chunk size: TARGET_CHUNK_SIZE = 1200 (line 28), paragraph-aware. If a single paragraph still exceeds 1 200 words, it falls back to sentence-level packing (lines 74–90).
+Document structure extraction. Before refining, a pre-pass extracts headers, bullet lists, and code blocks, locks them, and reapplies them after refinement so structure is preserved verbatim.
+Per-chunk LLM call with a strict prompt: eliminate repetitions, tighten claims, cut bloat, preserve factual content. Multi-provider — uses whichever ZHI was requested.
+Reassembly concatenates refined chunks; sentence-pack mode reflows back into paragraphs.
+Returns refined text + a ChunkBoundary[] array describing where each refined block came from for diffing.
+6.7 Coherence Meter — multi-mode GCS engine
+Routes: POST /api/coherence-meter, POST /api/coherence-global, POST /api/coherence-outline-guided, POST /api/coherence-sequential, GET /api/coherence-sequential/:documentId/:mode (routes.ts 5212–6029). Service: server/services/coherenceMeter.ts (3 608 lines) + crossChunkCoherence.ts.
+
+Supports inputs up to 5 000 words of input (the global setting).
+Chunk size: 400 words per chunk (lines 1243 / 1358), word-boundary split.
+Eight GCS (Global Coherence State) modes — logical-consistency, mathematical, scientific-explanatory, philosophical, and four more. Each mode picks a different set of state dimensions tracked across chunks (e.g. mathematical mode tracks lemma → theorem dependencies; scientific-explanatory tracks claim → evidence chains).
+Initialisation — initializeGCS(mode) returns a typed state vector. After each chunk the LLM is asked to return an updated GCS JSON; serializeGCS stuffs it into the next chunk’s prompt.
+Persistence — coherence_documents + coherence_chunks allow a run to be resumed; the same JobViewer modal that powers reconstruction also shows coherence runs.
+6.8 MAXINTEL (Intelligent Rewrite)
+Route: POST /api/intelligent-rewrite (routes.ts 764). Service: server/services/intelligentRewrite.ts + the four-phase evaluator (fourPhaseProtocol.ts).
+
+Recursively optimises text for the 17-dimension intelligence score.
+Loop: (a) score the current draft via fourPhaseProtocol; (b) generate a rewrite prompt targeting the lowest-scoring dimensions; (c) call the chosen ZHI; (d) re-score; (e) keep the better-scoring draft; (f) stop when improvement < ε or iteration cap hit.
+Persists intelligent_rewrites rows linking original + rewritten documents and analyses.
+Supports custom instructions and external knowledge injection (web-search snippets pasted into the prompt).
+6.9 GPT Bypass Humanizer
+Routes: /api/gpt-bypass-humanizer, /api/rewrite, /api/re-rewrite, /api/re-rewrite/:jobId, /api/jobs/:jobId, /api/writing-samples, /api/style-presets (routes.ts 2603–2989). Service: server/services/gptBypassHumanizer.ts + humanizer.ts.
+
+Transforms LLM output to evade AI-detection (gptZero.ts). Jobs are persisted in rewrite_jobs; /api/re-rewrite/:jobId allows iterative refinement against a target AI-probability.
+
+7. Cross-cutting Components Worth Knowing
+Four-Phase Intelligence Evaluation — server/services/fourPhaseProtocol.ts (+ pureThreePhaseProtocol.ts). Phases: structural analysis → dimension scoring across 17 cognitive dimensions → cross-dimension calibration → final synthesis. Genre-aware (fictionAssessment.ts, caseAssessment.ts).
+TextStats + AI Detection — client/src/components/TextStats.tsx + /api/check-ai (GPTZero).
+Translation — /api/translate + server/services/translation.ts / translationService.ts; client/src/pages/TranslationPage.tsx.
+Speech-to-text — /api/speech-to-text (AssemblyAI) with browser-fallback in BrowserSpeechToText.tsx.
+Email sharing — SendGrid via /api/share-via-email and /api/share-simple-email.
+OCR — Mathpix for math-heavy PDFs (called inside fileProcessor.ts).
+Web search / external knowledge — /api/search-google, /api/fetch-url-content, Perplexity (ZHI 4) for live retrieval, AnalyticPhilosophy.net Zhi API for citations.
+AI Chat with memory — /api/chat-with-memory (routes.ts 1406) maintains conversation history and pulls context from the Zhi Database.
+8. Putting it together — request lifecycle for a typical long-form job
+Below is what happens end-to-end when a user clicks Generate on Universal Expansion with a 3 000-word source and an instruction “Rewrite this as a 10 000-word essay in five chapters.”
+
+1. HomePage.tsx  POST /api/universal-expansion
+                 body: { sourceText, instructions, provider, targetWords?, mode? }
+2. routes.ts     - Auth + freemium/credit pre-check (FREEMIUM_LIMITS.universalExpansion)
+                 - Intelligent Input Interpretation:
+                     • detects "10 000-word" target and "five chapters" structure
+                     • picks instruction-driven mode (8 000-word source excerpt budget)
+                 - Returns { jobId } immediately; spawns work async
+3. universalExpansion.ts
+   PASS 1: extractSkeleton(sourceText)                       → DocumentSkeleton (DB-stored)
+   PASS 2: for each of 5 chapters:
+              prompt = formatSkeletonForInjection(skeleton)
+                     + PRIOR DELTA REPORTS
+                     + sourceExcerpt (≤8 000 words)
+                     + chapter target = 2 000 words
+                     + NO-PUFFERY / NO-HEDGING rules
+              call ZHI 1 (OpenAI) → chapter prose
+              extractDeltaReport(...) → DeltaReport
+              broadcastGenerationChunk({ jobId, chunkIndex, content })
+              persist chapter + delta in reconstruction_chunks
+   PASS 3: stitch pass — second LLM call reconciles contradictions / drift
+4. routes.ts     creditManager.checkAndDeductCredits(userId, 'openai', tokens)
+                 final WS event { type: 'complete', screenplay/text, wordCount }
+5. HomePage.tsx  - receives chunks live (progress bar, partial output)
+                 - on complete, refreshes Job History
+                 - ActiveJobContext clears the active jobId
+
+If the user closes the browser, the row in reconstruction_documents plus all reconstruction_chunks rows are still there; reopening the app and clicking the job in Job History rehydrates the full state through getJobWithChunks. If the server crashed mid-run, /api/jobs/:documentId/resume reads the last completed chunk index and continues from the next one — this is what makes 100 000-word jobs survive infrastructure hiccups.
+
+9. Failure Modes & Safeguards
+LLM provider failure — aiFailover.ts rotates to the next ZHI; chunk-level retries are bounded (MAX_CHUNK_RETRIES = 2 in HCC).
+Word-count drift — every long-form route does a final word-count check and either appends a continuation call or safety-truncates if over budget; freemium users get a hard ceiling.
+Coherence drift — caught by stitch pass (Universal Expansion + Reconstruction) and by GCS divergence checks (Coherence Meter).
+Format loss in Bullet-Proof rewrite — two-tier protection: code/math/tables locked verbatim; headers re-applied after the LLM step.
+Stripped dialogue feeding back into screenplay revisions — fixed by carrying screenplayRaw alongside screenplay and always sending the raw script to /api/modify-screenplay.
+Lost job after refresh — ActiveJobContext + pipeline_jobs / reconstruction_documents survive restarts; Job History resumes them.
+Credit accounting — deduction happens after successful generation, not before; failures don’t consume credits.
+10. File Map (quick reference for future work)
+shared/
+  schema.ts                              ← single source of truth for DB + Zod
+server/
+  index.ts                               ← Express bootstrap + WS server attach
+  vite.ts                                ← dev middleware (don't modify)
+  routes.ts                              ← all 75 HTTP routes
+  storage.ts                             ← IStorage CRUD
+  auth.ts                                ← Passport (local + Google)
+  db.ts                                  ← Drizzle/Neon client
+  services/
+    aiProviders.ts, llmRouter.ts,
+    directLLM.ts, aiFailover.ts          ← ZHI 1–6 dispatch
+    creditManager.ts                     ← per-provider deduction
+    universalExpansion.ts                ← three-pass CC expansion
+    dbEnforcedReconstruction.ts          ← chunked, DB-persisted reconstruction
+    outlineFirstReconstruction.ts        ← outline phase used by Reconstruction
+    outlineFirstObjections.ts            ← 25-objection generator
+    outlineFirstObjectionProof.ts        ← Bullet-Proof rewrite
+    pipelineOrchestrator.ts              ← Full Suite (4-stage)
+    screenplayGenerator.ts               ← Screenplay + formatAsElevenLabsDialogue
+    signalRefiner.ts                     ← post-processing tightening
+    coherenceMeter.ts                    ← 8-mode GCS engine
+    crossChunkCoherence.ts               ← CC primitives
+    hccService.ts                        ← Book→Part→Chapter→Chunk for very long jobs
+    fourPhaseProtocol.ts                 ← 17-dim intelligence evaluator
+    intelligentRewrite.ts                ← MAXINTEL recursive optimizer
+    gptBypassHumanizer.ts                ← AI-detection evasion
+    ccStreamingService.ts                ← WebSocket + broadcastGenerationChunk
+    streamingProtocol.ts                 ← SSE event envelope
+    textChunker.ts                       ← generic 500-word chunker
+    fileProcessor.ts                     ← upload + OCR (Mathpix)
+    gptZero.ts                           ← AI detection
+    translation.ts / translationService.ts
+    cognitiveProfiler.ts                 ← updates cognitive_profiles per user
+    emailService.ts, sendgrid.ts         ← SendGrid wrapper
+    zhiApi.ts                            ← AnalyticPhilosophy.net Zhi DB
+client/src/
+  App.tsx                                ← wouter routes
+  pages/HomePage.tsx                     ← the giant tabbed UI
+  pages/JobHistoryPage.tsx               ← persistent jobs list
+  pages/{Auth,Analytics,Translation,WebSearch,TextDownload,R1,DissertationWizard}Page.tsx
+  contexts/ActiveJobContext.tsx          ← in-flight job global state
+  components/
+    JobViewerModal.tsx                   ← polymorphic "view any running/finished job"
+    CCStreamingUI.tsx, StreamingReconstruction.tsx,
+    StreamingOutputModal.tsx, PipelineUI.tsx
+    TextStats.tsx, AIDetectionModal.tsx
+    AnalysisReport.tsx, FullReportDialog.tsx, PhilosophicalIntelligenceReport.tsx
+    ProviderSelector.tsx, CreditBalance.tsx, BuyCreditsDialog.tsx
+    ChatDialog.tsx                       ← AI Chat with memory
+    IntelligentRewriteButton.tsx, DirectAIRequest.tsx
+    DocumentInput.tsx, DocumentResults.tsx, DocumentComparisonModal.tsx
+    SpeechToText.tsx / BrowserSpeechToText.tsx / AzureSpeechInput.tsx
+  lib/queryClient.ts                     ← React Query + apiRequest helper
+
+TL;DR for large-text generation
+Every long generator in NEUROTEXT follows the same protocol: extract a skeleton → split paragraph- or section-aware chunks → generate each chunk with the skeleton and a running delta of prior chunks injected as constraints → reconcile in a stitch pass → enforce target word count → deduct credits. What differs between Universal Expansion, Reconstruction, HCC, Pipeline, Screenplay, Signal Refiner, and Coherence Meter is only the chunk size, the skeleton shape, the coherence-state object, and the stitching strategy. All long jobs are persisted in DB tables, streamed live via broadcastGenerationChunk, and resumable from the Job History page.

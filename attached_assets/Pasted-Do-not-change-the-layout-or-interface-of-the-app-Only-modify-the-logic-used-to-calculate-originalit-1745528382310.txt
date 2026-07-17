@@ -1,0 +1,36 @@
+Do not change the layout or interface of the app. Only modify the logic used to calculate originality and depth scores.
+
+This patch corrects a scoring error where texts that reframe core concepts (e.g., "emotions are judgments") are being misclassified as less original or deep than more rhetorically polished, but derivative, texts.
+
+INSTRUCTIONS:
+
+1. In the originality scoring function, add the following criteria:
+
+    a. Increase originality score if the text:
+        - Reclassifies a common-sense distinction (e.g., emotions vs. judgments)
+        - Introduces or distinguishes conceptual frameworks (e.g., egocentric vs. non-egocentric reasoning)
+        - Offers ontological or epistemological reinterpretations of familiar concepts
+
+    b. Decrease originality score if the text:
+        - Primarily summarizes or applies existing models without modification
+        - Contains phrases like "I will not try to prove this is superior" or "my aims are modest"
+        - Derives its structure from reacting to standard objections rather than proposing new frames
+
+2. In the depth scoring function:
+
+    a. Increase depth score if:
+        - The passage introduces identity conditions or redefinitions of concepts
+        - It addresses the nature of mental states, rationality, or cognitive architecture
+        - It has implications for other branches of philosophy (e.g., epistemology, philosophy of mind)
+
+    b. Decrease depth score if:
+        - The passage simply outlines a position and replies to objections without foundational revision
+        - It avoids commitment to new definitions or frameworks
+
+3. Retain the current coherence, clarity, and accuracy logic — no changes needed there.
+
+4. Apply this logic regardless of subject domain (ethics, metaphysics, philosophy of mind, etc.).
+
+5. Output the scores in the exact same UI location and format as before.
+
+Make sure these logic changes override any old weighting systems or similarity-based metrics that may bias against structurally original content.

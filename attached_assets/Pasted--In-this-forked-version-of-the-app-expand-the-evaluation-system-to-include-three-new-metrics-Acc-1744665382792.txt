@@ -1,0 +1,75 @@
+✅ In this forked version of the app, expand the evaluation system to include three new metrics:
+
+Accuracy – Factual and inferential correctness
+
+Depth – Non-triviality and conceptual insight
+
+Clarity – Readability, transparency, and semantic accessibility
+
+These should be added alongside Originality and Coherence to form a broader intellectual quality analysis.
+
+🔧 STRUCTURAL CHANGES TO IMPLEMENT
+🔹 1. Add Three New Scoring Panels
+Each should mimic the existing format (numerical score, filled visual bar, micro-justification).
+
+Metric	Description
+Accuracy	Does the passage contain factual correctness and valid inference structures?
+Depth	Does the passage go beneath surface-level observations to reveal conceptual richness?
+Clarity	Is the writing accessible, precise, and intelligible to its intended audience?
+Each should have:
+
+A heading (e.g., “Accuracy Score”)
+
+A 0–10 score bar
+
+A short paragraph of explanation
+
+Color-coded bar (red → yellow → green) as in Originality/Coherence
+
+🔹 2. Update Composite Score Logic
+Rename to: “Total Quality Score”
+
+Add tooltip:
+
+"This score aggregates originality, coherence, accuracy, depth, and clarity. Coherence and depth are weighted slightly higher by default."
+
+Suggested default weights (can be refined later):
+
+Originality: 20%
+
+Coherence: 20%
+
+Accuracy: 15%
+
+Depth: 25%
+
+Clarity: 20%
+
+🔹 3. Add a New Tab or Section: “Expanded Evaluation”
+This tab shows all five metrics together in a visual grid or stacked layout.
+
+Let user collapse/expand the detailed justifications.
+
+🧠 Optional: Tooltip Texts for Each Metric
+✅ Accuracy
+“Evaluates whether claims made are factually supportable and whether the logic connecting them is valid. Penalizes misrepresentation, unsupported inference, or conceptual confusion.”
+
+✅ Depth
+“Measures how much conceptual work the passage does. High depth passages identify meaningful structures, expose assumptions, or reframe problems in significant ways.”
+
+✅ Clarity
+“Assesses how intelligible the passage is to its intended reader. Looks for clean sentence structure, stable terminology, and coherent expression of ideas.”
+
+🛠️ Bonus (if feasible): Add Configurable Weights
+Allow advanced users to adjust the weighting of each metric in the composite score via a slider or dropdown ("philosopher mode," "editorial mode," etc.)
+
+🔚 Summary of Changes
+✅ Add three new metrics (Accuracy, Depth, Clarity)
+
+✅ Display scores + colored bars + explanations
+
+✅ Recalculate and relabel “Composite” score as “Total Quality Score”
+
+✅ Allow all five metrics to be viewed in a single interface
+
+✅ (Optional) Let power users configure weightings

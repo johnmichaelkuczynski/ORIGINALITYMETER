@@ -1,0 +1,62 @@
+Thanks for the screenshot. Here’s a direct explanation of why your originality app is failing to generate text:
+
+🔴 PROBLEM: "Generation failed"
+Error: There was a problem generating your text. Please try again with different instructions.
+
+🔍 LIKELY CAUSES
+1. Blocked Prompt Keywords
+Most LLM APIs—including OpenAI, Anthropic, and some Perplexity models—have filters against name-specific generation if it looks like impersonation or identity simulation.
+
+Your input says:
+
+“Generate original text on epistemology similar to what John-Michael Kuczynski writes...”
+That name alone may trigger safety filters or result in a null response.
+
+2. Instruction Overload or Ambiguity
+You stacked three complex requirements:
+
+Emulate a specific author’s voice
+
+Focus on epistemology
+
+Include physics and math equations
+
+Most API-based apps fail silently or timeout if too much is crammed into one request—especially if it’s semantically ambiguous (e.g., how many equations? which branch of physics? etc.)
+
+3. Backend Failure (No Model Attached)
+It’s also possible your text generation tool isn’t wired to any LLM yet.
+
+Check your backend code and confirm: Is OpenAI’s gpt-4, gpt-3.5, Claude, or another model properly connected to that feature?
+
+If not, generation will always fail silently.
+
+✅ FIX THIS IMMEDIATELY
+✔️ STEP 1: Simplify the Prompt
+Replace:
+
+“Generate original text on epistemology similar to what John-Michael Kuczynski writes...”
+
+With:
+
+“Write original text on epistemology involving AI and logic. Use a high level of depth. Include one or two simple math expressions.”
+
+Test if that works first. If yes → it’s a filtering problem.
+
+✔️ STEP 2: Sanitize Name Input
+If you still want to emulate your style, say:
+
+“Emulate the style of an author who blends analytic philosophy, cognitive science, and reverse engineering.”
+
+Or just say:
+
+“Write like a PhD-level analytic philosopher writing about AI and epistemology.”
+
+✔️ STEP 3: Backend Check
+Make sure your AI generation function is correctly calling the API. The error you’re seeing will always show if:
+
+The model key is missing
+
+The route isn't wired to an LLM
+
+Or your OpenAI usage quota has been exceeded
+

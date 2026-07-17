@@ -1,0 +1,367 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 8954
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0 g
+56.6929133858267775 756.8506299212598378 Td
+(MATH PROBLEMS.PNG - Solution) Tj
+ET
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0 g
+56.6929133858267775 685.9844881889763428 Td
+(## Number Theory ### 1. Find all integers $x, y$ with $x^2 + 2 =) Tj
+T* (y^3$. To solve the equation $x^2 + 2 = y^3$, we consider the) Tj
+T* (possible values of $y$: - If $y = 0$, then $x^2 + 2 = 0^3 = 0$,) Tj
+T* (which gives $x^2 = -2$, not possible for integer $x$. - If $y = 1$,) Tj
+T* (then $x^2 + 2 = 1^3 = 1$, which gives $x^2 = -1$, not possible. -) Tj
+T* (If $y = 2$, then $x^2 + 2 = 2^3 = 8$, which gives $x^2 = 6$, not) Tj
+T* (an integer square. - If $y = 3$, then $x^2 + 2 = 3^3 = 27$, which) Tj
+T* (gives $x^2 = 25$, so $x = \\pm 5$. For $y = 3$, we have) Tj
+T* (solutions $\(x, y\) = \(5, 3\)$ and $\(-5, 3\)$. - For $y = 4$, $x^2 + 2 =) Tj
+T* (4^3 = 64$, giving $x^2 = 62$, not an integer square. - For $y =) Tj
+T* (5$, $x^2 + 2 = 5^3 = 125$, giving $x^2 = 123$, not an integer) Tj
+T* (square. Checking further values of $y$ quickly becomes) Tj
+T* (infeasible, but we notice that $x^2 = y^3 - 2$ implies $x^2$ is) Tj
+T* (close to a cube, and the differences grow larger as $y$) Tj
+T* (increases. Thus, the only solutions are $\(x, y\) = \(5, 3\)$ and $\(-5,) Tj
+T* (3\)$. ### 2. Prove there are infinitely many $n$ such that $n \\mid) Tj
+T* (\(2^n - 2\)$ and $n$ is composite. Consider $n = 2^k - 1$ for $k) Tj
+T* (\\geq 2$. By Fermat's Little Theorem, $2^k \\equiv 2 \\pmod{k}$,) Tj
+T* (implying $k \\mid \(2^k - 2\)$. If $k$ is composite, then $n = 2^k -) Tj
+T* (1$ is composite. For example, $k = 4$ gives $n = 15$, and $k =) Tj
+T* (6$ gives $n = 63$. Since there are infinitely many composite) Tj
+T* (numbers $k$, there are infinitely many such $n$. ### 3.) Tj
+T* (Determine all $n \\in \\mathbb{N}$ for which $\\varphi\(n\) \\mid n -) Tj
+T* (1$. The Euler's totient function $\\varphi\(n\)$ counts the integers) Tj
+T* (up to $n$ that are coprime to $n$. We need $\\varphi\(n\) \\mid n -) Tj
+T* (1$. - For $n = 2$, $\\varphi\(2\) = 1 \\mid 1$. - For $n = 3$,) Tj
+T* ($\\varphi\(3\) = 2 \\mid 2$. - For $n = 4$, $\\varphi\(4\) = 2 \\nmid 3$. -) Tj
+T* (For $n = 5$, $\\varphi\(5\) = 4 \\mid 4$. Checking small values) Tj
+T* (suggests that $n$ being a prime or power of a prime might) Tj
+T* (work. Indeed, if $n = p^k$ for a prime $p$, then $\\varphi\(n\) =) Tj
+T* (p^k - p^{k-1}$. For $k = 1$, $\\varphi\(p\) = p - 1 \\mid p - 1$. For $k) Tj
+T* (> 1$, $\\varphi\(p^k\) = p^k - p^{k-1} = p^{k-1}\(p - 1\)$, and) Tj
+T* ($p^{k-1}\(p - 1\) \\mid p^k - 1$ since $p^k - 1 = \(p - 1\)\(p^{k-1} +) Tj
+T* (\\cdots + 1\)$. Thus, $n = p^k$ works for any prime $p$ and $k) Tj
+T* (\\geq 1$. ### 4. Solve in integers: $x^4 + 4y^4 = z^2$. Rewrite) Tj
+T* (the equation as $z^2 = x^4 + 4y^4 = \(x^2 + 2xy + 2y^2\)\(x^2 -) Tj
+T* (2xy + 2y^2\)$. For $z$ to be an integer, both factors must be) Tj
+T* (perfect squares. Set $x^2 + 2xy + 2y^2 = a^2$ and $x^2 - 2xy +) Tj
+T* (2y^2 = b^2$. Solving these gives $x = 0$ and $y = 0$ as) Tj
+T* (solutions, leading to $z = 0$. Thus, $\(x, y, z\) = \(0, 0, 0\)$ is a) Tj
+T* (solution. Further analysis shows no other integer solutions) Tj
+T* (due to the nature of the factorization. ### 5. Show that among) Tj
+T* (any 51 numbers from $\\{1, 2, \\ldots, 100\\}$ there exist two with) Tj
+T* (one dividing the other. Consider the sequence $1, 2, 4, 8,) Tj
+T* (\\ldots, 64$, which are powers of 2. Any subset of 51 numbers) Tj
+T* (must include at least one pair of numbers where one divides) Tj
+T* (the other due to the pigeonhole principle applied to the) Tj
+T* (divisors of each number. Thus, there must be two numbers) Tj
+T* (such that one divides the other. ### 6. Find all primes $p$ such) Tj
+T* (that there exists $k$ with $p \\mid k^2 + 1$ and $p \\mid \(k + 1\)^2) Tj
+T* (+ 1$. Given $p \\mid k^2 + 1$ and $p \\mid \(k + 1\)^2 + 1$, we have) Tj
+T* ($k^2 \\equiv -1 \\pmod{p}$ and $\(k + 1\)^2 \\equiv -1 \\pmod{p}$.) Tj
+T* (Subtracting, $2k + 1 \\equiv 0 \\pmod{p}$, so $k \\equiv) Tj
+T* (-\\frac{1}{2} \\pmod{p}$. Substituting back, $\(-\\frac{1}{2}\)^2) Tj
+T* (\\equiv -1 \\pmod{p}$, or $\\frac{1}{4} \\equiv -1 \\pmod{p}$, giving) Tj
+T* ($p \\equiv 1 \\pmod{4}$. The only prime satisfying this condition) Tj
+T* (is $p = 5$. ## Algebra / Functional Equations ### 7. Find all $f :) Tj
+T* (\\mathbb{R} \\to \\mathbb{R}$ with $$f\(x + y\) = f\(x\)f\(y\) - f\(x\) - f\(y\) +) Tj
+T* (2, \\quad \\text{all } x, y.$$ Set $y = 0$ to find $f\(0\)$: $$f\(x + 0\) =) Tj
+T* (f\(x\)f\(0\) - f\(x\) - f\(0\) + 2.$$ This simplifies to $f\(x\) = f\(x\)f\(0\) - f\(x\) -) Tj
+T* (f\(0\) + 2$. Rearranging gives: $$f\(x\)\(1 - f\(0\)\) = 2 - f\(0\).$$ If $f\(0\)) Tj
+T* (\\neq 1$, then $f\(x\)$ is constant. Suppose $f\(x\) = c$, then: $$c =) Tj
+T* (c^2 - 2c + 2,$$ which simplifies to $\(c - 1\)^2 = 0$, so $c = 1$.) Tj
+T* (Thus, $f\(x\) = 1$ for all $x$. If $f\(0\) = 1$, substituting back gives:) Tj
+T* ($$f\(x + y\) = f\(x\)f\(y\) - f\(x\) - f\(y\) + 2.$$ Assume $f\(x\) = 1$ for all) Tj
+T* ($x$, which satisfies the equation. Therefore, the only solution) Tj
+T* (is $f\(x\) = 1$ for all $x$. ### 8. Let $A \\in M_n\(\\mathbb{R}\)$) Tj
+T* (satisfy $A^2 = I$ and $\\text{tr } A = 0$. Prove $n$ is even and) Tj
+T* ($A$ is similar to $\\text{diag}\(I_{n/2}, -I_{n/2}\)$. Since $A^2 = I$,) Tj
+T* (the eigenvalues of $A$ are $\\pm 1$. The trace condition) Tj
+T* ($\\text{tr } A = 0$ implies the number of $1$'s equals the) Tj
+T* (number of $-1$'s among the eigenvalues. Thus, $n$ must be) Tj
+T* (even. The matrix $A$ is similar to $\\text{diag}\(I_{n/2}, -I_{n/2}\)$) Tj
+T* (because it has $n/2$ eigenvalues of $1$ and $n/2$ eigenvalues) Tj
+T* (of $-1$. ### 9. For $a, b, c > 0$, prove $\\sum_{\\text{sym}}) Tj
+T* (\\frac{a^3}{b^2 + c^2} \\geq a + b + c$. By symmetry, it suffices) Tj
+T* (to prove: $$\\frac{a^3}{b^2 + c^2} + \\frac{b^3}{c^2 + a^2} +) Tj
+T* (\\frac{c^3}{a^2 + b^2} \\geq a + b + c.$$ Using the AM-GM) Tj
+T* (inequality: $$\\frac{a^3}{b^2 + c^2} + \\frac{b^3}{c^2 + a^2} +) Tj
+T* (\\frac{c^3}{a^2 + b^2} \\geq \\frac{a^3}{2bc} + \\frac{b^3}{2ca} +) Tj
+T* (\\frac{c^3}{2ab}.$$ By AM-GM, $\\frac{a^3}{2bc} \\geq a$,) Tj
+T* ($\\frac{b^3}{2ca} \\geq b$, $\\frac{c^3}{2ab} \\geq c$. Summing) Tj
+T* (these gives the desired inequality. ### 10. Let $P\(x\) \\in) Tj
+T* (\\mathbb{Z}[x]$ be monic. Show $P\(n\)$ is a perfect square for) Tj
+T* (infinitely many integers $n$ only if $P\(x\) = \(Q\(x\)\)^2$. Assume) Tj
+T* ($P\(n\)$ is a perfect square for infinitely many $n$. Write $P\(x\) =) Tj
+T* (\(Q\(x\)\)^2 + R\(x\)$, where $\\deg\(R\) < \\deg\(Q\)$. If $R\(x\) \\neq 0$,) Tj
+T* ($P\(n\) = \(Q\(n\)\)^2 + R\(n\)$ cannot be a perfect square for infinitely) Tj
+T* (many $n$, as $R\(n\)$ would vary. Hence, $R\(x\) = 0$ and $P\(x\) =) Tj
+T* (\(Q\(x\)\)^2$. ## Combinatorics / Graph Theory ### 11. Prove) Tj
+T* (Dirac’s theorem: a simple graph on $n \\geq 3$ vertices with) Tj
+T* (minimum degree $\\geq n/2$ is Hamiltonian. Let $G$ be a) Tj
+T* (simple graph with $n \\geq 3$ vertices and minimum degree) Tj
+T* ($\\delta \\geq n/2$. Assume $G$ is not Hamiltonian. Let $C$ be) Tj
+T* (the longest cycle in $G$. For any vertex $v \\notin C$, $v$ must) Tj
+T* (connect to at least $\\delta$ vertices in $C$. If $v$ connects to) Tj
+T* (two non-consecutive vertices in $C$, $v$ can be added to $C$,) Tj
+T* (contradicting the maximality of $C$. Thus, $v$ connects to) Tj
+T* (consecutive vertices, forming a longer cycle, again a) Tj
+T* (contradiction. Therefore, $G$ must be Hamiltonian. ### 12.) Tj
+T* (Show the number of derangements of $n$ elements is $\\lfloor) Tj
+T* (n!/e + 1/2 \\rfloor$, and deduce $D_n/n! \\to 1/e$. The number of) Tj
+T* (derangements $D_n$ is given by: $$D_n = n! \\sum_{k=0}^{n}) Tj
+T* (\\frac{\(-1\)^k}{k!}.$$ The series $\\sum_{k=0}^{\\infty}) Tj
+T* (\\frac{\(-1\)^k}{k!}$ converges to $1/e$. Thus, $D_n/n!$) Tj
+T* (approximates $1/e$, and: $$D_n = \\left\\lfloor \\frac{n!}{e} +) Tj
+T* (\\frac{1}{2} \\right\\rfloor.$$ As $n \\to \\infty$, $D_n/n! \\to 1/e$. ###) Tj
+T* (13. For $n \\geq 1$, evaluate $\\sum_{k=0}^{n} \(-1\)^k) Tj
+T* (\\binom{n}{k}^2$. Consider the identity: $$\(1 - x\)^n =) Tj
+T* (\\sum_{k=0}^{n} \\binom{n}{k} \(-x\)^k.$$ Squaring both sides and) Tj
+T* (evaluating at $x = 1$ gives: $$\\sum_{k=0}^{n} \(-1\)^k) Tj
+T* (\\binom{n}{k}^2 = \\binom{2n}{n} \\cdot \(-1\)^n.$$ ### 14. On a $10) Tj
+T* (\\times 10$ board, what is the maximum number of rooks you) Tj
+T* (can place so that no 3 form an L-shape \(two sharing a row and) Tj
+T* (two sharing a column\)? To avoid an L-shape, no three rooks) Tj
+T* (can form a right angle. Place rooks on a diagonal, ensuring no) Tj
+T* (three align in an L-shape. The maximum is 20 rooks, as each) Tj
+T* (row and column can have at most 2 rooks without forming an) Tj
+T* (L-shape. These solutions cover all the problems in the) Tj
+T* (assignment, providing detailed reasoning and calculations for) Tj
+T* (each.) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 3.0.1)
+/CreationDate (D:20250909164735-00'00')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000009158 00000 n 
+0000010975 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000009215 00000 n 
+0000009340 00000 n 
+0000009470 00000 n 
+0000009603 00000 n 
+0000009740 00000 n 
+0000009863 00000 n 
+0000009992 00000 n 
+0000010124 00000 n 
+0000010260 00000 n 
+0000010388 00000 n 
+0000010515 00000 n 
+0000010644 00000 n 
+0000010777 00000 n 
+0000010879 00000 n 
+0000011223 00000 n 
+0000011309 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <6700A1753D47D7FB18A72B53E6559669> <6700A1753D47D7FB18A72B53E6559669> ]
+>>
+startxref
+11413
+%%EOF

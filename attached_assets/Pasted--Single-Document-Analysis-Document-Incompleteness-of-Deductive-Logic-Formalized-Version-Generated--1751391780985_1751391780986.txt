@@ -1,0 +1,38 @@
+
+Single Document Analysis
+Document: Incompleteness_of_Deductive_Logic_Formalized_Version
+Generated: 7/1/2025
+
+OVERALL COGENCY SCORE: 86/100
+COGENCY LEVEL: Highly Cogent
+
+ARGUMENT SUMMARY:
+The paper argues that deductive logic is incomplete, extending Gödel's incompleteness theorem to show that no recursive system can capture all logical truths. This is demonstrated through a cardinality mismatch between recursive definitions and their power sets, similar to Cantor's diagonal argument.
+
+SUPERIOR RECONSTRUCTION:
+The argument could be improved by providing more intuitive examples and clearer explanations of complex concepts like recursive functions and power sets, making the argument more accessible to a broader audience.
+
+CORE PARAMETERS ANALYSIS:
+
+Inferential Structure:
+Score: 22/100
+Assessment: The logical reasoning is robust, with a clear progression from definitions to lemmas and theorems. The use of Cantor's diagonal argument effectively supports the main thesis.
+Supporting Quotes: "The core result rests on a cardinality mismatch between recursive definitions and their power sets, echoing Cantor’s diagonal argument.", "Theorem 1: The class of all recursive definitions (K) is not recursively definable."
+
+
+Conceptual Control:
+Score: 23/100
+Assessment: The paper demonstrates strong conceptual precision, particularly in its definitions and use of recursion theory. The formal language is consistent and well-defined.
+Supporting Quotes: "Recursive Function: A function is recursive if it can be defined using a finite set of rules and is closed under its own outputs.", "Formal Logic (L): A recursively defined set of true statements; that is, L = Post(S, Φ), where S is a base truth and Φ is a truth-transmissive operation."
+
+
+Argumentative Integrity:
+Score: 21/100
+Assessment: The paper follows through on its commitments by thoroughly proving its claims and connecting them back to Gödel's theorem. However, it could benefit from addressing potential counterarguments.
+Supporting Quotes: "This document demonstrates, with formal rigor, that deductive logic is incomplete in the same sense that arithmetic is incomplete under Gödel's Theorem.", "This result subsumes Gödel's theorem and reveals its deeper foundation: the cardinality mismatch between classes and their definable subsets."
+
+
+Synthesis & Integration:
+Score: 20/100
+Assessment: The paper successfully integrates various mathematical concepts into a cohesive argument. However, the integration of these concepts could be more explicitly linked to practical implications.
+Supporting Quotes: "Semantic Relativity: Formal truth is always relative to some (S, Φ), and since there is no total recursive procedure to enumerate such pairs, logical truth as s

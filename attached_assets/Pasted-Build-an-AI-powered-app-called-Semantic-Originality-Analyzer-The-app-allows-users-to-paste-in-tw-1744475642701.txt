@@ -1,0 +1,69 @@
+Build an AI-powered app called “Semantic Originality Analyzer.”
+
+The app allows users to paste in two passages of text, and it tells them which is more conceptually original. It does not check for plagiarism or surface-level similarity. Instead, it evaluates:
+
+Conceptual Lineage — Where does the idea come from? Is it new, or just a response to something old?
+
+Semantic Distance — How far does the new passage move from its predecessors? Is it just a reshuffling of known ideas?
+
+Novelty Heatmap — A paragraph-by-paragraph or sentence-by-sentence evaluation of where the conceptual “heat” is (i.e., where the real thinking is happening).
+
+Derivative Index — A score from 0 to 10, where 0 = totally recycled and 10 = entirely original.
+
+Conceptual Parasite Detection — Flags passages that simply operate within old debates without adding anything new.
+
+The app must show the user a side-by-side comparison of the two passages with the analysis broken down across those five categories.
+
+The layout should include:
+
+Left box: Passage A input
+
+Right box: Passage B input
+
+Beneath each box: editable title or label (optional)
+
+Center panel: analysis output (with tabs or collapsible sections for each metric)
+
+Option to generate summary verdict: which passage is more original, with a one-paragraph justification
+
+Use OpenAI’s GPT-4 API to generate the analysis. You may also include Claude or Perplexity API later, but start with OpenAI.
+
+The user should be able to:
+
+Paste or type the two passages
+
+Hit a button labeled “Compare Passages”
+
+See the full analysis appear below
+
+Scroll through breakdowns for:
+
+Lineage
+
+Semantic Distance
+
+Heatmap
+
+Derivative Index
+
+Parasite Warning
+
+Click “Summary Verdict” to see a concise judgment about which passage is more conceptually original
+
+Use Tailwind CSS or a similar modern framework to keep the UI clean. No clutter.
+
+Include “Enter” key functionality so users don’t have to click “Compare” every time.
+
+Also include a “New Comparison” button to reset the interface.
+
+Eventually, add functionality for:
+
+Uploading .txt or .docx files (but this can come later)
+
+Comparing more than two passages at once (batch mode)
+
+Tracking past comparisons
+
+But for now, build the core feature: take two user-submitted texts and compare them using the five originality metrics listed above.
+
+The most important thing: this is not a plagiarism checker. It is a semantic originality evaluator for discerning users—writers, philosophers, scholars.

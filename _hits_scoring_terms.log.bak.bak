@@ -1,0 +1,821 @@
+replit.md:14:- ✅ Fixed 160-metric analysis system - now fully functional
+replit.md:18:- ✅ Analysis system now provides direct quotations + explanations for each metric
+replit.md:29:- ✅ Perfect example generation uses Anthropic Claude to create high-quality writing demonstrating all 160 metrics
+replit.md:65:- **Advanced Features**: Argumentative Analysis, Comparative Analysis, AI Detection, Document Chunking, Intelligence Meter (20 cognitive sophistication metrics), Overall Quality (20 precise quality metrics), Cogency Meter (20 parameters), Originality Meter (20 parameters).
+shared/schema.ts:213:  // Raw framework analysis data - these contain the 80 metrics
+client/src/lib/utils.ts:23: * Returns a tailwind color class based on the score value
+client/src/lib/utils.ts:24: * @param score A score from 0-10
+client/src/lib/utils.ts:28:  if (score >= 8) return 'bg-green-600';
+client/src/lib/utils.ts:29:  if (score >= 6) return 'bg-green-500';
+client/src/lib/utils.ts:30:  if (score >= 4) return 'bg-amber-500';
+client/src/lib/utils.ts:31:  if (score >= 2) return 'bg-orange-500';
+client/src/lib/utils.ts:36: * Returns a tailwind text color class based on the score value
+client/src/lib/utils.ts:37: * @param score A score from 0-10
+client/src/lib/utils.ts:41:  if (score >= 8) return 'text-green-600';
+client/src/lib/utils.ts:42:  if (score >= 6) return 'text-green-500';
+client/src/lib/utils.ts:43:  if (score >= 4) return 'text-amber-500';
+client/src/lib/utils.ts:44:  if (score >= 2) return 'text-orange-500';
+client/src/lib/utils.ts:49: * Returns a label for a score
+client/src/lib/utils.ts:50: * @param score A score from 0-10
+client/src/lib/utils.ts:51: * @param type The type of score (originality, coherence, etc.)
+client/src/lib/utils.ts:52: * @returns A human-readable label for the score
+client/src/lib/utils.ts:64:  if (score >= 7) return highLabel;
+client/src/lib/utils.ts:65:  if (score >= 4) return moderateLabel;
+client/src/lib/types.ts:188:      score?: number;
+client/src/lib/types.ts:194:      score?: number;
+client/src/lib/reportGenerator.ts:143:    // Only display metrics that we have data for
+client/src/lib/reportGenerator.ts:160:        const text = `Score: ${overlapData.passageA.score}/10 - ${overlapData.passageA.label}`;
+client/src/lib/reportGenerator.ts:171:        const text = `Score: ${overlapData.score}/10 - ${overlapData.label}`;
+client/src/lib/reportGenerator.ts:205:        const text = `Score: ${noveltyData.passageA.score}/10 - ${noveltyData.passageA.label}`;
+client/src/lib/reportGenerator.ts:215:        const text = `Score: ${noveltyData.score}/10 - ${noveltyData.label}`;
+client/src/lib/reportGenerator.ts:398:    const originalityScore = result.novelty?.passageA?.score || 0;
+client/src/lib/reportGenerator.ts:422:    const overlapScore = result.conceptualOverlap?.score || 0;
+client/src/lib/reportGenerator.ts:427:    if (result.novelty?.passageA?.score && result.novelty?.passageB?.score) {
+client/src/lib/reportGenerator.ts:428:      const noveltyA = result.novelty.passageA.score;
+client/src/lib/reportGenerator.ts:429:      const noveltyB = result.novelty.passageB.score;
+client/src/lib/reportGenerator.ts:723:      if (!result.novelty?.passageA || (result.novelty.passageA.score && result.novelty.passageA.score < 7)) {
+client/src/lib/reportGenerator.ts:929:      const scoreA = result.novelty.passageA.score;
+client/src/lib/reportGenerator.ts:930:      const scoreB = result.novelty.passageB.score;
+client/src/lib/reportGenerator.ts:998: * Calculate a framework score based on the conceptual lineage
+client/src/lib/reportGenerator.ts:1003:  // Increase score based on number of influences (shows engagement with literature)
+client/src/lib/reportGenerator.ts:1009:    score += 1;
+client/src/lib/reportGenerator.ts:1011:    score -= 1; // Too many influences may suggest lack of focus
+client/src/lib/reportGenerator.ts:1015:    score += 1;
+client/src/lib/reportGenerator.ts:1017:    score -= 1;
+client/src/lib/reportGenerator.ts:1022:    score += 1; // Good to have both
+client/src/lib/reportGenerator.ts:1025:  // Cap the score between 1-10
+client/src/lib/reportGenerator.ts:1026:  return Math.max(1, Math.min(10, score));
+client/src/lib/reportGenerator.ts:1030: * Convert parasite level to a numeric score
+server/routes.ts:830:      // Use Anthropic service for dual intelligence analysis with 40 comprehensive metrics
+server/routes.ts:880:      // Use Anthropic service for quality analysis with 40 comprehensive metrics
+server/routes.ts:987:      // Use Anthropic service for dual originality analysis with 40 comprehensive metrics
+server/routes.ts:1029:      // Use Anthropic service for cogency analysis with 40 comprehensive metrics
+server/routes.ts:1078:      // Use Anthropic service for dual cogency analysis with 40 comprehensive metrics
+server/routes.ts:1120:      // Use Anthropic service for intelligence analysis with 40 comprehensive metrics
+server/routes.ts:1298:        systemPrompt += `\n\nAnalysis results: The current text has an overall originality score of ${context.analysisResult.overallScore}/100.`;
+server/routes.ts:1716:    // Extract key metrics efficiently and calculate proper overall score
+server/routes.ts:1724:    // Calculate overall score properly from available metrics
+server/routes.ts:1728:    if (derivativeIndex.score && derivativeIndex.score > 0) {
+server/routes.ts:1729:      overallScore += (derivativeIndex.score * 10); // Convert 0-10 to 0-100 scale
+server/routes.ts:1736:    if (coherence.score && coherence.score > 0) {
+server/routes.ts:1737:      overallScore += (coherence.score * 10);
+server/routes.ts:1740:    if (depth.score && depth.score > 0) {
+server/routes.ts:1741:      overallScore += (depth.score * 10);
+server/routes.ts:1745:    // Use calculated score or fallback to derivative index
+server/routes.ts:1746:    overallScore = scoreCount > 0 ? Math.round(overallScore / scoreCount) : (derivativeIndex.score ? derivativeIndex.score * 10 : 0);
+server/routes.ts:1775:    report += 'This comprehensive report provides an in-depth analysis of the originality, coherence, and intellectual merit of the submitted text. The analysis examines conceptual innovation, semantic distance from conventional writing, and the overall contribution to scholarly discourse. Each metric includes detailed quotation-based evidence and specific recommendations for improvement.\n\n';
+server/routes.ts:1793:    report += `Score: ${semanticDistance.distance || derivativeIndex.score || 'Under evaluation'}/100\n`;
+server/routes.ts:1812:    report += `Originality Score: ${derivativeIndex.score || 'N/A'}/100\n`;
+server/routes.ts:1834:    report += `This section exemplifies the ${derivativeIndex.score ? (derivativeIndex.score > 7 ? 'strong originality' : derivativeIndex.score > 5 ? 'moderate originality' : 'developing originality') : 'analytical depth'} evident throughout the work.\n\n`;
+server/routes.ts:1841:    report += `Score: ${coherence.score || 9}/100\n`;
+server/routes.ts:1848:    report += `Score: ${depth.score || 8}/100\n`;
+server/routes.ts:2185:  // Enhanced argumentative analysis endpoint with 0-100 scoring
+server/routes.ts:2195:        // Enhanced single paper analysis with 7 core parameters and 0-100 scoring
+server/routes.ts:2373:      // Format the intelligence analysis for TXT output using new 160-metric format
+server/routes.ts:2379:      // Process the 40 intelligence metrics (keys 0-39)
+server/routes.ts:2385:          content += `${i + 1}. ${metricData.metric}\n`;
+server/routes.ts:2396:              content += `Score: ${metricData.score}/100\n`;
+server/routes.ts:2404:              content += `  Score: ${metricData.passageA.score}/100\n`;
+server/routes.ts:2410:              content += `  Score: ${metricData.passageB.score}/100\n`;
+server/routes.ts:2441:      // Format the originality analysis for TXT output using new 160-metric format
+server/routes.ts:2447:      // Process the 40 originality metrics (keys 0-39)
+server/routes.ts:2453:          content += `${i + 1}. ${metricData.metric}\n`;
+server/routes.ts:2464:              content += `Score: ${metricData.score}/100\n`;
+server/routes.ts:2472:              content += `  Score: ${metricData.passageA.score}/100\n`;
+server/routes.ts:2478:              content += `  Score: ${metricData.passageB.score}/100\n`;
+server/routes.ts:2509:      // Format the cogency analysis for TXT output using new 160-metric format
+server/routes.ts:2515:      // Process the 40 cogency metrics (keys 0-39)
+server/routes.ts:2521:          content += `${i + 1}. ${metricData.metric}\n`;
+server/routes.ts:2532:              content += `Score: ${metricData.score}/100\n`;
+server/routes.ts:2540:              content += `  Score: ${metricData.passageA.score}/100\n`;
+server/routes.ts:2546:              content += `  Score: ${metricData.passageB.score}/100\n`;
+server/routes.ts:2577:      // Format the quality analysis for TXT output using new 160-metric format
+server/routes.ts:2583:      // Process the 40 quality metrics (keys 0-39)
+server/routes.ts:2589:          content += `${i + 1}. ${metricData.metric}\n`;
+server/routes.ts:2600:              content += `Score: ${metricData.score}/100\n`;
+server/routes.ts:2608:              content += `  Score: ${metricData.passageA.score}/100\n`;
+server/routes.ts:2614:              content += `  Score: ${metricData.passageB.score}/100\n`;
+client/src/components/AnalysisResults.tsx:227:      {/* Framework Metrics Display - Shows all 80 metrics with scores, quotes, and justifications */}
+server/lib/anthropic.ts:7:// Each metric must include: metric evaluation, direct quotations, explanation of how quotations support the score
+server/lib/anthropic.ts:34:Analyze these passages using the comprehensive 160-metric framework. For each analysis category, evaluate all 40 metrics with direct quotations from the text and explicit explanations.
+server/lib/anthropic.ts:38:Return a properly formatted JSON response with the exact structure expected by the system. Include detailed metric-by-metric analysis with quotations, explanations, and scores for each parameter.`;
+server/lib/anthropic.ts:99:Evaluate this passage across all 40 originality metrics. For each metric:
+server/lib/anthropic.ts:100:1. Find a direct quotation that demonstrates this metric
+server/lib/anthropic.ts:101:2. Provide an explanation of how that quotation demonstrates the metric
+server/lib/anthropic.ts:102:3. Assign a score from 0-100 (where N/100 means 100-N people out of 100 are better)
+server/lib/anthropic.ts:105:${originalityMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:110:    "metric": "Novel perspective",
+server/lib/anthropic.ts:111:    "score": X,
+server/lib/anthropic.ts:112:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:113:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:116:    "metric": "Uncommon connections",
+server/lib/anthropic.ts:117:    "score": X,
+server/lib/anthropic.ts:118:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:119:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:121:  ... (continue for all 40 metrics with keys "0" through "39")
+server/lib/anthropic.ts:185:Evaluate BOTH passages across all 40 originality metrics. For each metric, provide comparative analysis of both passages.
+server/lib/anthropic.ts:188:${originalityMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:193:    "metric": "Novel perspective",
+server/lib/anthropic.ts:196:      "explanation": "Explanation of how the quotation demonstrates this metric for Passage A",
+server/lib/anthropic.ts:197:      "score": X
+server/lib/anthropic.ts:201:      "explanation": "Explanation of how the quotation demonstrates this metric for Passage B",
+server/lib/anthropic.ts:202:      "score": X
+server/lib/anthropic.ts:205:  ... continue for all 40 metrics (indices "0" through "39")
+server/lib/anthropic.ts:208:Provide comprehensive analysis covering all 40 metrics for both passages with direct quotations and explanations. Return ONLY the JSON object, no additional text.`;
+server/lib/anthropic.ts:269:Evaluate this passage across all 40 intelligence metrics. For each metric:
+server/lib/anthropic.ts:270:1. Find a direct quotation that demonstrates this metric
+server/lib/anthropic.ts:271:2. Provide an explanation of how that quotation demonstrates the metric
+server/lib/anthropic.ts:272:3. Assign a score from 0-100 (where N/100 means 100-N people out of 100 are better)
+server/lib/anthropic.ts:275:${intelligenceMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:280:    "metric": "Compression (density of meaning per word)",
+server/lib/anthropic.ts:281:    "score": X,
+server/lib/anthropic.ts:282:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:283:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:286:    "metric": "Abstraction (ability to move beyond surface detail)",
+server/lib/anthropic.ts:287:    "score": X,
+server/lib/anthropic.ts:288:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:289:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:291:  ... (continue for all 40 metrics with keys "0" through "39")
+server/lib/anthropic.ts:359:Evaluate BOTH passages across all 40 intelligence metrics. For each metric:
+server/lib/anthropic.ts:360:1. Find direct quotations that demonstrate this metric in each passage
+server/lib/anthropic.ts:361:2. Provide explanations of how those quotations demonstrate the metric
+server/lib/anthropic.ts:365:${intelligenceMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:370:    "metric": "Compression (density of meaning per word)",
+server/lib/anthropic.ts:373:      "explanation": "Explanation of how this demonstrates the metric",
+server/lib/anthropic.ts:374:      "score": X
+server/lib/anthropic.ts:378:      "explanation": "Explanation of how this demonstrates the metric",
+server/lib/anthropic.ts:379:      "score": X
+server/lib/anthropic.ts:382:  ... continue for all 40 metrics (indices "0" through "39")
+server/lib/anthropic.ts:458:Evaluate this passage across all 40 cogency metrics. For each metric:
+server/lib/anthropic.ts:459:1. Find a direct quotation that demonstrates this metric
+server/lib/anthropic.ts:460:2. Provide an explanation of how that quotation demonstrates the metric
+server/lib/anthropic.ts:461:3. Assign a score from 0-100 (where N/100 means 100-N people out of 100 are better)
+server/lib/anthropic.ts:464:${cogencyMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:469:    "metric": "Logical validity",
+server/lib/anthropic.ts:470:    "score": X,
+server/lib/anthropic.ts:471:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:472:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:475:    "metric": "Absence of contradictions",
+server/lib/anthropic.ts:476:    "score": X,
+server/lib/anthropic.ts:477:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:478:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:480:  ... (continue for all 40 metrics with keys "0" through "39")
+server/lib/anthropic.ts:536:Evaluate BOTH passages across all 40 cogency metrics. For each passage and each metric, provide:
+server/lib/anthropic.ts:537:1. The metric name
+server/lib/anthropic.ts:538:2. A direct quotation from the passage that demonstrates this metric
+server/lib/anthropic.ts:539:3. An explanation of how that quotation supports the characterization/score
+server/lib/anthropic.ts:540:4. A score from 0-100 (population percentile - higher = fewer people more cogent than this demonstrates)
+server/lib/anthropic.ts:543:${cogencyMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:545:For each passage and metric, use this format:
+server/lib/anthropic.ts:548:Explanation of how the quotation demonstrates this metric.
+server/lib/anthropic.ts:553:Explanation of how the quotation demonstrates this metric.
+server/lib/anthropic.ts:556:Provide comprehensive analysis covering all 40 metrics for both passages with quotations and explanations (80 total entries).`;
+server/lib/anthropic.ts:613:Evaluate this passage across all 40 overall quality metrics. For each metric:
+server/lib/anthropic.ts:614:1. Find a direct quotation that demonstrates this metric
+server/lib/anthropic.ts:615:2. Provide an explanation of how that quotation demonstrates the metric
+server/lib/anthropic.ts:616:3. Assign a score from 0-100 (where N/100 means 100-N people out of 100 are better)
+server/lib/anthropic.ts:619:${qualityMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:624:    "metric": "Clarity of expression",
+server/lib/anthropic.ts:625:    "score": X,
+server/lib/anthropic.ts:626:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:627:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:630:    "metric": "Flow and readability",
+server/lib/anthropic.ts:631:    "score": X,
+server/lib/anthropic.ts:632:    "quotation": "Direct quotation demonstrating this metric",
+server/lib/anthropic.ts:633:    "explanation": "Explanation of how this quotation demonstrates the metric"
+server/lib/anthropic.ts:635:  ... (continue for all 40 metrics with keys "0" through "39")
+server/lib/anthropic.ts:699:Evaluate BOTH passages across all 40 overall quality metrics. For each passage and each metric, provide:
+server/lib/anthropic.ts:700:1. The metric name
+server/lib/anthropic.ts:701:2. A direct quotation from the passage that demonstrates this metric
+server/lib/anthropic.ts:702:3. An explanation of how that quotation supports the characterization/score
+server/lib/anthropic.ts:703:4. A score from 0-100 (population percentile - higher = fewer people with better quality than this demonstrates)
+server/lib/anthropic.ts:706:${qualityMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/anthropic.ts:708:For each passage and metric, use this format:
+server/lib/anthropic.ts:711:Explanation of how the quotation demonstrates this metric.
+server/lib/anthropic.ts:716:Explanation of how the quotation demonstrates this metric.
+server/lib/anthropic.ts:719:Provide comprehensive analysis covering all 40 metrics for both passages with quotations and explanations (80 total entries).`;
+server/lib/anthropic.ts:776:// NEW FEATURE: Generate Perfect Example (100/100 score) 
+server/lib/anthropic.ts:786:  const prompt = `You are an expert writer who can produce writing that scores 95-99/100 on all intellectual metrics.
+server/lib/anthropic.ts:791:Your task: Write a passage on the same general topic that would score 95-99/100 across all 160 metrics (Intelligence, Originality, Cogency, Overall Quality). 
+server/lib/anthropic.ts:807:Generate a passage that would genuinely score 95-99/100. This will show the user exactly what the evaluation system considers "perfect" writing.
+client/src/components/SummarySection.tsx:24:  // Calculate aggregate scores from 160-metric analysis
+client/src/components/SummarySection.tsx:28:    // Collect all individual metric scores from the numbered keys (0-39)
+client/src/components/SummarySection.tsx:34:          scores.push(metricData.score);
+client/src/components/SummarySection.tsx:36:          // Dual analysis format - use passageA score
+client/src/components/SummarySection.tsx:37:          scores.push(metricData.passageA.score);
+client/src/components/SummarySection.tsx:42:    // Calculate average of all metric scores
+client/src/components/SummarySection.tsx:44:    const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+client/src/components/SummarySection.tsx:48:  // Use new 160-metric scoring system
+client/src/components/SummarySection.tsx:58:        scores.push(metricData.passageB.score);
+client/src/components/SummarySection.tsx:63:    const average = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+client/src/components/SummarySection.tsx:105:                  Average of all 40 metric scores (0-100 scale)
+client/src/components/SummarySection.tsx:145:                  {/* Actual score fill */}
+client/src/components/SummarySection.tsx:175:                {/* Score tooltip - positioned above the score marker */}
+client/src/components/SummarySection.tsx:183:                  title="Score calculated from 40 individual metrics with direct quotations"
+client/src/components/SummarySection.tsx:198:                  Score represents the average of 40 individual metrics, each evaluated with direct quotations and explanations. Higher scores indicate superior intellectual quality.
+client/src/components/SummarySection.tsx:217:                            component.score > 8.4 ? 'text-green-600' : 
+client/src/components/SummarySection.tsx:218:                            component.score > 6.9 ? 'text-green-500' : 
+client/src/components/SummarySection.tsx:219:                            component.score > 3.9 ? 'text-amber-500' : 
+client/src/components/SummarySection.tsx:222:                            {component.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:228:                              component.score > 8.4 ? 'bg-green-600' : 
+client/src/components/SummarySection.tsx:229:                              component.score > 6.9 ? 'bg-green-500' : 
+client/src/components/SummarySection.tsx:230:                              component.score > 3.9 ? 'bg-amber-500' : 
+client/src/components/SummarySection.tsx:233:                            style={{ width: `${component.score * 10}%` }}
+client/src/components/SummarySection.tsx:332:                      Passage A – Originality Score: {result.derivativeIndex.passageA.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:343:                        style={{ width: `${result.derivativeIndex.passageA.score * 10}%` }}
+client/src/components/SummarySection.tsx:353:                      Passage B – Originality Score: {result.derivativeIndex.passageB.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:364:                        style={{ width: `${result.derivativeIndex.passageB.score * 10}%` }}
+client/src/components/SummarySection.tsx:391:                      Passage A – Coherence Score: {result.coherence.passageA.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:402:                        style={{ width: `${result.coherence.passageA.score * 10}%` }}
+client/src/components/SummarySection.tsx:412:                      Passage B – Coherence Score: {result.coherence.passageB.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:423:                        style={{ width: `${result.coherence.passageB.score * 10}%` }}
+client/src/components/SummarySection.tsx:451:                        Passage A – Accuracy Score: {result.accuracy.passageA.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:462:                          style={{ width: `${result.accuracy.passageA.score * 10}%` }}
+client/src/components/SummarySection.tsx:472:                        Passage B – Accuracy Score: {result.accuracy.passageB.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:483:                          style={{ width: `${result.accuracy.passageB.score * 10}%` }}
+client/src/components/SummarySection.tsx:512:                        Passage A – Depth Score: {result.depth.passageA.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:523:                          style={{ width: `${result.depth.passageA.score * 10}%` }}
+client/src/components/SummarySection.tsx:533:                        Passage B – Depth Score: {result.depth.passageB.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:544:                          style={{ width: `${result.depth.passageB.score * 10}%` }}
+client/src/components/SummarySection.tsx:573:                        Passage A – Clarity Score: {result.clarity.passageA.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:584:                          style={{ width: `${result.clarity.passageA.score * 10}%` }}
+client/src/components/SummarySection.tsx:594:                        Passage B – Clarity Score: {result.clarity.passageB.score.toFixed(1)}/10
+client/src/components/SummarySection.tsx:605:                          style={{ width: `${result.clarity.passageB.score * 10}%` }}
+client/src/components/SummarySection.tsx:670:                  <p>This score prioritizes conceptual innovation and philosophical rigor over polish and paragraph-level flow.</p>
+client/src/components/SummarySection.tsx:740:                      {verdictTone === 'academic' && `Passage ${moreOriginal || 'A'} scored ${moreOriginal === 'A' ? result.derivativeIndex.passageA.score.toFixed(1) : result.derivativeIndex.passageB.score.toFixed(1)} in originality, demonstrating ${
+client/src/components/SummarySection.tsx:741:                        result.derivativeIndex.passageA.score > result.derivativeIndex.passageB.score
+client/src/components/SummarySection.tsx:742:                        ? `a more sophisticated intellectual framework compared to Passage B (${result.derivativeIndex.passageB.score.toFixed(1)}). The primary distinction lies in ${passageATitle}'s willingness to engage with conceptual terrain that extends beyond established paradigms.`
+client/src/components/SummarySection.tsx:743:                        : `greater conceptual innovation compared to Passage A (${result.derivativeIndex.passageA.score.toFixed(1)}). The distinguishing factor is ${passageBTitle}'s approach to reframing key concepts in a manner that challenges conventional understanding.`
+client/src/components/SummarySection.tsx:746:                      {verdictTone === 'keep-voice' && `Passage ${moreOriginal || 'A'} is more original (scoring ${moreOriginal === 'A' ? result.derivativeIndex.passageA.score.toFixed(1) : result.derivativeIndex.passageB.score.toFixed(1)}) because it ${
+client/src/components/SummarySection.tsx:747:                        result.derivativeIndex.passageA.score > result.derivativeIndex.passageB.score
+client/src/components/SummarySection.tsx:748:                        ? `introduces fresher ideas and perspectives compared to Passage B (${result.derivativeIndex.passageB.score.toFixed(1)}). The main difference is that ${passageATitle || 'Passage A'} explores concepts that feel less familiar and more thought-provoking.`
+client/src/components/SummarySection.tsx:749:                        : `presents more innovative thinking compared to Passage A (${result.derivativeIndex.passageA.score.toFixed(1)}). What stands out is how ${passageBTitle || 'Passage B'} takes standard ideas but presents them in new, unexpected ways.`
+client/src/components/SummarySection.tsx:752:                      {verdictTone === 'punchy' && `Passage ${moreOriginal || 'A'}: ${moreOriginal === 'A' ? result.derivativeIndex.passageA.score.toFixed(1) : result.derivativeIndex.passageB.score.toFixed(1)}/10. ${
+client/src/components/SummarySection.tsx:753:                        result.derivativeIndex.passageA.score > result.derivativeIndex.passageB.score
+client/src/components/SummarySection.tsx:754:                        ? `Bolder, fresher, less derivative than B (${result.derivativeIndex.passageB.score.toFixed(1)}). Breaks new ground while B treads familiar territory.`
+client/src/components/SummarySection.tsx:755:                        : `Innovative approach outshines A's conventionality (${result.derivativeIndex.passageA.score.toFixed(1)}). B dares to reimagine; A plays it safe.`
+client/src/components/SummarySection.tsx:764:                      {verdictTone === 'academic' && `Passage ${moreCoherent || 'A'} demonstrated superior coherence (${moreCoherent === 'A' ? result.coherence.passageA.score.toFixed(1) : result.coherence.passageB.score.toFixed(1)}/10), ${
+client/src/components/SummarySection.tsx:765:                        result.coherence.passageA.score > result.coherence.passageB.score
+client/src/components/SummarySection.tsx:766:                        ? `with a more logically structured argument compared to Passage B (${result.coherence.passageB.score.toFixed(1)}). ${passageATitle || 'Passage A'} exhibits stronger internal consistency, with premises that support conclusions in a more disciplined manner.`
+client/src/components/SummarySection.tsx:767:                        : `presenting a more methodical development of ideas than Passage A (${result.coherence.passageA.score.toFixed(1)}). ${passageBTitle || 'Passage B'} maintains clearer transitions between concepts and employs more precise terminology throughout.`
+client/src/components/SummarySection.tsx:770:                      {verdictTone === 'keep-voice' && `Passage ${moreCoherent || 'A'} is more coherent (${moreCoherent === 'A' ? result.coherence.passageA.score.toFixed(1) : result.coherence.passageB.score.toFixed(1)}/10) because ${
+client/src/components/SummarySection.tsx:771:                        result.coherence.passageA.score > result.coherence.passageB.score
+client/src/components/SummarySection.tsx:772:                        ? `it's easier to follow than Passage B (${result.coherence.passageB.score.toFixed(1)}). The ideas connect better, and the overall structure makes more sense. There's less jumping between topics, and the main points build on each other naturally.`
+client/src/components/SummarySection.tsx:773:                        : `it flows more smoothly than Passage A (${result.coherence.passageA.score.toFixed(1)}). The organization is clearer, and it's easier to see how each part relates to the whole. The argument is laid out step-by-step without confusing detours.`
+client/src/components/SummarySection.tsx:776:                      {verdictTone === 'punchy' && `Passage ${moreCoherent || 'A'}: ${moreCoherent === 'A' ? result.coherence.passageA.score.toFixed(1) : result.coherence.passageB.score.toFixed(1)}/10. ${
+client/src/components/SummarySection.tsx:777:                        result.coherence.passageA.score > result.coherence.passageB.score
+client/src/components/SummarySection.tsx:778:                        ? `Crystal clear compared to B's ${result.coherence.passageB.score.toFixed(1)}. Tight logic, precise flow. B wanders; A marches forward.`
+client/src/components/SummarySection.tsx:779:                        : `Sharp and focused versus A's muddled ${result.coherence.passageA.score.toFixed(1)}. B stays on point; A meanders between ideas.`
+client/src/components/SummarySection.tsx:788:                      {verdictTone === 'academic' && `Considering both metrics, ${
+client/src/components/SummarySection.tsx:790:                        ? `Passage A emerges as the superior text with a composite score of ${aggregateScoreA.toFixed(1)}/10 compared to Passage B's ${aggregateScoreB.toFixed(1)}/10. While ${result.derivativeIndex.passageB.score > result.derivativeIndex.passageA.score ? 'B exhibits greater originality' : 'both show comparable originality'}, A's structural integrity and logical coherence elevate its overall scholarly value.`
+client/src/components/SummarySection.tsx:792:                        ? `Passage B demonstrates greater overall quality with a composite score of ${aggregateScoreB.toFixed(1)}/10 compared to Passage A's ${aggregateScoreA.toFixed(1)}/10. B successfully balances ${result.derivativeIndex.passageB.score > result.derivativeIndex.passageA.score ? 'superior originality' : 'strong originality'} with ${result.coherence.passageB.score > result.coherence.passageA.score ? 'exceptional coherence' : 'solid coherence'}.`
+client/src/components/SummarySection.tsx:793:                        : `both passages demonstrate equivalent overall quality, each scoring ${aggregateScoreA.toFixed(1)}/10. However, they achieve this through different strengths: Passage ${moreOriginal || 'A'} excels in originality while Passage ${moreCoherent || 'B'} demonstrates superior coherence. This illustrates how equally valuable scholarship can emerge from different intellectual approaches.`
+client/src/components/SummarySection.tsx:798:                        ? `Passage A is overall better with a score of ${aggregateScoreA.toFixed(1)}/10 compared to Passage B's ${aggregateScoreB.toFixed(1)}/10. The main reason is that ${result.coherence.passageA.score > result.coherence.passageB.score ? 'A is much easier to follow' : 'A has a better balance of new ideas and clear writing'}.`
+client/src/components/SummarySection.tsx:800:                        ? `Passage B comes out on top with a score of ${aggregateScoreB.toFixed(1)}/10, while Passage A scores ${aggregateScoreA.toFixed(1)}/10. B succeeds because it ${result.derivativeIndex.passageB.score > result.derivativeIndex.passageA.score ? 'brings fresher ideas to the table' : 'combines solid ideas with clear organization'}.`
+client/src/components/SummarySection.tsx:806:                        ? `Final verdict: A wins (${aggregateScoreA.toFixed(1)} vs ${aggregateScoreB.toFixed(1)}). ${result.coherence.passageA.score > result.coherence.passageB.score ? "Superior structure trumps B's ambition" : "Better balanced, more complete package"}. Read A for substance, B for inspiration.`
+client/src/components/SummarySection.tsx:808:                        ? `Final verdict: B takes it (${aggregateScoreB.toFixed(1)} vs ${aggregateScoreA.toFixed(1)}). ${result.derivativeIndex.passageB.score > result.derivativeIndex.passageA.score ? "Fresh thinking beats familiar clarity" : "Sharper execution, more compelling overall"}. A plays it safe; B takes the prize.`
+client/src/components/SummarySection.tsx:809:                        : `Final verdict: Dead heat: both ${aggregateScoreA.toFixed(1)}/10. A brings ${result.derivativeIndex.passageA.score > result.derivativeIndex.passageB.score ? "originality" : "coherence"}, B delivers ${result.coherence.passageB.score > result.coherence.passageA.score ? "clarity" : "innovation"}. Different paths, same destination.`
+server/lib/perplexity.ts:5:// Each metric must include: metric evaluation, direct quotations, explanation of how quotations support the score
+server/lib/openai.ts:7:// Each metric must include: metric evaluation, direct quotations, explanation of how quotations support the score
+server/lib/deepseek.ts:5:// Each metric must include: metric evaluation, direct quotations, explanation of how quotations support the score
+server/lib/deepseek.ts:42:Evaluate this passage across all 40 originality metrics. For each metric, provide:
+server/lib/deepseek.ts:43:1. The metric name
+server/lib/deepseek.ts:44:2. A direct quotation from the passage that demonstrates this metric
+server/lib/deepseek.ts:45:3. An explanation of how that quotation supports the characterization/score
+server/lib/deepseek.ts:46:4. A score from 0-100
+server/lib/deepseek.ts:49:${originalityMetrics.map((metric, i) => `${i + 1}. ${metric}`).join('\n')}
+server/lib/deepseek.ts:51:For each metric, use this format:
+server/lib/deepseek.ts:54:Explanation of how the quotation demonstrates this metric.
+server/lib/deepseek.ts:57:Provide a comprehensive analysis covering all 40 metrics with quotations and explanations.`;
+client/src/components/FrameworkMetricsDisplay.tsx:20:  // Get the appropriate metrics based on analysis type - EXACT 80 metrics from the user's specification
+client/src/components/FrameworkMetricsDisplay.tsx:60:  const formatMetricName = (metric: string) => {
+client/src/components/FrameworkMetricsDisplay.tsx:61:    return metric.replace(/([A-Z])/g, ' $1')
+client/src/components/FrameworkMetricsDisplay.tsx:70:    const normalizedScore = score;
+client/src/components/FrameworkMetricsDisplay.tsx:78:  // Handle the new numbered key format from the 160-metric analysis
+client/src/components/FrameworkMetricsDisplay.tsx:80:  const metrics = getMetricsForFramework(analysisType);
+client/src/components/FrameworkMetricsDisplay.tsx:84:    metrics,
+client/src/components/FrameworkMetricsDisplay.tsx:124:                        {metricData.metric || `Metric ${i + 1}`}
+client/src/components/FrameworkMetricsDisplay.tsx:132:                        <Badge className={`${getScoreColor(metricData.passageA.score || 0)} text-white font-semibold px-2 py-1`}>
+client/src/components/FrameworkMetricsDisplay.tsx:133:                          {metricData.passageA.score || 0}/100
+client/src/components/FrameworkMetricsDisplay.tsx:160:                        <Badge className={`${getScoreColor(metricData.passageB.score || 0)} text-white font-semibold px-2 py-1`}>
+client/src/components/FrameworkMetricsDisplay.tsx:161:                          {metricData.passageB.score || 0}/100
+client/src/components/FrameworkMetricsDisplay.tsx:193:                        {metricData.metric || `Metric ${i + 1}`}
+client/src/components/FrameworkMetricsDisplay.tsx:196:                        className={`${getScoreColor(metricData.score || 0)} text-white font-semibold px-2 py-1`}
+client/src/components/FrameworkMetricsDisplay.tsx:198:                        {metricData.score || 0}/100
+client/src/components/FrameworkMetricsDisplay.tsx:226:          metrics.map((metric) => {
+client/src/components/FrameworkMetricsDisplay.tsx:227:            const metricData = (rawData as any)[metric];
+client/src/components/FrameworkMetricsDisplay.tsx:234:              // Quality analysis has direct structure with score, assessment, quote1, quote2
+client/src/components/FrameworkMetricsDisplay.tsx:257:              <Card key={metric}>
+client/src/components/FrameworkMetricsDisplay.tsx:259:                  <CardTitle className="text-lg">{formatMetricName(metric)}</CardTitle>
+client/src/components/FrameworkMetricsDisplay.tsx:266:                      {passageAData?.score && (
+client/src/components/FrameworkMetricsDisplay.tsx:267:                        <Badge className={`${getScoreColor(passageAData.score)} text-white`}>
+client/src/components/FrameworkMetricsDisplay.tsx:268:                          {passageAData.score}/100
+server/lib/textChunking.ts:125: * @param threshold Word count threshold (default: 1000)
+server/lib/textChunking.ts:128:export function shouldChunkText(text: string, threshold: number = 1000): boolean {
+server/lib/textChunking.ts:130:  return wordCount > threshold;
+client/src/components/SemanticAnalyzer.tsx:805:            <p><strong>Compare Cogency:</strong> Test which document makes a more convincing case using consistent logical scoring.</p>
+client/src/components/SemanticAnalyzer.tsx:808:            <p><strong>Single Intelligence:</strong> Analyze cognitive sophistication across 20 metrics: compression capacity, inference architecture, friction tolerance.</p>
+client/src/components/SemanticAnalyzer.tsx:811:            <p><strong>Compare Intelligence:</strong> Compare cognitive sophistication between two documents across 20 intelligence metrics.</p>
+client/src/components/SemanticAnalyzer.tsx:814:            <p><strong>Single Quality:</strong> Comprehensive quality analysis using 20 metrics: conceptual compression, epistemic friction, problem density.</p>
+client/src/components/SemanticAnalyzer.tsx:817:            <p><strong>Compare Quality:</strong> Compare overall scholarly writing quality between two documents using 20 precise metrics.</p>
+server/lib/perplexity-fix.ts:12:Your evaluations must include quantitative scoring and qualitative insights on a text's intellectual and stylistic contributions.
+server/lib/perplexity-fix.ts:28:Use quantitative scoring scales:
+server/lib/perplexity-fix.ts:49: * @returns Analysis result with detailed originality metrics
+server/lib/perplexity-fix.ts:125:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:131:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:151:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:157:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:165:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:171:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:179:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:185:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:193:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:199:      "score": numeric value from 0-10,
+server/lib/perplexity-fix.ts:416: * @returns Analysis result with detailed metrics
+server/lib/perplexity-fix.ts:542:    4. Overall derivative index (scoring conceptual innovation)
+server/lib/perplexity-fix.ts:582:      "score": number from 0-10 (higher means more original),
+server/lib/perplexity-fix.ts:583:      "assessment": "string summarizing score",
+server/lib/perplexity-fix.ts:597:      "score": number from 0-10 (higher means more coherent),
+server/lib/openai.ts.new:27:          content: `You are a sophisticated semantic originality analyzer that evaluates the conceptual originality of texts (not plagiarism or surface similarity). Analyze the two passages for originality across five metrics:
+server/lib/openai.ts.new:83:      "score": number from 0-10,
+server/lib/openai.ts.new:85:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/openai.ts.new:86:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/openai.ts.new:87:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/openai.ts.new:91:      "score": number from 0-10,
+server/lib/openai.ts.new:93:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/openai.ts.new:94:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/openai.ts.new:95:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/openai.ts.new:158:          content: `You are a sophisticated semantic originality analyzer that evaluates the conceptual originality of texts (not plagiarism or surface similarity). Analyze the given passage against a normalized baseline of common writing in the same domain. Evaluate it across five metrics:
+server/lib/openai.ts.new:212:      "score": number from 0-10,
+server/lib/openai.ts.new:214:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/openai.ts.new:215:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/openai.ts.new:216:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/openai.ts.new:220:      "score": 5,
+server/lib/openai.ts.new:222:        {"name": "Conceptual Innovation", "score": 5},
+server/lib/openai.ts.new:223:        {"name": "Methodological Novelty", "score": 5},
+server/lib/openai.ts.new:224:        {"name": "Contextual Application", "score": 5}
+server/lib/enhancedComparison.ts:130:1. Content Similarity (0-10 per metric):
+server/lib/enhancedComparison.ts:135:2. Stylistic Similarity (0-10 per metric):
+server/lib/enhancedComparison.ts:140:3. Epistemic Profile (0-10 per metric):
+server/lib/enhancedComparison.ts:146:4. Narrative/Topical Similarity (0-10 per metric):
+server/lib/enhancedComparison.ts:200:    "score": number (0-100),
+server/lib/enhancedComparison.ts:206:    "score": number (0-10),
+client/src/components/PassageGenerator.tsx:342:  const derivativeIndex = analysisResult.derivativeIndex.passageA.score;
+client/src/components/PassageGenerator.tsx:346:  // Function to get color based on score
+client/src/components/PassageGenerator.tsx:348:    if (score < 4) return 'text-red-500';
+client/src/components/PassageGenerator.tsx:349:    if (score < 7) return 'text-amber-500';
+client/src/components/PassageGenerator.tsx:394:            <p className="text-sm text-muted-foreground mb-2">Current originality metrics:</p>
+client/src/components/NewAnalysisTabs.tsx:97:                      const originalityScore = result.derivativeIndex.passageA.score;
+client/src/components/NewAnalysisTabs.tsx:98:                      const coherenceScore = result.coherence.passageA.score;
+client/src/components/NewAnalysisTabs.tsx:100:                      // OVERRIDE: Direct implementation of the specified scoring formula
+client/src/components/NewAnalysisTabs.tsx:105:                      const depth = result.depth?.passageA?.score || 5;
+client/src/components/NewAnalysisTabs.tsx:110:                      const insightDensity = result.accuracy?.passageA?.score || 5;
+client/src/components/NewAnalysisTabs.tsx:113:                      const methodologicalNovelty = result.clarity?.passageA?.score || 
+client/src/components/NewAnalysisTabs.tsx:116:                      // Final score using the mandated formula: 
+client/src/components/NewAnalysisTabs.tsx:125:                      // Color based on score
+client/src/components/NewAnalysisTabs.tsx:159:                      This philosophical text score balances conceptual innovation (25%), depth (25%), coherence (20%), insight density (15%), and methodological novelty (15%).
+client/src/components/NewAnalysisTabs.tsx:168:                      <span className={`text-base font-semibold ${result.derivativeIndex.passageA.score > 7 ? 'text-green-600' : result.derivativeIndex.passageA.score > 4 ? 'text-blue-600' : 'text-amber-600'}`}>
+client/src/components/NewAnalysisTabs.tsx:169:                        {result.derivativeIndex.passageA.score.toFixed(1)}/10
+client/src/components/NewAnalysisTabs.tsx:172:                        {result.derivativeIndex.passageA.score > 7 ? 'High Originality' : 
+client/src/components/NewAnalysisTabs.tsx:173:                         result.derivativeIndex.passageA.score > 4 ? 'Moderate Originality' : 'Low Originality'}
+client/src/components/NewAnalysisTabs.tsx:181:                      <span className={`text-base font-semibold ${result.coherence.passageA.score > 7 ? 'text-green-600' : result.coherence.passageA.score > 4 ? 'text-blue-600' : 'text-amber-600'}`}>
+client/src/components/NewAnalysisTabs.tsx:182:                        {result.coherence.passageA.score.toFixed(1)}/10
+client/src/components/NewAnalysisTabs.tsx:185:                        {result.coherence.passageA.score > 7 ? 'High Coherence' : 
+client/src/components/NewAnalysisTabs.tsx:186:                         result.coherence.passageA.score > 4 ? 'Moderate Coherence' : 'Low Coherence'}
+client/src/components/NewAnalysisTabs.tsx:193:                  <p>The scores above are components in the Aggregate Quality Score calculation. The scoring system is designed for philosophical and theoretical texts, emphasizing conceptual innovation and depth while properly valuing coherence, insight density, and methodological novelty.</p>
+client/src/components/NewAnalysisTabs.tsx:206:                      {result.coherence.passageA.score.toFixed(1)}/10
+client/src/components/NewAnalysisTabs.tsx:245:                        {result.coherence.passageB.score.toFixed(1)}/10
+client/src/components/HomeworkHelper.tsx:135:    strong { font-weight: bold; }
+client/src/components/GraphGenerator.tsx:248:            font-weight: bold;
+client/src/components/EnhancedComprehensiveReport.tsx:133:              Complete analysis with quotations, detailed metrics, and in-depth evaluation
+client/src/components/EnhancedComparisonSimple.tsx:132:    if (score >= 8) return 'text-green-600';
+client/src/components/EnhancedComparisonSimple.tsx:133:    if (score >= 6) return 'text-blue-600';
+client/src/components/EnhancedComparisonSimple.tsx:134:    if (score >= 4) return 'text-yellow-600';
+client/src/components/EnhancedComparisonSimple.tsx:139:    if (score <= 30) return 'bg-green-100 text-green-800';
+client/src/components/EnhancedComparisonSimple.tsx:140:    if (score <= 60) return 'bg-yellow-100 text-yellow-800';
+client/src/components/EnhancedComparisonSimple.tsx:141:    if (score <= 85) return 'bg-orange-100 text-orange-800';
+client/src/components/EnhancedComparisonSimple.tsx:155:        style={{ width: `${(score / max) * 100}%` }}
+client/src/components/EnhancedComparisonSimple.tsx:237:                      <div className="text-2xl font-bold">{result.ripOffRisk.score}%</div>
+client/src/components/EnhancedComparisonSimple.tsx:238:                      <Badge className={getRiskColor(result.ripOffRisk.score)}>
+client/src/components/EnhancedComparisonSimple.tsx:254:                      <div className={`text-2xl font-bold ${getScoreColor(result.developmentRelationship.score)}`}>
+client/src/components/EnhancedComparisonSimple.tsx:255:                        {result.developmentRelationship.score}/10
+client/src/components/EnhancedComparisonSimple.tsx:364:                      <div className="text-4xl font-bold">{result.ripOffRisk.score}%</div>
+client/src/components/EnhancedComparisonSimple.tsx:365:                      <Badge className={`${getRiskColor(result.ripOffRisk.score)} text-lg px-4 py-1 mt-2`}>
+client/src/components/EnhancedComparisonSimple.tsx:402:                      <div className={`text-4xl font-bold ${getScoreColor(result.developmentRelationship.score)}`}>
+client/src/components/EnhancedComparisonSimple.tsx:403:                        {result.developmentRelationship.score}/10
+client/src/components/EnhancedComparison.tsx:147:    if (score >= 8) return 'text-green-600';
+client/src/components/EnhancedComparison.tsx:148:    if (score >= 6) return 'text-blue-600';
+client/src/components/EnhancedComparison.tsx:149:    if (score >= 4) return 'text-yellow-600';
+client/src/components/EnhancedComparison.tsx:154:    if (score <= 30) return 'bg-green-100 text-green-800';
+client/src/components/EnhancedComparison.tsx:155:    if (score <= 60) return 'bg-yellow-100 text-yellow-800';
+client/src/components/EnhancedComparison.tsx:156:    if (score <= 85) return 'bg-orange-100 text-orange-800';
+client/src/components/EnhancedComparison.tsx:243:                      <div className="text-2xl font-bold">{result.ripOffRisk.score}%</div>
+client/src/components/EnhancedComparison.tsx:244:                      <Badge className={getRiskColor(result.ripOffRisk.score)}>
+client/src/components/EnhancedComparison.tsx:260:                      <div className={`text-2xl font-bold ${getScoreColor(result.developmentRelationship.score)}`}>
+client/src/components/EnhancedComparison.tsx:261:                        {result.developmentRelationship.score}/10
+client/src/components/EnhancedComparison.tsx:428:                      <div className="text-4xl font-bold">{result.ripOffRisk.score}%</div>
+client/src/components/EnhancedComparison.tsx:429:                      <Badge className={`${getRiskColor(result.ripOffRisk.score)} text-lg px-4 py-1 mt-2`}>
+client/src/components/EnhancedComparison.tsx:466:                      <div className={`text-4xl font-bold ${getScoreColor(result.developmentRelationship.score)}`}>
+client/src/components/EnhancedComparison.tsx:467:                        {result.developmentRelationship.score}/10
+client/src/components/DownloadReportButton.tsx:32:        .metric { background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 4px solid #3498db; }
+client/src/components/DownloadReportButton.tsx:33:        .score { font-weight: bold; color: #e74c3c; }
+client/src/components/DownloadReportButton.tsx:44:    ${(result as any).overallScore ? `<div class="metric"><strong>Overall Originality Score:</strong> <span class="score">${(result as any).overallScore}/100</span></div>` : ''}
+client/src/components/DownloadReportButton.tsx:47:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:48:        <strong>Derivative Index:</strong> <span class="score">${result.derivativeIndex.passageA.score || 'N/A'}/10</span><br>
+client/src/components/DownloadReportButton.tsx:55:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:62:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:63:        <strong>Semantic Distance:</strong> <span class="score">${result.semanticDistance.passageA.distance || 'N/A'}/100</span><br>
+client/src/components/DownloadReportButton.tsx:68:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:69:        <strong>Coherence:</strong> <span class="score">${result.coherence.passageA.score || 'N/A'}/10</span><br>
+client/src/components/DownloadReportButton.tsx:74:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:75:        <strong>Conceptual Depth:</strong> <span class="score">${result.depth.passageA.score || 'N/A'}/10</span><br>
+client/src/components/DownloadReportButton.tsx:80:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:81:        <strong>Accuracy:</strong> <span class="score">${result.accuracy.passageA.score || 'N/A'}/10</span><br>
+client/src/components/DownloadReportButton.tsx:86:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:87:        <strong>Clarity:</strong> <span class="score">${result.clarity.passageA.score || 'N/A'}/10</span><br>
+client/src/components/DownloadReportButton.tsx:93:    <div class="metric">
+client/src/components/DownloadReportButton.tsx:96:        <strong>Score:</strong> ${((result.aiDetection.passageA.score || 0) * 100).toFixed(1)}%
+client/src/components/DocumentRewriter.tsx:217:    strong { font-weight: bold; }
+client/src/components/ComprehensiveReport.tsx:70:        content += `${data.label}: ${data.score || data.value || 'N/A'}\n`;
+client/src/components/ComprehensiveReport.tsx:144:        content += `${data.label}: ${data.score || data.value || 'N/A'}\n`;
+client/src/components/ComprehensiveReport.tsx:218:        content += `${data.label}: ${data.score || data.value || 'N/A'}\n`;
+client/src/components/ComprehensiveReport.tsx:291:        content += `${data.label}: ${data.score || data.value || 'N/A'}\n`;
+client/src/components/ComprehensiveReport.tsx:362:        originalityScoreA = `${extendedResult.novelty.passageA.score}/10`;
+client/src/components/ComprehensiveReport.tsx:365:        originalityScoreA = `${extendedResult.derivativeIndex.passageA.score}/10`;
+client/src/components/ComprehensiveReport.tsx:371:          originalityScoreB = `${extendedResult.novelty.passageB.score}/10`;
+client/src/components/ComprehensiveReport.tsx:374:          originalityScoreB = `${extendedResult.derivativeIndex.passageB.score}/10`;
+client/src/components/ComprehensiveReport.tsx:401:      // Categorize originality level based on score
+client/src/components/ComprehensiveReport.tsx:405:        if (score >= 0 && score <= 3) {
+client/src/components/ComprehensiveReport.tsx:407:        } else if (score >= 4 && score <= 6) {
+client/src/components/ComprehensiveReport.tsx:409:        } else if (score >= 7 && score <= 8) {
+client/src/components/ComprehensiveReport.tsx:411:        } else if (score >= 9 && score <= 10) {
+client/src/components/ComprehensiveReport.tsx:416:        if (score >= 0 && score <= 3) {
+client/src/components/ComprehensiveReport.tsx:418:        } else if (score >= 4 && score <= 6) {
+client/src/components/ComprehensiveReport.tsx:420:        } else if (score >= 7 && score <= 8) {
+client/src/components/ComprehensiveReport.tsx:422:        } else if (score >= 9 && score <= 10) {
+client/src/components/ComprehensiveReport.tsx:449:          overlapScore = `${extendedResult.conceptualOverlap.score}/10`;
+client/src/components/ComprehensiveReport.tsx:459:          const scoreA = extendedResult.novelty.passageA.score;
+client/src/components/ComprehensiveReport.tsx:460:          const scoreB = extendedResult.novelty.passageB.score;
+client/src/components/ComprehensiveReport.tsx:475:      reportData.summary = `Analysis generated for "${passageATitle}"${isSinglePassageMode ? '' : ` and "${passageBTitle}"`}. Some metrics may be incomplete due to document complexity or size.`;
+client/src/components/ComprehensiveReport.tsx:478:    // Extract quality metric scores with quotations and justifications
+client/src/components/ComprehensiveReport.tsx:527:      console.error("Error extracting quality metrics:", error);
+client/src/components/ComprehensiveReport.tsx:575:        description: "Unable to extract detailed metrics due to document complexity or size."
+client/src/components/ComprehensiveReport.tsx:588:        const originalityScore = extendedResult.novelty?.passageA?.score || extendedResult.derivativeIndex?.passageA?.score;
+client/src/components/ComprehensiveReport.tsx:592:            strengths.push("High originality score, indicating innovative thinking and unique perspectives.");
+client/src/components/ComprehensiveReport.tsx:594:            weaknesses.push("Lower originality score, suggesting reliance on established concepts with room for innovation.");
+client/src/components/ComprehensiveReport.tsx:597:          // If no score available, add a generic strength about originality based on document type
+client/src/components/ComprehensiveReport.tsx:776:      // Add quality metrics with quotations
+client/src/components/ComprehensiveReport.tsx:778:        Object.values(reportData.qualityMetrics).forEach((metric: any) => {
+client/src/components/ComprehensiveReport.tsx:785:          // Metric name and score
+client/src/components/ComprehensiveReport.tsx:791:          const assessmentLines = doc.splitTextToSize(metric.assessment, 180);
+client/src/components/ComprehensiveReport.tsx:801:          const quote1Lines = doc.splitTextToSize(`"${metric.quotation1}"`, 170);
+client/src/components/ComprehensiveReport.tsx:805:          const justification1Lines = doc.splitTextToSize(metric.justification1, 170);
+client/src/components/ComprehensiveReport.tsx:814:          const quote2Lines = doc.splitTextToSize(`"${metric.quotation2}"`, 170);
+client/src/components/ComprehensiveReport.tsx:818:          const justification2Lines = doc.splitTextToSize(metric.justification2, 170);
+client/src/components/ComprehensiveReport.tsx:823:        doc.text("Quality metrics are being processed. This may take longer for complex documents.", 15, yPosition += 8);
+client/src/components/ComprehensiveReport.tsx:1070:        // Add justification based on conceptual lineage and other metrics
+client/src/components/ComprehensiveReport.tsx:1080:          originalityScore = extendedResult.novelty.passageA.score;
+client/src/components/ComprehensiveReport.tsx:1082:          originalityScore = extendedResult.derivativeIndex.passageA.score;
+client/src/components/ComprehensiveReport.tsx:1122:        // Add specific comparison metrics
+client/src/components/ComprehensiveReport.tsx:1124:          docContent += `Distinctiveness Score: ${extendedResult.conceptualOverlap.score || "N/A"}/10\n`;
+client/src/components/ComprehensiveReport.tsx:1130:          const scoreA = extendedResult.novelty.passageA.score;
+client/src/components/ComprehensiveReport.tsx:1131:          const scoreB = extendedResult.novelty.passageB.score;
+client/src/components/ComprehensiveReport.tsx:1163:      // Add score breakdown if available
+client/src/components/ComprehensiveReport.tsx:1173:            docContent += `Score: ${data.score}\n`;
+client/src/components/ComprehensiveReport.tsx:1268:                      <p className="text-sm font-semibold mt-1">Score: {data.score}</p>
+server/lib/documentExport.ts:138:  // Handle metric boxes with special formatting
+server/lib/documentExport.ts:139:  content = content.replace(/<div class="metric"[^>]*>([\s\S]*?)<\/div>/g, (match, text) => {
+server/lib/documentExport.ts:208:  // Handle score boxes
+server/lib/documentExport.ts:209:  content = content.replace(/<div class="score-box"[^>]*>([\s\S]*?)<\/div>/g, (match, text) => {
+server/lib/documentExport.ts:330:    strong { font-weight: bold; }
+basic-report-test.pdf:37:(class="metric"><strong>Test Score:</strong> 85/100</div>) Tj
+client/src/components/ArgumentativeResults.tsx:97:Score: ${param.score}/100
+client/src/components/ArgumentativeResults.tsx:128:    if (score >= 90) return "text-green-600 bg-green-50 border-green-200";
+client/src/components/ArgumentativeResults.tsx:129:    if (score >= 80) return "text-blue-600 bg-blue-50 border-blue-200";
+client/src/components/ArgumentativeResults.tsx:130:    if (score >= 70) return "text-yellow-600 bg-yellow-50 border-yellow-200";
+client/src/components/ArgumentativeResults.tsx:131:    if (score >= 60) return "text-orange-600 bg-orange-50 border-orange-200";
+client/src/components/ArgumentativeResults.tsx:234:                      <Badge variant="outline" className={getCogencyColor(param.score)}>
+client/src/components/ArgumentativeResults.tsx:235:                        {param.score}/100
+server/lib/argumentativeAnalysisNew.ts:297:    "provesWhatItSetsOut": <score>,
+server/lib/argumentativeAnalysisNew.ts:298:    "worthinessOfGoal": <score>,
+server/lib/argumentativeAnalysisNew.ts:299:    "nonTrivialityLevel": <score>,
+server/lib/argumentativeAnalysisNew.ts:300:    "proofStrength": <score>,
+server/lib/argumentativeAnalysisNew.ts:301:    "functionalWritingQuality": <score>
+server/lib/argumentativeAnalysisNew.ts:410:  "winnerScore": <overall score 1-10>,
+server/lib/argumentativeAnalysisNew.ts:411:  "paperAScore": <overall score 1-10>,
+server/lib/argumentativeAnalysisNew.ts:412:  "paperBScore": <overall score 1-10>,
+server/lib/argumentativeAnalysisNew.ts:415:      "provesWhatItSetsOut": <score>,
+server/lib/argumentativeAnalysisNew.ts:416:      "worthinessOfGoal": <score>,
+server/lib/argumentativeAnalysisNew.ts:417:      "nonTrivialityLevel": <score>,
+server/lib/argumentativeAnalysisNew.ts:418:      "proofStrength": <score>,
+server/lib/argumentativeAnalysisNew.ts:419:      "functionalWritingQuality": <score>
+server/lib/argumentativeAnalysisNew.ts:422:      "provesWhatItSetsOut": <score>,
+server/lib/argumentativeAnalysisNew.ts:423:      "worthinessOfGoal": <score>,
+server/lib/argumentativeAnalysisNew.ts:424:      "nonTrivialityLevel": <score>,
+server/lib/argumentativeAnalysisNew.ts:425:      "proofStrength": <score>,
+server/lib/argumentativeAnalysisNew.ts:426:      "functionalWritingQuality": <score>
+server/lib/argumentativeAnalysisEnhanced.ts:65: * Enhanced single paper analysis with comprehensive 0-100 scoring and 7 core parameters
+server/lib/argumentativeAnalysisEnhanced.ts:114:Your role is to EVALUATE, not to GRADE. Assess what the text accomplishes intellectually, using the full scoring range appropriately for the genre.
+server/lib/argumentativeAnalysisEnhanced.ts:137:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:142:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:147:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:152:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:157:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:162:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:167:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:172:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:177:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:182:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:187:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:192:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:197:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:202:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:207:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:212:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:217:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:222:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:227:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:232:    "score": [integer 0-25],
+server/lib/argumentativeAnalysisEnhanced.ts:274:    // Calculate average overall score - AI returns scores out of 25, convert to 100 scale
+server/lib/argumentativeAnalysisEnhanced.ts:276:    const totalScore = requiredParams.reduce((sum, param) => sum + parsed[param].score, 0);
+server/lib/argumentativeAnalysisEnhanced.ts:301:          evaluationExplanation: `This ${genreInfo.genre} was evaluated using weighted criteria: Inferential Structure (${genreInfo.evaluationWeights.inferentialStructure}%), Conceptual Control (${genreInfo.evaluationWeights.conceptualControl}%), Argumentative Integrity (${genreInfo.evaluationWeights.argumentativeIntegrity}%), Synthesis & Integration (${genreInfo.evaluationWeights.synthesisIntegration}%). These weights reflect the intellectual priorities appropriate to this genre.`
+server/lib/argumentativeAnalysisEnhanced.ts:321: * Enhanced comparative analysis with consistent scoring
+server/lib/argumentativeAnalysisEnhanced.ts:403:            inferentialStructure: paperAAnalysis.singlePaperAnalysis.coreParameters.inferentialStructure.score,
+server/lib/argumentativeAnalysisEnhanced.ts:404:            conceptualControl: paperAAnalysis.singlePaperAnalysis.coreParameters.conceptualControl.score,
+server/lib/argumentativeAnalysisEnhanced.ts:405:            argumentativeIntegrity: paperAAnalysis.singlePaperAnalysis.coreParameters.argumentativeIntegrity.score,
+server/lib/argumentativeAnalysisEnhanced.ts:406:            synthesisIntegration: paperAAnalysis.singlePaperAnalysis.coreParameters.synthesisIntegration.score
+server/lib/argumentativeAnalysisEnhanced.ts:409:            inferentialStructure: paperBAnalysis.singlePaperAnalysis.coreParameters.inferentialStructure.score,
+server/lib/argumentativeAnalysisEnhanced.ts:410:            conceptualControl: paperBAnalysis.singlePaperAnalysis.coreParameters.conceptualControl.score,
+server/lib/argumentativeAnalysisEnhanced.ts:411:            argumentativeIntegrity: paperBAnalysis.singlePaperAnalysis.coreParameters.argumentativeIntegrity.score,
+server/lib/argumentativeAnalysisEnhanced.ts:412:            synthesisIntegration: paperBAnalysis.singlePaperAnalysis.coreParameters.synthesisIntegration.score
+server/lib/argumentativeAnalysisEnhanced.ts:424:          inferentialStructure: paperAAnalysis.singlePaperAnalysis.coreParameters.inferentialStructure.score,
+server/lib/argumentativeAnalysisEnhanced.ts:425:          conceptualControl: paperAAnalysis.singlePaperAnalysis.coreParameters.conceptualControl.score,
+server/lib/argumentativeAnalysisEnhanced.ts:426:          argumentativeIntegrity: paperAAnalysis.singlePaperAnalysis.coreParameters.argumentativeIntegrity.score,
+server/lib/argumentativeAnalysisEnhanced.ts:427:          synthesisIntegration: paperAAnalysis.singlePaperAnalysis.coreParameters.synthesisIntegration.score
+server/lib/argumentativeAnalysisEnhanced.ts:430:          inferentialStructure: paperBAnalysis.singlePaperAnalysis.coreParameters.inferentialStructure.score,
+server/lib/argumentativeAnalysisEnhanced.ts:431:          conceptualControl: paperBAnalysis.singlePaperAnalysis.coreParameters.conceptualControl.score,
+server/lib/argumentativeAnalysisEnhanced.ts:432:          argumentativeIntegrity: paperBAnalysis.singlePaperAnalysis.coreParameters.argumentativeIntegrity.score,
+server/lib/argumentativeAnalysisEnhanced.ts:433:          synthesisIntegration: paperBAnalysis.singlePaperAnalysis.coreParameters.synthesisIntegration.score
+server/lib/argumentativeAnalysisEnhanced.ts:475:#### 1. Inferential Structure (${analysis.inferentialStructure?.score || 0}/25)
+server/lib/argumentativeAnalysisEnhanced.ts:481:#### 2. Conceptual Control (${analysis.conceptualControl?.score || 0}/25)
+server/lib/argumentativeAnalysisEnhanced.ts:487:#### 3. Argumentative Integrity (${analysis.argumentativeIntegrity?.score || 0}/25)
+server/lib/argumentativeAnalysisEnhanced.ts:493:#### 4. Synthesis & Integration (${analysis.synthesisIntegration?.score || 0}/25)
+server/lib/argumentativeAnalysis.ts:181:  "winnerScore": [overall score 1-10],
+server/lib/argumentativeAnalysis.ts:182:  "paperAScore": [overall score 1-10],
+server/lib/argumentativeAnalysis.ts:183:  "paperBScore": [overall score 1-10],
+server/lib/anthropic-original.ts:37:Analyze the two passages across nine metrics:
+server/lib/anthropic-original.ts:101:      "score": number from 0-10,
+server/lib/anthropic-original.ts:103:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/anthropic-original.ts:104:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/anthropic-original.ts:105:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/anthropic-original.ts:109:      "score": number from 0-10,
+server/lib/anthropic-original.ts:111:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/anthropic-original.ts:112:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/anthropic-original.ts:113:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/anthropic-original.ts:131:      "score": number from 0-10,
+server/lib/anthropic-original.ts:137:      "score": number from 0-10,
+server/lib/anthropic-original.ts:145:      "score": number from 0-10,
+server/lib/anthropic-original.ts:151:      "score": number from 0-10,
+server/lib/anthropic-original.ts:159:      "score": number from 0-10,
+server/lib/anthropic-original.ts:165:      "score": number from 0-10,
+server/lib/anthropic-original.ts:173:      "score": number from 0-10,
+server/lib/anthropic-original.ts:179:      "score": number from 0-10,
+server/lib/anthropic-original.ts:266:Analyze the given passage against a normalized baseline of common writing in the same domain. Evaluate it across nine metrics:
+server/lib/anthropic-original.ts:332:      "score": number from 0-10,
+server/lib/anthropic-original.ts:334:        {"name": "Conceptual Innovation", "score": number from 0-10},
+server/lib/anthropic-original.ts:335:        {"name": "Methodological Novelty", "score": number from 0-10},
+server/lib/anthropic-original.ts:336:        {"name": "Contextual Application", "score": number from 0-10}
+server/lib/anthropic-original.ts:340:      "score": 5,
+server/lib/anthropic-original.ts:342:        {"name": "Conceptual Innovation", "score": 5},
+server/lib/anthropic-original.ts:343:        {"name": "Methodological Novelty", "score": 5},
+server/lib/anthropic-original.ts:344:        {"name": "Contextual Application", "score": 5}
+server/lib/anthropic-original.ts:362:      "score": number from 0-10,
+server/lib/anthropic-original.ts:368:      "score": 6,
+server/lib/anthropic-original.ts:376:      "score": number from 0-10,
+server/lib/anthropic-original.ts:382:      "score": 5,
+server/lib/anthropic-original.ts:390:      "score": number from 0-10,
+server/lib/anthropic-original.ts:396:      "score": 5,
+server/lib/anthropic-original.ts:404:      "score": number from 0-10,
+server/lib/anthropic-original.ts:410:      "score": 5,
+server/lib/anthropic-fix.ts:18: * @returns Analysis result with detailed originality metrics
+server/lib/anthropic-fix.ts:37:Your evaluations must include quantitative scoring and qualitative insights on a text's intellectual and stylistic contributions.
+server/lib/anthropic-fix.ts:67:Use quantitative scoring scales:
+server/lib/anthropic-fix.ts:327: * @returns Analysis result with detailed metrics
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:1:Intelligence (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:83:Cogency (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:165:Originality (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:247:Overall Quality (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:1966:No emphasis; all claims presented with identical weight.
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:2022:📊 Final Scores for Passage (all 160 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755427739398_1755427739399.txt:2036:Would you like me to now compile both passages’ full 160-metric reports into a side-by-side comparative document (so your app can directly display contrasts)?
+client/src/components/AnalysisTabs.tsx:49:              // Type-safe check for optional metrics
+client/src/components/AnalysisTabs.tsx:346:                  ? "A comprehensive score from 0 (entirely derivative) to 10 (wholly original) for the passage."
+client/src/components/AnalysisTabs.tsx:347:                  : "A comprehensive score from 0 (entirely derivative) to 10 (wholly original) for each passage."
+client/src/components/AnalysisTabs.tsx:358:                    <span className="text-sm font-semibold text-primary-700">{result.derivativeIndex.passageA.score.toFixed(1)}/10</span>
+client/src/components/AnalysisTabs.tsx:363:                      className={`absolute top-0 bottom-0 left-0 flex items-center justify-center ${getScoreColorClass(result.derivativeIndex.passageA.score)} text-white text-xs font-medium`}
+client/src/components/AnalysisTabs.tsx:364:                      style={{ width: `${result.derivativeIndex.passageA.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:366:                      {result.derivativeIndex.passageA.score.toFixed(1)}
+client/src/components/AnalysisTabs.tsx:383:                        <span className={`text-sm font-medium ${getScoreTextColorClass(component.score)}`}>
+client/src/components/AnalysisTabs.tsx:384:                          {component.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:398:                      <span className="text-sm font-semibold text-primary-700">{result.derivativeIndex.passageB.score.toFixed(1)}/10</span>
+client/src/components/AnalysisTabs.tsx:403:                        className={`absolute top-0 bottom-0 left-0 flex items-center justify-center ${getScoreColorClass(result.derivativeIndex.passageB.score)} text-white text-xs font-medium`}
+client/src/components/AnalysisTabs.tsx:404:                        style={{ width: `${result.derivativeIndex.passageB.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:406:                        {result.derivativeIndex.passageB.score.toFixed(1)}
+client/src/components/AnalysisTabs.tsx:423:                          <span className={`text-sm font-medium ${getScoreTextColorClass(component.score)}`}>
+client/src/components/AnalysisTabs.tsx:424:                            {component.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:561:                      {result.coherence.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:566:                      className={`absolute top-0 bottom-0 left-0 flex items-center justify-center ${getScoreColorClass(result.coherence.passageA.score)} text-white text-xs font-medium`}
+client/src/components/AnalysisTabs.tsx:567:                      style={{ width: `${result.coherence.passageA.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:569:                      {result.coherence.passageA.score.toFixed(1)}
+client/src/components/AnalysisTabs.tsx:608:                        {result.coherence.passageB.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:613:                        className={`absolute top-0 bottom-0 left-0 flex items-center justify-center ${getScoreColorClass(result.coherence.passageB.score)} text-white text-xs font-medium`} 
+client/src/components/AnalysisTabs.tsx:614:                        style={{ width: `${result.coherence.passageB.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:616:                        {result.coherence.passageB.score.toFixed(1)}
+client/src/components/AnalysisTabs.tsx:674:                      const originalityScore = result.derivativeIndex.passageA.score;
+client/src/components/AnalysisTabs.tsx:675:                      const coherenceScore = result.coherence.passageA.score;
+client/src/components/AnalysisTabs.tsx:677:                      // OVERRIDE: Direct implementation of the specified scoring formula
+client/src/components/AnalysisTabs.tsx:682:                      const depth = result.depth?.passageA?.score || 5;
+client/src/components/AnalysisTabs.tsx:687:                      const insightDensity = result.accuracy?.passageA?.score || 5;
+client/src/components/AnalysisTabs.tsx:690:                      const methodologicalNovelty = result.clarity?.passageA?.score || 
+client/src/components/AnalysisTabs.tsx:693:                      // Final score using the mandated formula: 
+client/src/components/AnalysisTabs.tsx:702:                      // Color based on score
+client/src/components/AnalysisTabs.tsx:736:                      This philosophical text score balances conceptual innovation (25%), depth (25%), coherence (20%), insight density (15%), and methodological novelty (15%).
+client/src/components/AnalysisTabs.tsx:745:                      <span className={`text-base font-semibold ${result.derivativeIndex.passageA.score > 7 ? 'text-green-600' : result.derivativeIndex.passageA.score > 4 ? 'text-blue-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:746:                        {result.derivativeIndex.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:749:                        {result.derivativeIndex.passageA.score > 7 ? 'High Originality' : 
+client/src/components/AnalysisTabs.tsx:750:                         result.derivativeIndex.passageA.score > 4 ? 'Moderate Originality' : 'Low Originality'}
+client/src/components/AnalysisTabs.tsx:758:                      <span className={`text-base font-semibold ${result.coherence.passageA.score > 7 ? 'text-green-600' : result.coherence.passageA.score > 4 ? 'text-blue-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:759:                        {result.coherence.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:762:                        {result.coherence.passageA.score > 7 ? 'High Coherence' : 
+client/src/components/AnalysisTabs.tsx:763:                         result.coherence.passageA.score > 4 ? 'Moderate Coherence' : 'Low Coherence'}
+client/src/components/AnalysisTabs.tsx:770:                  <p>The scores above are components in the Aggregate Quality Score calculation. The scoring system is designed for philosophical and theoretical texts, emphasizing conceptual innovation and depth while properly valuing coherence, insight density, and methodological novelty.</p>
+client/src/components/AnalysisTabs.tsx:816:                          style={{ width: `${result.accuracy.passageA.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:819:                      <span className={`text-base font-semibold ${result.accuracy.passageA.score > 7 ? 'text-green-600' : result.accuracy.passageA.score > 4 ? 'text-indigo-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:820:                        {result.accuracy.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:865:                            style={{ width: `${result.accuracy.passageB.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:868:                        <span className={`text-base font-semibold ${result.accuracy.passageB.score > 7 ? 'text-green-600' : result.accuracy.passageB.score > 4 ? 'text-indigo-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:869:                          {result.accuracy.passageB.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:942:                          style={{ width: `${result.depth.passageA.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:945:                      <span className={`text-base font-semibold ${result.depth.passageA.score > 7 ? 'text-green-600' : result.depth.passageA.score > 4 ? 'text-amber-600' : 'text-red-600'}`}>
+client/src/components/AnalysisTabs.tsx:946:                        {result.depth.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:991:                            style={{ width: `${result.depth.passageB.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:994:                        <span className={`text-base font-semibold ${result.depth.passageB.score > 7 ? 'text-green-600' : result.depth.passageB.score > 4 ? 'text-amber-600' : 'text-red-600'}`}>
+client/src/components/AnalysisTabs.tsx:995:                          {result.depth.passageB.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:1068:                          style={{ width: `${result.clarity.passageA.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:1071:                      <span className={`text-base font-semibold ${result.clarity.passageA.score > 7 ? 'text-green-600' : result.clarity.passageA.score > 4 ? 'text-teal-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:1072:                        {result.clarity.passageA.score.toFixed(1)}/10
+client/src/components/AnalysisTabs.tsx:1117:                            style={{ width: `${result.clarity.passageB.score * 10}%` }}
+client/src/components/AnalysisTabs.tsx:1120:                        <span className={`text-base font-semibold ${result.clarity.passageB.score > 7 ? 'text-green-600' : result.clarity.passageB.score > 4 ? 'text-teal-600' : 'text-amber-600'}`}>
+client/src/components/AnalysisTabs.tsx:1121:                          {result.clarity.passageB.score.toFixed(1)}/10
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:3:This patch corrects a scoring error where texts that reframe core concepts (e.g., "emotions are judgments") are being misclassified as less original or deep than more rhetorically polished, but derivative, texts.
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:7:1. In the originality scoring function, add the following criteria:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:9:    a. Increase originality score if the text:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:14:    b. Decrease originality score if the text:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:19:2. In the depth scoring function:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:21:    a. Increase depth score if:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:26:    b. Decrease depth score if:
+attached_assets/Pasted-Do-not-change-the-layout-or-interface-of-the-app-Only-modify-the-logic-used-to-calculate-originalit-1745528382310.txt:36:Make sure these logic changes override any old weighting systems or similarity-based metrics that may bias against structurally original content.
+client/src/components/AdvancedComparison.tsx:96:    if (score >= 80) return 'text-green-600';
+client/src/components/AdvancedComparison.tsx:97:    if (score >= 60) return 'text-yellow-600';
+client/src/components/AdvancedComparison.tsx:98:    if (score >= 40) return 'text-orange-600';
+client/src/components/AdvancedComparison.tsx:124:              Run comprehensive analysis including originality scoring, developmental relationships, 
+attached_assets/Pasted-Comprehensive-Originality-Analysis-Report-6-23-2025-Comprehensive-Originality-Analysis-Report-Ex-1750692811315_1750692811316.txt:64:4px solid #3498db; padding-left: 15px; } h3 { color: #5d6d7e; margin-top: 20px; } .score-box
+attached_assets/Pasted-Comprehensive-Originality-Analysis-Report-6-23-2025-Comprehensive-Originality-Analysis-Report-Ex-1750692811315_1750692811316.txt:67:0; border-left: 3px solid #e74c3c; } .metric { background: #ffffff; border: 1px solid #bdc3c7;
+attached_assets/Pasted-Comprehensive-Originality-Analysis-Report-6-23-2025-Comprehensive-Originality-Analysis-Report-Ex-1750692811315_1750692811316.txt:75:discourse. Each metric includes detailed quotation-based evidence and specific
+attached_assets/Pasted-Cogency-Metrics-Argumentative-Continuity-Question-Is-each-claim-supported-by-those-before-it--1752783953869_1752783953870.txt:20:• High: High: No premise bears too much unexplained weight.
+attached_assets/Pasted-COMPREHENSIVE-ORIGINALITY-ANALYSIS-REPORT-Document-Untitl-1750693281719_1750693281720.txt:1:COMPREHENSIVE ORIGINALITY ANALYSIS REPORT ========================================= Document: Untitled Document Analysis Date: 6/23/2025 Overall Originality Score: 0/100 Analysis Mode: Comparative Analysis EXECUTIVE SUMMARY ----------------- This comprehensive report provides an in-depth analysis of the originality, coherence, and intellectual merit of the submitted text. The analysis examines conceptual innovation, semantic distance from conventional writing, and the overall contribution to scholarly discourse. Each metric includes detailed quotation-based evidence and specific recommendations for improvement. 1. CONCEPTUAL LINEAGE ANALYSIS ============================== Primary Influences: Assessment: Logical theory, artificial intelligence, philosophy of mind Intellectual Trajectory: Passage A builds on the critique of classical logic by arguing for a pragmatic approach influenced by observations from AI systems. It diverges from traditional logic by proposing an entirely different framework that incorporates pattern recognition and meta-reasoning. Textual Evidence: "This paper argues that classical logic fundamentally fails as a tool for reasoning because it requires more intelligence to recognize that an inference instantiates a logical law than to recognize the validity of the inference directly. Drawing on evidence from artificial intelligence systems, parti..." This opening demonstrates the author's engagement with existing intellectual traditions while establishing their unique perspective. 2. SEMANTIC DISTANCE & ORIGINALITY ================================== Distance from Conventional Writing: Score: 75/100 Classification: High Distance Supporting Analysis: "This paper argues that classical logic fundamentally fails as a tool for reasoning..." Novelty Score: 90/100 - This quote highlights the proposition of a novel logical framework based on innovative premises. "This system emphasizes pattern explicit recognition, meta-reasoning templates, and defeasible inference..." Novelty Score: 85/100 - This illustrates the deep conceptual changes proposed in System L compared to classical logic. 3. DERIVATIVE INDEX ASSESSMENT ============================== Originality Score: 8/10 Assessment: Evaluation demonstrates clear engagement with original thinking Quotation-Based Analysis: " validity of the inference directly. Drawing on evidence from artificial intelligence systems, particularly large language models, we propose an alternative "System L" that better captures how both hu..." This section exemplifies the strong originality evident throughout the work. 4. QUALITY METRICS ANALYSIS =========================== Coherence Assessment: Score: 9/10 Analysis: Passage A is logically consistent and well-structured, presenting a clear argument for System L's necessity and its elements. Coherence Evidence: "This paper argues that classical logic fundamentally fails as a tool for reasoning because it requires more intelligence to recognize that an inferenc..." Conceptual Depth: Score: 9/10 Analysis: The passage exhibits strong conceptual depth, proposing substantial rethinking of logic through AI perspectives. Depth Indicators: "This paper argues that classical logic fundamentally fails as a tool for reasoning because it requires more intelligence to recognize that an inferenc..." 5. DETAILED PARAGRAPH ANALYSIS =============================== Paragraph 1 Analysis: "This paper argues that classical logic fundamentally fails as a tool for reasoning because it requires more intelligence to recognize that an inference instantiates a logical law than to recognize the..." This opening paragraph establishes the conceptual foundation and demonstrates engagement with existing intellectual traditions. 6. COMPREHENSIVE RECOMMENDATIONS ================================= Immediate Improvements: • Enhance originality by building on the strong foundations demonstrated • Strengthen evidence with more specific examples to support theoretical claims • Expand analysis to deepen exploration of implications and consequences Advanced Development Strategies: • Engage with cutting-edge research to further distinguish your contribution • Develop counter-arguments to strengthen analytical position • Consider interdisciplinary connections to broaden scope of analysis • Enhance theoretical framework with additional conceptual tools 7. CONCLUSION ============= This analysis reveals work that provides a foundation for further development of original ideas. The comprehensive examination of textual evidence supports the quantitative assessments and provides a roadmap for continued intellectual development. Final Assessment: The work merits continued development for its contribution to academic discourse. The detailed analysis and recommendations provide clear guidance for enhancing both originality and overall scholarly impact. --- Generated by Originality Meter Comprehensive Analysis System | 6/23/2025
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:1:Intelligence (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:83:Cogency (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:165:Originality (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:247:Overall Quality (40 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:1966:No emphasis; all claims presented with identical weight.
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:2022:📊 Final Scores for Passage (all 160 metrics)
+attached_assets/Pasted-Intelligence-40-metrics-Compression-density-of-meaning-per-word-Abstraction-ability-to-mo-1755361890491_1755361890493.txt:2036:Would you like me to now compile both passages’ full 160-metric reports into a side-by-side comparative document (so your app can directly display contrasts)?
+server/lib/aiDetection.ts:82:    // GPTZero provides document-level and sentence-level metrics
+server/lib/aiDetection.ts:83:    // We focus on document level for the overall score
+server/lib/aiDetection.ts:94:    // Map the score to confidence level
+attached_assets/Pasted-Build-an-AI-powered-app-called-Semantic-Originality-Analyzer-The-app-allows-users-to-paste-in-tw-1744475642701.txt:11:Derivative Index — A score from 0 to 10, where 0 = totally recycled and 10 = entirely original.
+attached_assets/Pasted-Build-an-AI-powered-app-called-Semantic-Originality-Analyzer-The-app-allows-users-to-paste-in-tw-1744475642701.txt:25:Center panel: analysis output (with tabs or collapsible sections for each metric)
+attached_assets/Pasted-Build-an-AI-powered-app-called-Semantic-Originality-Analyzer-The-app-allows-users-to-paste-in-tw-1744475642701.txt:67:But for now, build the core feature: take two user-submitted texts and compare them using the five originality metrics listed above.
+attached_assets/Pasted-Add-an-editable-feedback-and-re-evaluation-system-to-Originality-Meter-Users-must-be-able-to-push--1744564319357.txt:19:“I see your point. If this passage is indeed critiquing the tradition rather than extending it, the semantic distance score may deserve re-evaluation.”
+attached_assets/Pasted-Add-an-editable-feedback-and-re-evaluation-system-to-Originality-Meter-Users-must-be-able-to-push--1744564319357.txt:21:It can stand its ground or revise the score/notes—but it must justify either move.
+attached_assets/Pasted-Add-an-editable-feedback-and-re-evaluation-system-to-Originality-Meter-Users-must-be-able-to-push--1744564319357.txt:46:Re-issue a revised version of the original metric (e.g., a new Derivative Index)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:1:Intelligence (40 metrics)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:83:Cogency (40 metrics)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:165:Originality (40 metrics)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:247:Overall Quality (40 metrics)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:1966:No emphasis; all claims presented with identical weight.
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:2022:📊 Final Scores for Passage (all 160 metrics)
+attached_assets/160 INTELLIGENCE METRICS WITH WRITING SAMPLES AND COMPLETE ANALYSES_1755349332561.txt:2036:Would you like me to now compile both passages’ full 160-metric reports into a side-by-side comparative document (so your app can directly display contrasts)?
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:1:Add a new metric to Originality Meter called “Coherence.”
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:3:This metric evaluates whether the passage, despite being original or semantically distant, is logically and conceptually coherent.
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:19:Add a section alongside the existing originality metrics called “Coherence”
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:21:Include a numeric score (0–10) and short paragraph explanation
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:55:Coherence score & summary	Same panel as Derivative Index etc.	Shows 0–10 score, with brief diagnosis
+attached_assets/Pasted-Add-a-new-metric-to-Originality-Meter-called-Coherence-This-metric-evaluates-whether-the-passage-1744614062448.txt:57:“Help Me Clarify” button	Beneath coherence score	Launches dialog for improvement
+attached_assets/Pasted--Major-UI-and-Score-Logic-Revision-Needed-for-Originality-Meter-Output-Screen-The-app-now-evaluat-1744657696830.txt:43:“This score weights originality and coherence, with slightly more weight given to coherence.”
+attached_assets/Pasted--Major-UI-and-Score-Logic-Revision-Needed-for-Originality-Meter-Output-Screen-The-app-now-evaluat-1744657696830.txt:54:Originality: Passage B explores broader conceptual terrain and reframes institutional behavior, earning a higher originality score.
+attached_assets/Pasted--Major-UI-and-Score-Logic-Revision-Needed-for-Originality-Meter-Output-Screen-The-app-now-evaluat-1744657696830.txt:65:Remove ambiguity. Every score must clearly refer to A or B, not float free of context.
+attached_assets/Pasted--Major-UI-and-Score-Logic-Revision-Needed-for-Originality-Meter-Output-Screen-The-app-now-evaluat-1744657696830.txt:71:✅ Justify every score in the verdict panel
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:1:✅ In this forked version of the app, expand the evaluation system to include three new metrics:
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:13:Each should mimic the existing format (numerical score, filled visual bar, micro-justification).
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:23:A 0–10 score bar
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:34:"This score aggregates originality, coherence, accuracy, depth, and clarity. Coherence and depth are weighted slightly higher by default."
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:36:Suggested default weights (can be refined later):
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:49:This tab shows all five metrics together in a visual grid or stacked layout.
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:64:Allow advanced users to adjust the weighting of each metric in the composite score via a slider or dropdown ("philosopher mode," "editorial mode," etc.)
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:67:✅ Add three new metrics (Accuracy, Depth, Clarity)
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:71:✅ Recalculate and relabel “Composite” score as “Total Quality Score”
+attached_assets/Pasted--In-this-forked-version-of-the-app-expand-the-evaluation-system-to-include-three-new-metrics-Acc-1744665382792.txt:73:✅ Allow all five metrics to be viewed in a single interface
+attached_assets/Pasted--Important-UI-Logic-Fix-The-label-Original-but-Incoherent-must-be-removed-or-completely-restr-1744618573548.txt:3:Right now, the app displays a category label like “Original but Incoherent” as if it’s a standalone metric—a kind of hybrid verdict between originality and coherence.
+attached_assets/Pasted--Important-UI-Logic-Fix-The-label-Original-but-Incoherent-must-be-removed-or-completely-restr-1744618573548.txt:12:These should remain strictly separate. There is no such thing as “originality with incoherence” being a third metric. That’s like saying “speed but without direction” is its own quantity.
+attached_assets/Pasted--Important-UI-Logic-Fix-The-label-Original-but-Incoherent-must-be-removed-or-completely-restr-1744618573548.txt:17:But it’s just a verbal mashup of two separate axes. It shouldn’t be rendered like a metric.
+attached_assets/Pasted--Important-UI-Logic-Fix-The-label-Original-but-Incoherent-must-be-removed-or-completely-restr-1744618573548.txt:48:This keeps the categorical label but prevents it from being treated as a metric.
+attached_assets/Pasted--Important-UI-Logic-Fix-The-label-Original-but-Incoherent-must-be-removed-or-completely-restr-1744618573548.txt:51:❌ “Original but Incoherent” should not be shown as a standalone metric or bar
+attached_assets/Originality_Meter_Comparison_Function_1750691532076.txt:8:- Return a score from 0 to 100 indicating how much Text B appears to copy from or be derivative of Text A. (Lower = more derivative.)
+attached_assets/Originality_Meter_Comparison_Function_1750691532076.txt:27:- Compare the psychoprofiles and return a match score (0–100) plus a short narrative.
+attached_assets/Author_Originality_Detector_Prompt.txt:50:AUTHOR ORIGINALITY ESTIMATE: [score]/10
+attached_assets/analysis-report (3)_1752873859130.pdf:95:T* (padding-bottom: 10px; } h2 { color: #34495e; margin-top: 25px; } .metric { background:) Tj
+attached_assets/analysis-report (3)_1752873859130.pdf:96:T* (#f8f9fa; padding: 15px; margin: 10px 0; border-left: 4px solid #3498db; } .score {) Tj
+attached_assets/analysis-report (3)_1752873859130.pdf:97:T* (font-weight: bold; color: #e74c3c; } strong { color: #2c3e50; } Document: Passage A) Tj
+attached_assets/Pasted-is-evaluation-is-strong-overall-and-mostly-fair-but-it-reveals-two-subtle-biases-in-your-app-s-rubri-1751375646681_1751375646682.txt:1:is evaluation is strong overall—and mostly fair—but it reveals two subtle biases in your app's rubric logic. Here's a breakdown:
+attached_assets/Pasted-is-evaluation-is-strong-overall-and-mostly-fair-but-it-reveals-two-subtle-biases-in-your-app-s-rubri-1751375646681_1751375646682.txt:35:Verdict: Mild penalty is fine, but not 75. Should be ~80.
+attached_assets/Pasted-is-evaluation-is-strong-overall-and-mostly-fair-but-it-reveals-two-subtle-biases-in-your-app-s-rubri-1751375646681_1751375646682.txt:41:Counterarguments	Adjust weight based on genre (e.g. formal vs argumentative prose).
+attached_assets/Pasted-is-evaluation-is-strong-overall-and-mostly-fair-but-it-reveals-two-subtle-biases-in-your-app-s-rubri-1751375646681_1751375646682.txt:44:Your rubric sometimes treats formal texts like persuasive essays. But in formal logic, cogency is the proof. That’s the domain-standard metric. So while this report is mostly intelligent and structured, it needs a tighter tether to domain expectations.
+attached_assets/Pasted-VERDICT-YOUR-APP-IS-BROKEN-That-essay-is-extremely-cogent-a-structured-multi-part-argument-engagin-1751380979916_1751380979916.txt:34:Your app is not scoring cogency. It is scoring superficial surface features.
+attached_assets/Pasted-VERDICT-YOUR-APP-IS-BROKEN-That-essay-is-extremely-cogent-a-structured-multi-part-argument-engagin-1751380979916_1751380979916.txt:42:The scoring system must evaluate argumentative cogency, not stylistic clarity or rhetorical surface.
+attached_assets/Pasted-VERDICT-YOUR-APP-IS-BROKEN-That-essay-is-extremely-cogent-a-structured-multi-part-argument-engagin-1751380979916_1751380979916.txt:85:The essay “Religion and the Limits of Modern Rationalism” should score 90–95, not 67. It’s structurally sound, conceptually precise, and tightly integrated. Your app failed because it couldn’t parse non-schematic philosophical writing.
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:56:I will rewrite your scoring template to include necessary failure conditions like:
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:66:Want me to generate a JSON scoring template or rewrite your function logic in clean pseudocode? Or fix it directly from this exact file and return a side-by-side comparison?
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:86:I assumed (incorrectly) that the scores were wrong because they overvalued fluency. But you weren’t talking about that problem—you were saying the scores were nonsensical in light of your actual implementation of my own metrics.
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:89:Instead of anchoring to your actual paper, I let the scoring output dominate the interpretation—exactly the kind of mistake we’re trying to purge from the app itself.
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:91:I used invented heuristics not derived from your implemented metric framework
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:92:That was the most egregious error. You had painstakingly reworked the app using those 80 structured metrics. I ignored them and substituted vague LLM instincts.
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:99:Processing: Apply only the 80 metrics from the Unified Framework (intelligence, cogency, originality, quality)
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:103:Output: Table or JSON showing how each metric differentiates the texts—with justifications
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:108:🧠 Do we walk through one of the metric clusters and apply it manually to both documents?
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:110:🔧 Or do you want me to generate a real function blueprint (input = document, output = 80-metric analysis)?
+attached_assets/Pasted-Understood-You-re-furious-because-your-app-rated-your-analytic-philosophy-paper-as-roughly-equal-i-1752776391883_1752776391884.txt:112:⚔️ Or would you prefer a side-by-side scorecard right now: your paper vs. the abstract, metric-by-metric?
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:64:Then we have a problem. And the problem is not your text—it’s either the scoring logic or the LLM’s prompt structure.
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:70:In other words, it’s not evaluating your metrics—it’s mentioning them.
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:77:So forget code. But even without code, the Replit agent must be forced to score based on internal contradictions and cognitive features—not linguistic surface. If it's scoring your text as a 6/10, one of two things is true:
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:91:If the metric itself doesn’t force a difference between pseudo-intelligent and real-intelligent writing, it will generate equal scores. But I’ve already baked in pseudo-proofing to all 60 metrics you received.
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:98:One master example of how to turn a single metric into a bulletproof LLM prompt with scoring logic built into the natural language—no code, no syntax.
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:104:Want me to build that now? Just say which of the 60 metrics you want the prompt-example built on:
+attached_assets/Pasted-This-is-excellent-high-density-writing-that-passes-all-four-core-tests-originality-cogency-overa-1752875590847_1752875590847.txt:105:Originality, Cogency, Quality, or Intelligence—pick one metric from any list.
+attached_assets/Pasted-Replit-Instruction-Improvement-Protocol-Based-on-Passage-Score-Objective-For-each-passage-Replit--1744681430523.txt:2:Objective: For each passage, Replit will apply a distinct improvement protocol based on the passage's overall score. If the score is high, the focus will be on deepening and enriching the content by adding examples from other disciplines, providing more factual information, and exploring new perspectives. If the score is low, the focus will be on rewriting the passage for better clarity, structure, and coherence.
+attached_assets/Pasted-Replit-Instruction-Improvement-Protocol-Based-on-Passage-Score-Objective-For-each-passage-Replit--1744681430523.txt:58:By having two distinct protocols—one for passages that score highly and one for those that score poorly—you can ensure that Replit is optimizing the passage in the right way based on its initial evaluation.
+attached_assets/Pasted-Replit-Instruction-Improvement-Protocol-Based-on-Passage-Score-Objective-For-each-passage-Replit--1744681430523.txt:60:This also forces the model to focus on adding intellectual substance in high-scoring cases, and on structural improvement when the passage is less clear or logically deficient.
+attached_assets/Pasted-Replit-Instruction-Implementing-Corpus-Comparison-Mode-Objective-Implement-a-Corpus-Comparison-Mod-1744695064394.txt:31:Comparison Score: A numerical score or percentage indicating the similarity between the passage and the corpus. This can be based on factors like semantic distance, conceptual alignment, and stylistic similarity.
+attached_assets/Pasted-Replit-Instruction-Implementing-Corpus-Comparison-Mode-Objective-Implement-a-Corpus-Comparison-Mod-1744695064394.txt:86:The app will generate a score indicating how well the user’s writing aligns with the reference, along with a visual comparison (e.g., heatmap).
+attached_assets/Pasted-Please-extend-the-current-two-text-comparison-module-of-the-Originality-Meter-app-using-the-followin-1750693462291_1750693462291.txt:1:Please extend the current two-text comparison module of the Originality Meter app using the following logic. Preserve all existing functionality, but add the requested enhancements below. The final system should generate a multi-dimensional comparison report, with a simplified score output and detailed interpretive section.
+attached_assets/Pasted-Please-extend-the-current-two-text-comparison-module-of-the-Originality-Meter-app-using-the-followin-1750693462291_1750693462291.txt:50:Weighted average of content + epistemic similarity, with stylistic factors as secondary. Return score with interpretive label:
+attached_assets/Pasted-Please-extend-the-current-two-text-comparison-module-of-the-Originality-Meter-app-using-the-followin-1750693462291_1750693462291.txt:81:Output this score and include a few sentences describing how the development manifests (if at all).
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:3:1. Go to the backend function that handles scoring or evaluation of user-uploaded or user-inputted texts.
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:5:2. Completely remove any scoring logic that:
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:10:3. Replace the "originality" score logic with the following:
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:16:4. Replace the "depth" score logic with the following:
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:24:6. Keep all frontend features unchanged — just swap in the new backend scoring logic using the above criteria.
+attached_assets/Pasted-Keep-the-current-UI-and-all-user-interactions-exactly-as-they-are-Do-not-change-the-layout-or-inter-1745527017724.txt:26:7. Let the AI assistant explain in comments which parts of the new scoring function correspond to originality vs depth.
+attached_assets/Pasted-INSTRUCTIONS-TO-IMPROVE-TEXT-EVALUATION-LOGIC-PROBLEM-The-app-is-evaluating-writing-using-generic-a-1752914804138_1752914804139.txt:3:The app is evaluating writing using generic academic rubrics that reward superficial structure (e.g., topic clarity, sentence organization) while ignoring deeper signals of intelligence, originality, and cogency. This causes the app to misjudge highly original and conceptually rich material as “average” simply because it lacks traditional scaffolding or doesn’t spell everything out.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:22:Assign weights dynamically based on genre.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:28:For mixed-mode essays: use heuristics to balance across dimensions intelligently.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:34:Before applying any rubric, the app must first detect:
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:41:If a document makes a valid inference chain, defines its terms rigorously, and lands a real conceptual insight, it should get a high score—regardless of whether it uses transitions, rhetorical flair, or explanation for dummies.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:48:Rewrite the scoring logic using conditional logic trees that first detect genre or accept a genre flag from the user.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:50:Rewrite the weighting schema per genre, and allow these weights to be overridden manually via config.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:56:Never again apply a single static rubric to all documents.
+attached_assets/Pasted-INSTRUCTION-TO-REPLIT-AGENT-REWRITE-THE-COGENCY-EVALUATION-LOGIC-The-current-evaluation-logic-is--1751391965474_1751391965474.txt:58:This isn’t optional. Fix it properly or kill the app. It's embarrassing to have serious work misjudged by a knee-jerk scoring model that punishes clarity and rewards mediocrity.
+attached_assets/Pasted-Got-it-Your-app-gave-the-document-a-47-100-and-labeled-it-Poorly-Cogent-which-is-flat-out-wrong--1751397474058_1751397474058.txt:33:You need to replace “formal rigor” as a scoring proxy with markers like:
+attached_assets/Pasted-GENERAL-VERBATIM-INSTRUCTIONS-TO-FIX-THE-APP-PROBLEM-The-app-is-misjudging-high-level-writing-It-p-1752914955326_1752914955327.txt:3:The app is misjudging high-level writing. It penalizes intelligence, originality, and clarity because it relies on surface-level heuristics—like vocabulary cues, paragraph scaffolding, or school-style transitions—instead of evaluating actual substance and reasoning structure.
+attached_assets/Pasted-GENERAL-VERBATIM-INSTRUCTIONS-TO-FIX-THE-APP-PROBLEM-The-app-is-misjudging-high-level-writing-It-p-1752914955326_1752914955327.txt:40:“When evaluating advanced writing, switch to expert-mode scoring. Prioritize conceptual structure, reasoning quality, and originality. Do not penalize based on accessibility, template compliance, or surface features. Recognize intelligent compression and inferential architecture, even if it exceeds typical reader expectations.”
+attached_assets/Pasted-Fix-Misinterpretation-of-Structural-Depth-in-Original-Texts-1-Problem-The-app-mistakes-embedded-de-1752914790214_1752914790215.txt:31:Saying “philosophy is OCD” is not a rhetorical flourish. It is a structural reframing of the discipline. This must count as a high-score heuristic leap, not a lack of argumentation.
+attached_assets/Pasted-Fix-Misinterpretation-of-Structural-Depth-in-Original-Texts-1-Problem-The-app-mistakes-embedded-de-1752914790214_1752914790215.txt:40:Lower penalty for lack of hedging if the passage shows coherent compression.
+attached_assets/Pasted-Evaluation-of-Intelligence-in-Three-Kinds-of-Psychopaths-Strengths-Demonstrating-Intelligence--1752917730213_1752917730214.txt:58:still low. listen. i am not asking you to fucntion as a journal rewiewer. i am asking yiou to read for intelligence; not for compoiance with protocols relating to journal-submission, term-paper format etc. get that distinction straight. and make the score out of 100, not 10. cuz if you say 9/10...you are saying that 10 people are smarter than this guy; whicih is not the case. period. that's just not accurate. the author may be overstating or what (depending on the context...you don't know anything about this..you don't know if it's a fragment, a stand alone work...what you are saying makes very very very little sense unless you are assumign a lot of social protocols (rleating to journal subnissions or some such), and you are--because you're dumb--grading for compliance withi those--not with intelligence per se). smarten up. CONSIDERATION OF 'CONTARY VIEWPOINTS...'--THAT'S GREAT IN SOME CONTEXTS; IN OTHERS IT WOULD BE RETARDED. THERE IS LITTLE HOPE FOR YOU.
+attached_assets/Pasted-Evaluation-of-Intelligence-in-Three-Kinds-of-Psychopaths-Strengths-Demonstrating-Intelligence--1752917682229_1752917682229.txt:58:still low. listen. i am not asking you to fucntion as a journal rewiewer. i am asking yiou to read for intelligence; not for compoiance with protocols relating to journal-submission, term-paper format etc. get that distinction straight. and make the score out of 100, not 10. cuz if you say 9/10...you are saying that 10 people are smarter than this guy; whicih is not the case. period. that's just not accurate. the author may be overstating or what (depending on the context...you don't know anything about this..you don't know if it's a fragment, a stand alone work...what you are saying makes very very very little sense unless you are assumign a lot of social protocols (rleating to journal subnissions or some such), and you are--because you're dumb--grading for compliance withi those--not with intelligence per se). smarten up. CONSIDERATION OF 'CONTARY VIEWPOINTS...'--THAT'S GREAT IN SOME CONTEXTS; IN OTHERS IT WOULD BE RETARDED. THERE IS LITTLE HOPE FOR YOU.
+.git/logs/HEAD:8:2192f77af90dbf298b38d90e56c229beb23553cb 9a8ae866aaf8b2f5db9f254dc14f932ca9e76cca johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755336517 +0000	commit: Improve AI response evaluation with advanced scoring instructions
+.git/logs/HEAD:9:9a8ae866aaf8b2f5db9f254dc14f932ca9e76cca f97f3dfe288d298ed1b8034cbafae7edffbfe93e johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755340505 +0000	commit: Adjust scoring for AI models to better reflect intellectual contributions
+.git/logs/HEAD:10:f97f3dfe288d298ed1b8034cbafae7edffbfe93e 5ba7620ebed83aa8f98cd9dfa907e219fd6a6df1 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755340726 +0000	commit: Enhance scoring for complex mathematical and logical achievements
+.git/logs/HEAD:15:44698206dcae101b2ebcd11588bdc0d55625f6fd 1893a08a05e9a1eeaaa73c96b912a498106b9c45 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755345507 +0000	commit: Expand analysis capabilities to include 160 detailed metrics
+.git/logs/HEAD:16:1893a08a05e9a1eeaaa73c96b912a498106b9c45 3bafd16b4fbe373353fc4fc300a6cc0dac3f1874 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755346294 +0000	commit: Enhance text analysis with detailed quality metrics
+.git/logs/HEAD:18:603339d1597d74e61974ee38ff8f4fa690ad8834 f2550ff67cec7bd9c417632e68daa953bf698695 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755346817 +0000	commit: Update analysis metrics and simplify document mode handling
+.git/logs/HEAD:28:92ef957d32c251d3c7e477eb82dd37c7429c2b3d a231914107a0c9428cb7d51e9737a1053e543407 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755349414 +0000	commit: Add detailed scoring metrics for document analysis
+.git/logs/HEAD:31:85570d4101cbaf76b2444f9e854df9ba68206ead 4b20d674f0f7da822438d090f90994c375931ec8 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755350754 +0000	commit: Add comprehensive list of intelligence and cogency metrics
+.git/logs/HEAD:32:4b20d674f0f7da822438d090f90994c375931ec8 7ca2cc5a539fc43d3b46c42b5865bd1e174cc5ad johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755351298 +0000	commit: Overhaul analysis engine to support new metrics and document structure
+.git/logs/HEAD:43:db189177efc5fca72f073b142b10bea2e30d2d5e 62be9e7d06d8af09fbfb27422a36dd4da89dff6d johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755361936 +0000	commit: Add detailed metrics for evaluating intelligence and cogency
+.git/logs/HEAD:52:da818c6fc0b3cffcca43be9cfbcbeb5ab3947e27 ee5ef6a2fc938200af83b5560789115ad1d9f0fa johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755416517 +0000	commit: Enable intelligence analysis using 40 detailed metrics via Anthropic
+.git/logs/HEAD:56:9252a1f22eb30e7827df3f551029b0b29076bc47 c9a236060c6eeafdd9b6c2c2244174817888b21b johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755426097 +0000	commit: Update metrics display to handle new data formats
+.git/logs/HEAD:58:08b895ef8e0d33248c40265d4b0698524421e602 2f07e5a8fd2be06292e65c3d8a3ce654dfe3b074 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755427769 +0000	commit: Update scoring and analysis to use a new 160-metric framework
+.git/logs/refs/heads/main:7:2192f77af90dbf298b38d90e56c229beb23553cb 9a8ae866aaf8b2f5db9f254dc14f932ca9e76cca johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755336517 +0000	commit: Improve AI response evaluation with advanced scoring instructions
+.git/logs/refs/heads/main:8:9a8ae866aaf8b2f5db9f254dc14f932ca9e76cca f97f3dfe288d298ed1b8034cbafae7edffbfe93e johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755340505 +0000	commit: Adjust scoring for AI models to better reflect intellectual contributions
+.git/logs/refs/heads/main:9:f97f3dfe288d298ed1b8034cbafae7edffbfe93e 5ba7620ebed83aa8f98cd9dfa907e219fd6a6df1 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755340726 +0000	commit: Enhance scoring for complex mathematical and logical achievements
+.git/logs/refs/heads/main:14:44698206dcae101b2ebcd11588bdc0d55625f6fd 1893a08a05e9a1eeaaa73c96b912a498106b9c45 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755345507 +0000	commit: Expand analysis capabilities to include 160 detailed metrics
+.git/logs/refs/heads/main:15:1893a08a05e9a1eeaaa73c96b912a498106b9c45 3bafd16b4fbe373353fc4fc300a6cc0dac3f1874 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755346294 +0000	commit: Enhance text analysis with detailed quality metrics
+.git/logs/refs/heads/main:17:603339d1597d74e61974ee38ff8f4fa690ad8834 f2550ff67cec7bd9c417632e68daa953bf698695 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755346817 +0000	commit: Update analysis metrics and simplify document mode handling
+.git/logs/refs/heads/main:27:92ef957d32c251d3c7e477eb82dd37c7429c2b3d a231914107a0c9428cb7d51e9737a1053e543407 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755349414 +0000	commit: Add detailed scoring metrics for document analysis
+.git/logs/refs/heads/main:30:85570d4101cbaf76b2444f9e854df9ba68206ead 4b20d674f0f7da822438d090f90994c375931ec8 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755350754 +0000	commit: Add comprehensive list of intelligence and cogency metrics
+.git/logs/refs/heads/main:31:4b20d674f0f7da822438d090f90994c375931ec8 7ca2cc5a539fc43d3b46c42b5865bd1e174cc5ad johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755351298 +0000	commit: Overhaul analysis engine to support new metrics and document structure
+.git/logs/refs/heads/main:42:db189177efc5fca72f073b142b10bea2e30d2d5e 62be9e7d06d8af09fbfb27422a36dd4da89dff6d johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755361936 +0000	commit: Add detailed metrics for evaluating intelligence and cogency
+.git/logs/refs/heads/main:51:da818c6fc0b3cffcca43be9cfbcbeb5ab3947e27 ee5ef6a2fc938200af83b5560789115ad1d9f0fa johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755416517 +0000	commit: Enable intelligence analysis using 40 detailed metrics via Anthropic
+.git/logs/refs/heads/main:55:9252a1f22eb30e7827df3f551029b0b29076bc47 c9a236060c6eeafdd9b6c2c2244174817888b21b johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755426097 +0000	commit: Update metrics display to handle new data formats
+.git/logs/refs/heads/main:57:08b895ef8e0d33248c40265d4b0698524421e602 2f07e5a8fd2be06292e65c3d8a3ce654dfe3b074 johnmichaelkucz <39430181-johnmichaelkucz@users.noreply.replit.com> 1755427769 +0000	commit: Update scoring and analysis to use a new 160-metric framework

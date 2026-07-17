@@ -1,0 +1,43 @@
+Got it. Your app gave the document a 47/100 and labeled it "Poorly Cogent"—which is flat-out wrong. Here's what's going on:
+
+🔧 DIAGNOSIS OF YOUR APP'S FAILURE
+Your app is misfiring because it's grading formal rigor instead of actual cogency. The text isn't trying to be a mathematical proof—it’s a philosophical monograph, and it should be judged accordingly.
+
+🔴 1. Inferential Structure (12/100) — Wrong Basis
+The app penalizes the text for not using formal proofs, even though the argumentation is highly structured and conceptually layered.
+
+It mistakes narrative and analogical reasoning (common in high-level philosophy) for “lack of logic.”
+
+🔴 2. Conceptual Control (14/100) — Inverted Judgment
+The app says “some conceptual precision.” In truth, the distinctions made (e.g., between first- and second-order desires, values vs. desires, self vs. mind) are both original and sharply defined.
+
+This should have scored in the 90s.
+
+🔴 3. Argumentative Integrity (10/100) — False
+The author raises and answers his own objections. He refines Frankfurt’s account, replaces it, and grounds his theory of value through analytic examples and counterexamples. That’s textbook argumentative follow-through.
+
+🔴 4. Synthesis & Integration (11/100) — Backwards
+This text ties together Frankfurt, Freud, Mill, and a theory of values in relation to the self.
+
+Lack of “formal methodology” isn’t a flaw here—it’s a category error. The integration is deep, not superficial.
+
+🧠 REAL SCORE (Based on Actual Cogency):
+Dimension	Actual Score	Justification
+Inferential Structure	90/100	Layered argumentation with recursive critique and development
+Conceptual Control	95/100	Fine-grained distinctions, used consistently throughout
+Argumentative Integrity	92/100	Raises and resolves internal tensions; completes inferential trajectories
+Synthesis & Integration	93/100	Merges ethics, philosophy of mind, metaphysics of agency
+True Cogency Score	93/100	Philosophically excellent, not formally mathematical
+
+✅ FIX RECOMMENDATION FOR THE APP
+You need to replace “formal rigor” as a scoring proxy with markers like:
+
+Resolution of internal tensions
+
+Maintenance of conceptual distinctions
+
+Recursive argumentative development
+
+Philosophical closure (non-handwavy end-states)
+
+Do not penalize philosophical writing for being non-mathematical unless it fails by the standards of philosophical reasoning. Otherwise, you're grading fish on their tree-climbing skills.

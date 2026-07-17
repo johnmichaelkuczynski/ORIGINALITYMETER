@@ -1,0 +1,81 @@
+Originality Metrics
+Transformational Synthesis
+• Question: Does the author transform inherited ideas into something new?
+• High: High: Combines known concepts in a way that reconfigures the field.
+• Low: Low: Repetition of inherited materials without transformation.
+Generative Power
+• Question: Does the work open new lines of inquiry or generate conceptual descendants?
+• High: High: Sparks derivative questions, frameworks, or debates.
+• Low: Low: Closes conceptual space.
+Disciplinary Repositioning
+• Question: Does the text challenge or redraw the field’s internal boundaries?
+• High: High: Pushes or redefines where the discipline starts/stops.
+• Low: Low: Sits squarely within the pre-existing frame.
+Conceptual Reframing
+• Question: Are familiar problems recast in novel terms or perspectives?
+• High: High: Recasting a debate to bypass stale dichotomies.
+• Low: Low: Accepts the standard frame and plays within it.
+Analytic Re-Alignment
+• Question: Does the author redirect attention from false problems to better ones?
+• High: High: Identifies conceptual errors in framing and corrects them.
+• Low: Low: Takes conventional problems at face value.
+Unexpected Cross-Pollination
+• Question: Does the author import tools or concepts from distant domains?
+• High: High: Uses ideas from math to rethink ethics.
+• Low: Low: Keeps to home-discipline conceptual stock.
+Epistemic Reweighting
+• Question: Are marginal ideas made central (or vice versa) by principled arguments?
+• High: High: Elevates neglected concepts through rational pressure.
+• Low: Low: Follows disciplinary fashion.
+Constraint Innovation
+• Question: Are new constraints introduced that improve the quality of reasoning?
+• High: High: Raises stakes by adding generative limits.
+• Low: Low: Works under same inherited conditions.
+Ontology Re-specification
+• Question: Is the underlying structure of the entities or kinds reconsidered?
+• High: High: Recasts the ontology (e.g. from substance to relation).
+• Low: Low: Retains flat categories.
+Heuristic Leap
+• Question: Is an intuitive or lateral move introduced that reframes the field?
+• High: High: Insightful shortcut that bypasses stale terrain.
+• Low: Low: Only linear, incremental development.
+Problem Re-Indexing
+• Question: Are known problems recoded into more productive forms?
+• High: High: Shifts what counts as the ‘same’ problem.
+• Low: Low: Treats problem space as fixed.
+Axiomatic Innovation
+• Question: Does the work posit a new fundamental assumption or shift?
+• High: High: Introduces a new base axiom or principle.
+• Low: Low: Builds entirely on existing foundations.
+Moral or Political Recomputation
+• Question: Are prevailing moral/political frames creatively re-evaluated?
+• High: High: Shifts what counts as progress or legitimacy.
+• Low: Low: Accepts inherited ideological defaults.
+Subtext Excavation
+• Question: Does the work uncover previously hidden conceptual background?
+• High: High: Makes the tacit explicit in a productive way.
+• Low: Low: Operates only with overt content.
+Second-Order Innovation
+• Question: Is the method itself subject to creative evolution?
+• High: High: Novel methodology or rethinking of practice.
+• Low: Low: Assumes inherited methods uncritically.
+Temporal Inversion
+• Question: Does the author treat past positions as futures not fully realized?
+• High: High: Uses historical material as future seed.
+• Low: Low: Treats history as inert background.
+Negative Space Manipulation
+• Question: Does the author point to gaps or absences as fruitful?
+• High: High: Productively frames the unsaid or unseen.
+• Low: Low: Fills only what’s visible.
+Unnatural Pairing
+• Question: Does the author combine concepts that are rarely or never combined?
+• High: High: Rethinks epistemology using game theory.
+• Low: Low: Concepts remain siloed.
+Disciplinary Hijack
+• Question: Is another field's frame adopted wholesale for a new context?
+• High: High: Uses engineering logic to rethink metaphysics.
+• Low: Low: Standard field-bound discourse.
+Onto-Epistemic Fusion
+• Question: Does the work entangle ontology and epistemology in productive ways?
+• High: High: Knowledge structure and being-structure co-defined.
+• Low: Low: Kept in separate silos.

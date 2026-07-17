@@ -1,0 +1,54 @@
+I don’t want a generic or hardcoded graph. I want a smart graph that responds to a real-world scenario.
+The function should not just plot a simple curve like a sine or a parabola.
+I need the LLM to analyze a situation, model it, and then generate a graph from that model.
+
+For example, I might say:
+“Assume that the rate at which information spreads depends on the number of interactions between people, which increases with population but tapers due to attention limits. Also, novelty decays over time. Now generate a graph of information spread velocity over time.”
+
+In that case, the LLM needs to reason about the situation and create a meaningful composite function — something that rises sharply at first, peaks, and then declines.
+
+You, the Replit agent, must pass my prompt directly to the LLM, and allow it to:
+
+Think through the implications
+
+Create the underlying function
+
+Sample enough x-values to make the curve smooth
+
+Render a graph that reflects the logic of the scenario
+
+Do not insert any fallback preset like “sine wave” or “normal curve.” That defeats the purpose.
+
+The goal is to prove that the graph is context-sensitive and that the app supports real, intelligent, conditional modeling, not canned outputs.
+This function should not just generate a graph. It needs to be smart — capable of interpreting combined tasks that involve both a graph and a conceptual explanation.
+
+Sometimes, the user will input a complex prompt like:
+“Assume that rumors spread according to Principle X, which relates propagation speed to emotional salience and social saturation. Generate a graph that reflects this dynamic. Then write two paragraphs explaining what the graph shows, how it connects to the underlying theory, and how it might apply to modern digital communication.”
+
+In that case, the LLM needs to:
+
+Understand the scenario, including abstract or verbal constraints
+
+Construct the correct function(s) based on that theory
+
+Generate a high-quality graph that reflects the functional behavior
+
+Write an explanatory essay that:
+
+Describes what the graph shows
+
+Interprets the shape and features of the curve
+
+Connects it to the given principle
+
+Extends or applies the insight to a new domain (if asked)
+
+You, the Replit agent, must:
+
+Pass the entire user prompt to the LLM exactly as written
+
+Let the LLM decide how to model, graph, and explain
+
+Do not substitute any preset functions or responses
+
+The point is to support combined tasks involving reasoning, modeling, and interpretation — not just isolated plots.

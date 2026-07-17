@@ -1,0 +1,144 @@
+Please extend the current two-text comparison module of the Originality Meter app using the following logic. Preserve all existing functionality, but add the requested enhancements below. The final system should generate a multi-dimensional comparison report, with a simplified score output and detailed interpretive section.
+
+1. Preprocess Both Texts:
+Normalize case (lowercase standardization)
+
+Strip extraneous punctuation but preserve syntactic markers
+
+Sentence-split and paragraph-split each text
+
+Extract semantic units:
+
+Core propositions
+
+Key vocabulary
+
+Argumentative skeleton (claim, premise, support pattern)
+
+2. Run Comparisons Along These Vectors (Score 0–10 per vector):
+a. Content Similarity:
+Lexical overlap (Jaccard or cosine similarity on TF-IDF or embedding vectors)
+
+Conceptual paraphrase overlap (use sentence embedding similarity + paraphrase recognition)
+
+Argument structure matching (claim/premise/inference alignment)
+
+b. Stylistic Similarity:
+Sentence rhythm, syntax tree depth, word-length averages
+
+Rhetorical device patterning (metaphor, analogy, parallelism)
+
+Tone/register (academic, conversational, polemical, etc.)
+
+c. Epistemic Profile Similarity:
+Degree of compression (info density per sentence)
+
+Abstraction level (concreteness vs generality)
+
+Inferential chain length and complexity
+
+Friction level (epistemic risk, resistance, tension)
+
+d. Narrative & Topical Similarity:
+Subject-matter overlap
+
+Illustrative structure (parallel use of examples/analogies)
+
+Shared reference points (e.g., authors, traditions, frameworks)
+
+3. Rip-Off Risk Score (0–100):
+Weighted average of content + epistemic similarity, with stylistic factors as secondary. Return score with interpretive label:
+
+0–30: Unrelated
+
+31–60: Possibly derivative
+
+61–85: Highly derivative
+
+86–100: Likely rip-off
+
+Also include:
+
+3–5 sentence explanation of result
+
+Highlighted matching sections (optional layer)
+
+4. Development / Derivation Function:
+Add a function that assesses whether Text B substantively develops the ideas of Text A (or vice versa):
+
+Is B a faithful elaboration of A’s conceptual framework?
+
+Does B extend or reinterpret A's ideas in a non-derivative way?
+
+Score on a 0–10 development scale:
+
+0: No continuity
+
+5: Shared framework, but no development
+
+10: Full conceptual maturation of earlier ideas
+
+Output this score and include a few sentences describing how the development manifests (if at all).
+
+5. Doctrinal Affinity / Opposition Detection:
+Add a module that compares both texts for:
+
+Content agreement vs tension
+
+Methodological similarity (empiricism, rationalism, phenomenology, etc.)
+
+General mentality (diagnostic vs celebratory, pragmatic vs idealistic, etc.)
+
+Return a categorical classification:
+
+Doctrinally kindred
+
+Methodologically kindred
+
+Doctrinally opposed
+
+Methodologically opposed
+
+Ambiguous / Neutral
+
+Justify classification in 2–3 sentences.
+
+6. Author Psychology Inference Module:
+For each text, generate a speculative psychological profile of the author based on stylistic, epistemic, and thematic features. Include:
+
+Primary intellectual interests (e.g., ontology, systems, aesthetics, etc.)
+
+Intellectual strengths (e.g., abstraction, synthesis, criticality)
+
+Cognitive weaknesses (e.g., verbosity, vagueness, shallowness)
+
+Emotional or motivational signatures (e.g., idealism, resentment, evangelism, detachment)
+
+Possible personal agenda or “axe to grind”
+
+Then produce a comparative profile:
+
+Shared traits
+
+Conflicting traits
+
+Likely authorial stance toward one another (respectful? dismissive? antagonistic?)
+
+This section should be speculative, but insightful—based solely on textual signals.
+
+7. Final Output
+Return the following:
+
+Overall Similarity Score (0–100)
+
+Rip-Off Risk classification
+
+Development Relationship Score (0–10) and paragraph summary
+
+Doctrinal Affinity classification and paragraph summary
+
+Author Psychological Profiles (Text A and Text B)
+
+Comparative Psychological Summary
+
+Optional: inline highlights of matching structures or overlapping claims

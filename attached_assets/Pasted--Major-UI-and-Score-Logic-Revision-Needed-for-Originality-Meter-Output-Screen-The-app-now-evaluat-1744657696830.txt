@@ -1,0 +1,71 @@
+🚨 Major UI and Score Logic Revision Needed for Originality Meter Output Screen
+
+The app now evaluates Originality, Coherence, and provides a Composite Score. Good. But the presentation is muddled. Here's what needs to change:
+
+🔷 1. Split the output into three clearly labeled boxes, in this order:
+✅ Box 1: Originality Comparison
+Heading: “Originality Comparison”
+
+Two sliders:
+
+Passage A – Originality Score: 7.0/10
+
+Passage B – Originality Score: 8.0/10
+
+Optional: Add a brief label or badge for the winner, e.g.,
+
+“Passage B is more original”
+
+✅ Box 2: Coherence Comparison
+Heading: “Coherence Comparison”
+
+Two sliders:
+
+Passage A – Coherence Score: 9.0/10
+
+Passage B – Coherence Score: 8.0/10
+
+Optional: Badge again:
+
+“Passage A is more coherent”
+
+✅ Box 3: Aggregate Evaluation
+Heading: “Overall Quality Assessment”
+
+One bar or small table that shows:
+
+Composite Score A: 8.0
+
+Composite Score B: 8.0
+
+Below that, show:
+
+“This score weights originality and coherence, with slightly more weight given to coherence.”
+
+🧠 2. Revise the “Comparison Verdict” Panel
+It should now:
+
+Clearly justify each of the three dimensions: originality, coherence, and aggregate
+
+Give a verdict that reflects both absolute and comparative insights
+
+✅ Structure the text like:
+
+Originality: Passage B explores broader conceptual terrain and reframes institutional behavior, earning a higher originality score.
+
+Coherence: Passage A is more structurally precise and philosophically self-contained, making its ideas more digestible.
+
+Overall: While both passages are strong, Passage A is more polished, and Passage B is more intellectually daring. Their composite scores are equal, reflecting that tradeoff.
+
+🔁 3. Replace Ambiguous Labels
+“Composite Score” → replace with:
+
+“Passage A – Composite Score (Originality + Coherence): 8.0/10”
+
+Remove ambiguity. Every score must clearly refer to A or B, not float free of context.
+
+🔍 Summary:
+✅ Add proper section headings
+✅ Explicitly label all scores (and which passage they belong to)
+✅ Break comparison into three clearly separated stages
+✅ Justify every score in the verdict panel

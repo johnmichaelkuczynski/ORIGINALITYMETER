@@ -1,0 +1,11 @@
+One of Kant's primary aims is to demonstrate that necessary connections exist among the events we perceive. Contrary to this, Hume posited that while events occur in sequences and regularities, there are no intrinsic connections binding them. According to Hume, for event 
+ to cause event 
+ merely means that the sequence of 
+ followed by 
+ exemplifies a general regularity.
+
+Hume's interpretation appears counter-intuitive. It seems evident that pressing a button activates a computer, and flipping a switch illuminates a light. Kant, seeking to honor this intuition, endeavors to substantiate it through a transcendental argument. (Here, I present a transcendental argument supporting this perspective; whether it aligns with Kant's own reasoning or is one he might endorse is an exegetical issue I choose not to engage with.)
+
+Consider a hypothetical world devoid of causation, where only sequences of events exist. Such a world would lack any enduring entities. This absence arises because persistence itself is a causal concept. If an entity persists, a causal sequence must inherently exist. Therefore, in the absence of causation, persistence cannot occur. Without persistence, coherent ideation is impossible, since a coherent thought process necessarily involves some form of persistence. Thus, considering the mere fact that beings capable of posing questions exist—particularly regarding the essential preconditions for experience—it follows that causal relations are not mere sequences of events but involve some form of intrinsic relations.
+
+However, it is important to note that this transcendental argument relies on entirely analytic connections among propositions; no "synthetic a priori" is implicated. By the very concept of a rational thought process, it is analytically derived that causal relations among events exist. The analyticity under consideration is robust, yet it remains analyticity. In the subsequent section, I will attempt to demonstrate how Kantian transcendental arguments can resolve significant inquiries related to scientific explanation and knowledge in a broader sense.

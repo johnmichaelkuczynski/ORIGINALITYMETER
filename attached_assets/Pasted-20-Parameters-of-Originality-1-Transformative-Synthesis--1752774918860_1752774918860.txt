@@ -1,0 +1,101 @@
+20 Parameters of Originality
+________________________________________
+1. Transformative Synthesis
+•	Question: Does the author combine existing ideas to generate a new framework or insight?
+•	High: Juxtaposes ideas in a way that yields explanatory surplus or resolves a tension.
+•	Low: Glues together unrelated points without new structure or insight.
+________________________________________
+2. Constraint-Respecting Deformation
+•	Question: Has the author bent or stretched a known theory without breaking internal coherence?
+•	High: Adjusts a known model creatively while keeping its logic or evidence intact.
+•	Low: Mutates concepts randomly, breaking the internal rules of the tradition it draws from.
+________________________________________
+3. Epistemic Reframing
+•	Question: Does the author recast a known issue in a way that redefines how it’s understood?
+•	High: Shifts the angle of approach, producing a reorientation of the debate.
+•	Low: Repeats existing framings with cosmetic changes or stale analogies.
+________________________________________
+4. Historical Rarity
+•	Question: Would the author’s moves have been surprising or rare at the time they were written?
+•	High: Uses moves that are not found in typical archives or literature of the period.
+•	Low: Follows predictable or heavily worked-over patterns.
+________________________________________
+5. Recursive Innovation
+•	Question: Does the concept or argument generate more versions of itself in different settings?
+•	High: Scales across levels or invites reuse and extension.
+•	Low: Stays fixed; can’t be reapplied without breaking down.
+________________________________________
+6. Oblique Solution Path
+•	Question: Is the problem solved in an indirect but successful way?
+•	High: The answer comes sideways — surprising but coherent.
+•	Low: The answer is direct but trivial — or indirect and incoherent.
+________________________________________
+7. Meta-Theoretic Awareness
+•	Question: Does the author show insight about the frameworks that govern the discourse?
+•	High: Challenges or revises the foundational assumptions of a field.
+•	Low: Accepts disciplinary defaults without question.
+________________________________________
+8. Semantic Diagonalization
+•	Question: Are multiple conceptual layers crossed to produce novelty?
+•	High: Moves across object/meta, form/content, or logic/ethics in productive ways.
+•	Low: Stays at one level; doesn’t create new cross-layer understanding.
+________________________________________
+9. Tool Reappropriation
+•	Question: Does the author use a method or concept from one field in a powerful new domain?
+•	High: Transposes ideas in a way that changes both source and target domains.
+•	Low: Imports tools without adapting them or showing why they belong.
+________________________________________
+10. Analogical Leverage
+•	Question: Are analogies used to generate insight — not just to decorate?
+•	High: Core arguments depend on analogies that illuminate deeper structure.
+•	Low: Analogy is decorative, shallow, or unnecessary.
+________________________________________
+11. Category Rupture
+•	Question: Does the text challenge or destabilize a settled conceptual category?
+•	High: Redefines what counts as ‘mind’, ‘meaning’, ‘truth’, etc.
+•	Low: Accepts traditional categories without challenge.
+________________________________________
+12. Compression-Expansion Tension
+•	Question: Does the author compress prior ideas while opening new ones?
+•	High: Minimal setup leads to maximal generativity.
+•	Low: Either too compressed (cryptic) or too bloated (inefficient).
+________________________________________
+13. Semantic Reconfiguration
+•	Question: Are the meanings of key terms redefined in powerful ways?
+•	High: Terms are altered to shift the logic of the discussion.
+•	Low: Terms retain their conventional definitions.
+________________________________________
+14. Ontological Innovation
+•	Question: Does the work introduce a new kind of thing, property, or structural level?
+•	High: Adds new building blocks to the domain (e.g., new kinds of causality, value, or identity).
+•	Low: Uses only familiar ontological components.
+________________________________________
+15. Generative Asymmetry
+•	Question: Is a small move leveraged to create large conceptual ripples?
+•	High: One idea triggers a cascade of consequences.
+•	Low: Each move is linear and proportionate — no leverage.
+________________________________________
+16. Frame Violation
+•	Question: Does the author knowingly break a disciplinary boundary and get away with it?
+•	High: Violates norms productively, e.g., importing logic into aesthetics with real effect.
+•	Low: Stays in lane, or breaks norms with no gain.
+________________________________________
+17. Anchor-to-Drift Ratio
+•	Question: Is the text both grounded and original — not just one or the other?
+•	High: References tradition but moves far beyond it.
+•	Low: Either recycles the past or floats unmoored.
+________________________________________
+18. Unforced Nonconformity
+•	Question: Does the originality seem necessary — not performative?
+•	High: Divergence emerges naturally from logic or insight.
+•	Low: Originality feels like branding or affectation.
+________________________________________
+19. Asymmetric Discourse Positioning
+•	Question: Is the author’s voice distinct — not reducible to known positions?
+•	High: Not a standard liberal, materialist, idealist, etc. Speaks from a new angle.
+•	Low: Slot easily into known schools of thought.
+________________________________________
+20. Temporal Calibration
+•	Question: Does the originality make sense for the time of writing?
+•	High: Author anticipates future developments or marks a break with past norms.
+•	Low: Move was either already obvious at the time or incoherent for that era.

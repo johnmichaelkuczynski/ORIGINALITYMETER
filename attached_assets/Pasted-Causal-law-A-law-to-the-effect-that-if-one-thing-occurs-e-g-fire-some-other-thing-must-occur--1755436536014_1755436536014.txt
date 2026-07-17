@@ -1,0 +1,105 @@
+Causal law: A law to the effect that, if one thing occurs (e.g., fire), some other thing must occur (e.g., smoke).
+
+Causal inference: An inference based on knowledge of a causal law (e.g., I see smoke; I know that there is smoke only if there is fire; so I infer that there is, or was, a fire).
+
+Causal series: A series of events such that, given any two of them, one is the (in)direct cause of the other; in other words, a single series of events any one of which is (in)directly caused by some one state of affairs.
+Like all series, causal series don’t branch. This is a tautology. A ‘series’ is defined to be a non-branching structure.
+Of course, just a river can fork, so a causal series can branch out. In fact, the forking of a river is a special cause of the branching out of a causal series. But for a river to fork is for it to become two rivers (supposing that the two tributaries don’t later merge). It isn’t for a river to become two independent streams of water. Similarly, for a causal series to branch is for it to become multiple series. It is not for a series to comprise independent tributaries.
+
+Class: Synonymous (in this work, though not in others) with “set.” See “set.”
+
+Coherence and incoherence: An “incoherent” statement is one that undermines itself. Consider the statement:
+
+(BC) “Bill has four cars, but he doesn’t have more than one car.”
+
+BC is self-defeating. Its own meaning prevents it from being true. Therefore it is “incoherent.”
+It’s clear that any statement to the effect that someone had four cars while having no more than one car would be incoherent. So the concept of such a person is one that couldn’t be actualized; and any statement to the effect that it was actualized would be incoherent. Such concepts are described as “incoherent.” (In this context, the term “concept” is synonymous with the term “condition,” and the expression “to actualize a concept” is synonymous with the expression “to fulfill a condition.”)
+Concepts are conditions. To actualize a concept is to fulfill a condition.
+ 
+“Ceteris paribus”: Synonymous with “other things being equal” and “holding all other factors constant.” Ceteris paribus, a person with money is more likely to be happy than a person with no money. In other words, given two otherwise comparable people, one of whom has money, the other of whom does not, the former is more likely to be happy than the latter. But if the former has a painful chronic illness and his dreams have been all been shattered (etc.) whereas the former is in the pink of health and he feels himself to be on the cusp of success, the latter will probably be happier than the former.
+
+Coherently conceivable circumstance (or scenario): A circumstance is coherently conceivable just in case one is not guilty of self-contradiction in virtue of believing it to hold. So even though Kerry is not the U.S. President in 2007, the proposition Kerry is U.S. President in 2007 is not self-undermining—it isn’t like x is knowledge but not belief or 1 + 1 = 3. So while all beliefs requiring the existence of circumstances that are not coherently conceivable are false, not all false beliefs require the existence of such circumstances. See “coherence and incoherence.”
+
+Compatibilism: The doctrine that there can be personal freedom in a deterministic world. “Incompatibilism” is the doctrine that compatibilism is false. See “determinism” and “incompatibilism.”
+
+Compatible: P and Q are compatible statements if they can both be true. Thus, P and Q are compatible if, supposing that the one is true, it doesn’t follow that the other is false. “So JM is a philosophy professor” is compatible with “JM is more grouchy than Steve Carey,” since they can both be true. See “entailment” and “incompatible.”
+
+Complex expressions vs. simple expressions: Some expressions are simple (e.g., “Smith”), while others are complex (e.g., “the man that the dog bit”). All sentences are complex—that is, they consist of multiple expressions.
+At first, it appears as though there are exceptions to this. Consider the sentence “leave!” This seems simple. But it isn’t; that is because there is a hidden (or “phonetically unrealized,” meaning that there is no overt, acoustical, or visual representation of them in that word) occurrence of “you”—that sentence means: you—leave. Also, the verb leave has various semantic properties (e.g., tense, mood) that, although they are not phonetically marked, are nonetheless present, and make it a complex expression.
+Genuinely simple expressions are known as “morphemes.”
+
+Compositionality: According to the principle of compositionality, the meaning of a complex expression is a function of the meanings of its constituents; and the referent of a complex expression is a function of the referents of its constituents.
+
+The meaning of:
+
+(TY) “the author of War and Peace was friendly to the author of Crime and Punishment”
+
+is different from that of
+
+(DO) “the author of War and Peace was mean to the author of Crime and Punishment.”
+
+Why do TY and DO have different meanings? Because “friendly” and “mean” don’t mean the same thing. Replacing “friendly” with “mean,” or vice versa, turns a sentence having one meaning into a sentence having a very different meaning. This shows that what TY means depends on what “friendly” means. Semanticists express this by saying that TY’s meaning is “a function of ” what “friendly” means. What DO means is a clearly function of what “mean” means. In general, what expressions mean is a function of what the expressions composing them mean. See “special compositionality,” “function,” and “functor.”
+ 
+Compound sentence: Same as a molecular sentence. Thus, a compound sentence is one that consists of other sentences (e.g., “snow is white and grass is green”). See “molecular sentence.”
+
+Conceptual role semantics (CRS): the view that meaning is use, i.e., for two expressions to mean the same thing is for them to be used in the same way and, therefore, that for a given expression to have this, as opposed to that, meaning is for it to be used in this, as opposed to that, way.
+In his (1963) paper “Some reflections on language games,” Wilfrid Sellars clearly puts forth a version of CRS. But it’s quite definitely present in Wittgenstein’s book The Philosophical Investigations, which was completed in the late 40’s. In his (1994) book Making it explicit, Robert Brandom advocates CRS. Nowhere in that 900 page book, or in any writings of advocates of CRS, is the existence of any of the following reasonable positions so much as acknowledged, let alone addressed:
+
+(i) A knowledge of a word’s meaning is at least part of what guides a person to use it in the way she does. When the waiter asks you what you would like to eat, you say “I’d like a bowl of clam chowder,” and not “I’d like a bowl of rotten entrails.” Why do you say “clam chowder” instead of “rotten entrails”? Because you know that, given what it is that you want, “rotten entrails” has the wrong meaning and “clam chowder” has the right meaning. Of course, how an expression is used is likely to change its meaning. If enough people use the word “restive” to mean tired, it may well come to have that meaning. But until that time comes, those people are misusing that expression; and their usage of it, being discrepant from its actual meaning, can’t possibly be constitutive of it.
+
+(ii) Mere noises aren’t linguistic expressions. It is only noises coupled with meanings that are such expressions. In a world where there are no semantic conventions, a noise just like the noise you make when you say “snow is white” would mean nothing. If, in such a world, the gases leaving a volcano happened to make that noise, they would mean nothing. (In fact, they’d mean nothing in our world, except at most in some derivative sense.) Since, therefore, noises must be coupled with meanings in order to qualify as linguistic expressions, it makes no sense to say that what an expression means is a function of how it is used. After all, there is no expression to be used until the noises (and ink-marks and so forth) have been coupled with meanings. Therefore, CRS is false.
+Of course, there are different views as to what meanings are, and there are different views as to what it is for noises to be coupled with them. But relative to any such view, CRS is false.
+The contention that is closest to CRS that isn’t obviously false is the trivial contention that what noises (and ink-marks and the like) mean is a (partial) causal consequence of what people do with them. (This suggests that CRS is based on a failure to distinguish the concept of a logical consequence from that of a causal consequence.)
+
+(iii) Expressions that haven’t ever been used have determinate meanings. There are infinitely many sentences of English that haven’t been used but that have determinate meanings. If this weren’t the case, then nobody could ever utter a new sentence of English, at least not without making some ad hoc extension to the English language. But previously unuttered sentences are uttered all the time; and no sooner are they uttered than they have determinate meanings.
+According to CRS, what an expression means is determined by how it is used. So if CRS is right, an expression that hasn’t been used ipso facto has no meaning.
+To parry this, advocates of CRS would have to say the following. “Where some expressions are concerned, meaning is fixed by use. But where other expressions are concerned, use doesn’t fix meaning, at least not single-handedly. Some other factor is at work.”
+In making this concession, the advocate of CRS is admitting that CRS is false. Setting this aside, let us ask: what is this other factor?
+The answer: syntax. The meaning of “Bob kicked the can” is a function of (i) what each of its components means (in other words, it’s a function of what is meant by each of “Bob,” “kick,” and so on); and it’s also a function of (ii) the syntactic rules of English (in other words, it’s a function of the rules that assign meanings to complex expressions on the basis of the meanings of their constituents).
+ 
+Thus, the meaning of a complex expression is not determined by its use, and is determined by existing semantic and syntactic conventions. So CRS is false, if taken as an analysis of complex expressions. Earlier, we saw why it’s false if taken as an analysis of simple expressions.
+
+(iv) If the meaning of a sentence S were determined by its “conceptual role”—that is, by what people inferred from S, when they thought it correct—any inference that people made from S would ipso facto be constitutive of S’s meaning. If enough people thought that “Stalin the dictator of the Soviet Union from 1923–1953” entailed “somebody who was over 6 ft tall was the dictator of the Soviet Union from 1923–1953,” the former would entail the latter. But even if the latter were correct (which it isn’t since Stalin was barely over 5 ft tall), it wouldn’t follow from the first sentence.
+
+In their (2001) book The Compositionality Papers, Jerry Fodor and Ernie Lepore put forth several blistering criticisms of CRS. In that work, any gaps in the criticisms of CRS just put forth are very much filled in.
+
+Conditional: A conditional statement is one that has the form if P, then Q. Conditional statements play a vital role in logic, since logic is the discipline that attempts to determine what follows from what, and any statement to the effect that one statement follows from another is expressed by a conditional.
+
+Confirm: For P to confirm Q is for P to provide support for Q. (P: ‘Smith’s fingerprints are found in the murder-weapon used to kill Jones.’ Q: “Smith killed Jones.” P supports Q.) Confirmation is defeasible, meaning that, even if P confirms Q, some other statement might provide more support for not-Q than P provides for Q. (R: “There is a video-tape of Brown killing Smith, then pressing the hand of Smith, who is at the crime-scene but unconscious, around the murder-weapon, and then leaving it at the scene.”) Entailment is not defeasible. A consequence is that P cannot, if true, entail Q without Q’s being true. See “confirmation.”
+
+Confirmation: P confirms Q if, supposing that P is true, it’s possible that Q is false but it’s more likely than not that Q is true. “Smith is a Harvard professor” confirms “Smith is not a complete moron,” but it doesn’t entail it. See “confirm” and “entailment.”
+
+Conjunct: In P and Q, each of P and Q is a “conjunct.” So snow is white is one of the conjuncts of snow is white and grass is green. See “conjunction.”
+
+Conjunction: A conjunction is any sentence composed of two sentences that are joined by an “and” or a “but” or an “although”—or any other connective whose purpose is to indicate that both of the sentences thereby joined are true.
+
+Connective: A “connective” expression is one that, given one or more sentences, enables a new sentence to be formed. So, “if ” is a connective since, given the sentences “grass is green” and “snow is white,” it yields the sentence “if grass is green, then snow is white.” All conjunctions (“and,” “or,” “but”) are connectives. So is “not.” This is because “snow is not white” says the same thing as “it is not the case that snow is white,” which is what results when the expression “it is not the case” is coupled with “snow is white.”
+“It is possible” (or “possibly”) is a connective, since it yields “it is possible that John is home” when given the sentence “John is home.”
+“Sally believes” is a connective since it yields “Sally believes that John is home” when given the sentence “John is home.”
+“And,” “if,” and “or” are two-place connectives, meaning that they form sentences out of pairs of sentences. “Not,” “it is possible that,” and “John believes that” are one-place connectives, since they form sentences out of single sentences.
+
+Commentary: A connective can be thought of as a sentence-level adjective. That is, it can be thought of as an expression C such that, given a sentence S, C yields a new sentence C(S) (read: “C of S”) such that C(S)
+ 
+attributes some characteristic to the proposition (or open proposition) expressed by S. For example, “Fred knows that” is a connective. And if you say “Fred knows that snow is white,” you are attributing a property to the proposition that snow is white; you are saying of that proposition that it has the property that Fred knows it to be true. “Because” is a connective, and if you say “snow is white because grass is green,” you are seeing of the propositions that snow is white and grass is green that the former is a causal consequence of the latter. One last example: “for all x” is a connective, and if you say “for all x, x is a mammal if x is a whale,” you are attributing a characteristic (that of being correct) to each of infinitely many propositions. (That is why, even though “for all x” and other quantifiers don’t operate on sentences, they nonetheless qualify as connectives.
+Connectives attribute properties to propositions. This is what quantifiers do. In fact, quantifiers do it on an even larger scale than other connectives. Consider the quantifier “for all x.” When coupled with the open sentence “x is tall,” this yields a sentence (“for all x, x is tall”) that says of an infinitely large class of propositions (viz. those having the form x is tall) that each of its members is true. (By contrast, “Fred believes that,” when coupled with “Jim is tall,” yields a sentence (“Fred believes that Jim is tall”) that attributes a property (that of being believed by Fred) to only one proposition.) That is why, even though quantifiers operate on open sentences, whereas other connectives operate on actual sentences, quantifiers are generally treated as connectives.
+A sentence can have more than one connective. An example of such a sentence would be:
+
+(*) “either Jim is in Idaho and Larry is in Idaho with Jim, or Larry is in Delaware and Fred is with Larry in Delaware.”
+
+The main connective of (*) is “or.” Why is it the main connective? (*) attributes a property to the set containing the propositions either Jim is in Idaho and Larry is in Idaho with Jim and Larry is in Delaware and Fred is with Larry in Delaware. The property that it attributes to that set is the property of containing at least one true member. The other connectives occurring in (*) don’t attribute properties to that pair of propositions; they attribute properties to propositions composing the propositions composing (*). That is why none of those connectives is the main connective. I leave it to the reader as an exercise to produce an explicit definition of the term “main connective” on the basis of these remarks.
+
+Consequentialism: The doctrine that it is entirely in virtue of what its effects are that an act is morally right or wrong. See “deontology” and “utilitarianism.”
+
+Consistent/inconsistent: If two statements are compatible, they are “consistent” with each other; otherwise they are inconsistent with each other. “Consistent” and “compatible” mean the same thing. See “compatible.”
+
+Consistent/inconsistent (in connection with axiomatic systems): When an axiomatic system is described as “consistent” what is meant is that, given any two statements composing it, they are consistent with each other. An axiomatic system is “inconsistent” if it doesn’t satisfy this condition. See “axiom” and “axiomatic system.”
+
+Content: The content of a statement or a belief is what must hold for it to be correct.
+
+Content-externalism: Let X and Y be two creatures that are qualitatively identical except for the fact that the causes of X’s current condition aren’t qualitatively identical with those of Y’s current condition. According to content-externalism, the content of X’s thoughts and perceptions may, in virtue of that fact, be different from the contents of Y’s corresponding thoughts and perceptions. See “semantic externalism.”
+
+Contingent: A proposition is contingent if there are coherently conceivable circumstances where it is a true and also conceivable circumstance where it is false (e.g., Mary owns a BMW).
+
+Counterfactual: a statement of the form: if P were the case, then Q would also be the case (e.g., if Kennedy hadn’t been assassinated, he would have been reelected in 1964).
+ 
+A backtracking counterfactual is one of the form: “if P were the case at time t, then Q would have 

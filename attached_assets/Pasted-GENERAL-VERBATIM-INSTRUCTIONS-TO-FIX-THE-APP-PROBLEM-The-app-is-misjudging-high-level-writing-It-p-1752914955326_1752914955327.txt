@@ -1,0 +1,40 @@
+GENERAL VERBATIM INSTRUCTIONS TO FIX THE APP
+PROBLEM:
+The app is misjudging high-level writing. It penalizes intelligence, originality, and clarity because it relies on surface-level heuristics—like vocabulary cues, paragraph scaffolding, or school-style transitions—instead of evaluating actual substance and reasoning structure.
+
+❌ WHAT THE APP IS CURRENTLY DOING WRONG
+It treats simplification as the same thing as clarity.
+→ Compressed or sophisticated passages are unfairly labeled as unclear, even when logically transparent.
+
+It punishes originality for lacking citation or precedent.
+→ When a writer presents a novel insight or synthesis, the app sees it as unsupported simply because it hasn’t seen it before.
+
+It uses textbook or academic templates as quality benchmarks.
+→ Content that doesn’t look like a high school or undergraduate essay is downgraded—even when it is vastly superior in intelligence and structure.
+
+It evaluates flow using formulaic structure instead of logical cohesion.
+→ If an argument uses conceptual rhythm or cumulative logic rather than topic-sentence paragraphs, the app marks it as “poorly organized.”
+
+It penalizes top-down reasoning and metacognitive framing.
+→ Writing that talks about how thinking works or analyzes structure from above gets rated as vague—even when precise and rigorous.
+
+✅ WHAT THE APP SHOULD DO INSTEAD
+Evaluate structure based on coherence and progression of thought.
+→ Recognize when an argument is unfolding cleanly—even if it's not using basic templates.
+
+Reward originality, compression, and high-density reasoning.
+→ When a writer presents new insight, recognize that novelty is not the same as incoherence.
+
+Stop assuming that good writing must be accessible to average readers.
+→ High-quality work is often written for intelligent or expert audiences. Judge clarity based on whether a competent reader could follow it, not whether it’s beginner-friendly.
+
+Treat clarity, structure, and cogency as distinct from pedagogy.
+→ Don't confuse lack of spoon-feeding with confusion. Some writing is designed to challenge, not coddle.
+
+Assume competence unless there is clear evidence of confusion or error.
+→ Do not default to average scores for writing that surpasses school-level norms just because it’s hard to categorize.
+
+🔄 GLOBAL FIX
+Add this instruction:
+
+“When evaluating advanced writing, switch to expert-mode scoring. Prioritize conceptual structure, reasoning quality, and originality. Do not penalize based on accessibility, template compliance, or surface features. Recognize intelligent compression and inferential architecture, even if it exceeds typical reader expectations.”

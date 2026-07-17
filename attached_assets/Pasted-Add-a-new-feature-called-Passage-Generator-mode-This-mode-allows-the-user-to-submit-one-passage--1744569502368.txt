@@ -1,0 +1,64 @@
+Add a new feature called “Passage Generator” mode.
+
+This mode allows the user to submit one passage and have the AI generate a more original version of it. The point is not just to rephrase or paraphrase, but to improve its conceptual depth, semantic distance, and overall intellectual contribution.
+
+🔄 1. How it Works
+After a passage has been analyzed, the user clicks a button labeled:
+
+“Generate More Original Version”
+
+The AI uses the evaluation results—especially areas with low scores (e.g., low derivative index, low semantic distance, high parasitism)—to:
+
+Identify what’s stale or derivative about the original
+
+Rebuild the passage with more novel conceptual framing
+
+Preserve the core intent and voice unless told otherwise
+
+🧠 2. Key Instruction to the AI:
+The AI must not simply reword the passage.
+
+It must make genuine intellectual improvements, such as:
+
+Reframing the problem
+
+Introducing new conceptual distinctions
+
+Challenging implicit assumptions in the original
+
+Offering sharper or broader applications
+
+✍️ 3. Optional Style Inputs
+Let the user optionally select:
+
+“Keep my voice”
+
+“Make it more formal/academic”
+
+“Make it more punchy”
+
+Or skip style guidance and just prioritize originality
+
+🔍 4. Output Format
+Output appears in a new pane or section labeled:
+
+“AI-Generated Version (Higher Originality)”
+
+Beneath the new passage, show an updated Estimated Derivative Index (or color-coded freshness bar)
+
+Option to export or replace original passage
+
+📎 5. Option to Submit for Reevaluation
+User can click:
+
+“Re-evaluate This Version”
+
+Which reruns the full originality analysis on the new AI-generated text
+
+📐 UI/UX Additions
+Element	Location	Functionality
+“Generate More Original Version” button	Beneath existing passage analysis	Triggers the generator
+Style selector dropdown (optional)	Next to button	Helps guide tone/genre
+New passage display box	Below original OR in side-by-side view	Shows rewritten passage
+“Re-evaluate This Version” button	Below new passage	Runs the full analysis pipeline again
+“Download Revised Version”	Optional, for export	Gives .txt or .docx download of new text

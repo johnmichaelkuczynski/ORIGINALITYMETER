@@ -1,0 +1,86 @@
+INTELLIGENCE METER ANALYSIS
+==================================================
+
+Compression Capacity
+Score: 60/100
+Assessment: The text expresses complex ideas about different kinds of psychopathy in a detailed manner, but occasionally becomes verbose and lacks conciseness.
+
+Multi Level Integration
+Score: 70/100
+Assessment: The author integrates abstract concepts (psychopathy, integrity) with concrete examples (bureaucrats, academics) quite well, but at times the layers are not seamlessly connected.
+
+Dynamic Constraint Handling
+Score: 50/100
+Assessment: The author seems somewhat constrained by strong preconceived notions, which hinders balanced exploration of the topic.
+
+Inference Architecture
+Score: 65/100
+Assessment: Reasoning is present but could benefit from deeper, more layered inferential scaffolding.
+
+Epistemic Risk Management
+Score: 40/100
+Assessment: The text occasionally makes bold assertions without addressing their level of riskiness.
+
+Cognitive Friction Tolerance
+Score: 50/100
+Assessment: The writer does not seem comfortable enduring unresolved tensions, quickly resolving issues through strong opinions.
+
+Strategic Ambiguity Deployment
+Score: 45/100
+Assessment: There is little evidence of strategic ambiguity; most ambiguity stems from a lack of precision rather than intent.
+
+Representational Versatility
+Score: 40/100
+Assessment: The author sticks primarily to a provocative narrative style, without utilizing multiple representational formats.
+
+Recursive Self Monitoring
+Score: 50/100
+Assessment: The author occasionally appears aware of their own argumentative strength, yet frequently proceeds with unexamined certainties.
+
+Conceptual Novelty With Coherence
+Score: 65/100
+Assessment: Introduces original perspective by categorizing kinds of psychopathy, though coherence suffers occasionally from strong biases.
+
+Noise Suppression
+Score: 60/100
+Assessment: Attempts to focus on the topic of psychopathy, however, emotional language and strong opinions introduce noise.
+
+Abductive Strength
+Score: 55/100
+Assessment: The conclusions drawn from observations show some creativity but lack robust support.
+
+Causal Finesse
+Score: 50/100
+Assessment: Simple cause-effect relationships appear without extensive nuance; assertions rather than deep causal exploration dominate.
+
+Boundary Perception
+Score: 45/100
+Assessment: The author's exploration appears unaware of boundaries, engaging in overgeneralization rather than constrained analysis.
+
+Temporal Layering
+Score: 60/100
+Assessment: Some temporal distinctions are made between early and late-onset psychopathy, although they remain surface-level.
+
+Intellectual Empathy
+Score: 40/100
+Assessment: The author does not fairly reconstruct or engage with opposing views, frequently dismissing them instead.
+
+Conceptual Mobility
+Score: 50/100
+Assessment: Conceptual transitions occur but lack fluidity due to strong attachment to the psychopathology framework.
+
+Error Assimilation
+Score: 45/100
+Assessment: Recognition or integration of possible errors in reasoning is minimal as the author maintains a dogmatic stance.
+
+Pattern Extraction
+Score: 55/100
+Assessment: Patterns among psychopathy types are loosely identified, though the analysis misses deeper structural connections.
+
+Semantic Topology Awareness
+Score: 50/100
+Assessment: Ideational dependencies are partially tracked but often presented through disconnected assertions.
+
+OVERALL VERDICT
+--------------------
+The passage displays moderate cognitive sophistication with some innovative ideas about psychopathy. It presents strong opinions without substantial recognition of opposing views. The thinking is articulate yet often lacks depth and multidimensional examination, including limited strategic ambiguity and error assimilation. The writing is better than average but not exceptional, contrasting strongly defined assertions against more complex analyses brushed aside.

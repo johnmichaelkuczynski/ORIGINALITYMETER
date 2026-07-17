@@ -1,0 +1,81 @@
+Overall Quality Metrics
+Conceptual Compression
+• Question: How much conceptual work is done per unit of language?
+• High: High: “The will is the form of anticipation.”
+• Low: Low: “In this chapter, I will explain the ways in which…”
+Epistemic Friction
+• Question: Are claims under tension? Do they resist paraphrase?
+• High: High: Complicated tradeoffs, ambiguities, or disjunctions are explored.
+• Low: Low: Everything proceeds linearly and smoothly.
+Inference Control
+• Question: Does the author show tight command over logical or quasi-logical progression?
+• High: High: Strong inferential chaining, disambiguation of premises.
+• Low: Low: Juxtapositions mistaken for arguments.
+Asymmetry of Cognitive Labor
+• Question: Is the writer doing more work than the reader?
+• High: High: The author scaffolds difficult ideas, discharges burdens.
+• Low: Low: Jargon is dropped without explication; the reader must untangle.
+Novelty-to-Baseline Ratio
+• Question: How much of the content exceeds textbook-level summary?
+• High: High: New distinctions, perspectives, or critiques.
+• Low: Low: Restating Wikipedia-level history or doctrine.
+Internal Differentiation
+• Question: Are internal contrasts and tensions developed within the work?
+• High: High: Competing theses are nested, refined, or resolved.
+• Low: Low: One position stated, with no internal pressure.
+Problem Density
+• Question: Are real problems identified, or is the text solution-shaped without a problem?
+• High: High: Clear tension, paradox, conflict, or conceptual puzzle.
+• Low: Low: Everything is a “survey” or summary.
+Compression Across Levels
+• Question: Are sentence, paragraph, and structural layers all doing work?
+• High: High: Each scale supports the others — structure follows thought.
+• Low: Low: Structure is imposed mechanically (e.g. “This dissertation has 5 parts…”
+Semantic Specificity
+• Question: Are key terms defined with internal rigor and used consistently?
+• High: High: Key terms don’t drift and are operationalized.
+• Low: Low: Terms like “transcendental,” “mental content,” etc., are thrown in without cost.
+Explanatory Yield
+• Question: Does the text resolve or clarify phenomena that were obscure before?
+• High: High: Theoretical payoffs are evident and usable.
+• Low: Low: Descriptive or procedural rhetoric without payoff.
+Meta-Cognitive Signal
+• Question: Does the author display awareness of the limits, affordances, or tensions of their own method?
+• High: High: E.g., “This formulation may beg the question unless...”
+• Low: Low: Claims are stated as if exempt from critique.
+Structural Integrity
+• Question: Is the argument or content architecture coherent at scale?
+• High: High: Early sections scaffold later insights; structure reflects logic.
+• Low: Low: Arbitrary sequence; no cumulative logic.
+Generative Potential
+• Question: Does the writing suggest future questions, applications, or generalizations?
+• High: High: Opens doors conceptually.
+• Low: Low: Closes loops or reiterates fixed boundaries.
+Signal-to-Rhetoric Ratio
+• Question: What percent of the text actually says something, as opposed to procedural or rhetorical fluff?
+• High: High: High signal. Each sentence matters.
+• Low: Low: Meta-commentary about structure, scope, method dominates.
+Dialectical Engagement
+• Question: Does the work engage objections or alternative views intelligently?
+• High: High: Anticipates critique and responds.
+• Low: Low: Straw men or echo chamber.
+Topological Awareness
+• Question: Does the author map the conceptual terrain well (what’s upstream/downstream of what)?
+• High: High: Awareness of where their view sits within larger structures.
+• Low: Low: Flat sequence of points.
+Disambiguation Skill
+• Question: Are ambiguous terms or ideas resolved precisely?
+• High: High: Aware of multiple senses; avoids equivocation.
+• Low: Low: Uses language loosely, with slippage.
+Cross-Disciplinary Fluency
+• Question: Can the text move fluently across relevant domains (e.g., logic and language; history and theory)?
+• High: High: Seamless integration of multiple disciplines.
+• Low: Low: Bounded inside a single paradigm with no outreach.
+Psychological Realism
+• Question: Are motivations, mental models, or interpretive frames psychologically plausible?
+• High: High: Explains behavior or beliefs with realism and nuance.
+• Low: Low: Treats philosophical positions as abstract islands.
+Intellectual Risk Quotient
+• Question: Is the author actually putting a real intellectual position on the line?
+• High: High: Willing to stake a claim that could fail or offend.
+• Low: Low: Excessive caution, hedging, or hiding behind citations.

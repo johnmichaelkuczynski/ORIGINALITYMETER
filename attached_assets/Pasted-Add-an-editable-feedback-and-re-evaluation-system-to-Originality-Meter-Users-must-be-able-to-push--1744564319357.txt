@@ -1,0 +1,58 @@
+Add an editable feedback and re-evaluation system to Originality Meter.
+
+Users must be able to push back on the AI’s assessments (e.g., on the Derivative Index, Heatmap, Semantic Distance, etc.). This system should include:
+
+🔁 1. Dedicated Feedback Box
+Under each evaluation category (e.g., "Semantic Distance"), add a text box labeled:
+
+“Don’t agree? Tell us why.”
+
+The user can type in detailed feedback, such as:
+
+“This passage actually departs from the Chomskyan tradition entirely—it’s not building on it, it’s critiquing it.”
+
+💬 2. AI Responds to Feedback
+When the user submits feedback, the app should send the original analysis + the user’s comment to the AI.
+
+The AI should respond in dialogue format, not as a new summary—it should say things like:
+
+“I see your point. If this passage is indeed critiquing the tradition rather than extending it, the semantic distance score may deserve re-evaluation.”
+
+It can stand its ground or revise the score/notes—but it must justify either move.
+
+📎 3. Optional File Upload
+Allow the user to upload short supporting documents (PDF or .docx, ideally <5 pages for now).
+
+The AI should use the content of these documents as context when re-evaluating the user’s claims.
+
+If a user uploads a supporting text, the system should respond with something like:
+
+“I reviewed your uploaded article and see that your claim aligns with your authorial stance in that work. I’m adjusting the originality evaluation accordingly.”
+
+🧠 4. Integration with Existing Analysis Engine
+The dialogue engine must be connected to the same memory/context as the original passage analysis—not an isolated GPT chat.
+
+The AI must “know”:
+
+What it previously said about the passage
+
+What the user disagrees with
+
+What evidence (if any) the user submitted
+
+✅ 5. Optional Outcome: Revised Evaluation
+If warranted, the app should:
+
+Re-issue a revised version of the original metric (e.g., a new Derivative Index)
+
+Add a disclaimer or note: “Revised in response to user commentary.”
+
+If it disagrees with the user, it should say so respectfully and explain why.
+
+🧩 UI ADDITIONS
+Component	Placement	Behavior
+“Don’t agree?” feedback box	Under each evaluation category	Sends feedback to AI
+“Submit & Re-Evaluate” button	Below the text box	Triggers reevaluation
+Upload box (PDF/.docx)	Sidebar or under feedback area	File is parsed and added to context
+AI response panel	Appears below each feedback	Conversational response (not generic summary)
+“Revised Evaluation” tag	If analysis is changed	Highlights updated section

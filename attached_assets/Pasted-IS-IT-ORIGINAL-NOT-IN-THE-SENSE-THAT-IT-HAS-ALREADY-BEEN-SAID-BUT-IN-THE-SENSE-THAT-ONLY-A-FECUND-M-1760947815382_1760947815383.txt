@@ -1,0 +1,51 @@
+IS IT ORIGINAL (NOT IN THE SENSE THAT IT HAS ALREADY BEEN SAID BUT IN THE SENSE THAT ONLY A FECUND MIND COULD COME UP WITH IT)?
+"To explain an event e* is to identify some e that is the cause of e*. e is the cause of e* if, given e, e* s occurrence is not discontinuous with the state of the universe prior to e* s occurrence."
+This passage presents an original analysis of explanation as discontinuity-elimination. While building on existing philosophical foundations, it offers a fresh perspective on causation and explanation. The text appears to be a sophisticated philosophical analysis of inference to the best explanation (IBE) and causation.
+
+Question 2
+90/100
+ARE THE WAYS THE IDEAS ARE INTERCONNECTED ORIGINAL? OR ARE THOSE INTERCONNECTIONS CONVENTION-DRIVEN AND DOCTRINAIRE?
+"False hypotheses don't travel well. A lie may work in particular context: you lie to your roommate about eating his powdered doughnuts."
+The interconnections are strikingly original, particularly in linking abstract philosophical concepts to concrete examples. The author creates novel bridges between epistemological principles and everyday experiences.
+
+Question 3
+88/100
+ARE IDEAS DEVELOPED IN A FRESH AND ORIGINAL WAY? OR IS THE IDEA-DEVELOPMENT MERELY ASSOCIATIVE, COMMONSENSE-BASED (OR COMMON-NONSENSE-BASED), OR DOCTRINAIRE?
+"Continuity=causality. Explanation=continuity-restoration."
+The development is fresh and original, with ideas building organically through a combination of formal analysis and accessible examples. The equation of continuity with causality represents a novel conceptual synthesis.
+
+Question 4
+92/100
+IS IT ORIGINAL RELATIVE TO THE DATASET THAT, JUDGING BY WHAT IT SAYS AND HOW IT SAYS IT, IT APPEARS TO BE ADDRESSING? (THIS QUESTION IS MEANT TO RULE OUT 'ORIGINALITY'-BENCHMARKS THAT AUTOMATICALLY CHARACTERIZE DARWIN, FREUD, NEWTON, GALILEO AS 'UNORIGINAL.')
+"To model data d1 dn is to posit something X such that, given d1-d3+X, the facts described by d1 dn are fragments of structures/processes that don't comprise discontinuities."
+Within the context of philosophical discussions of causation and explanation, this formulation offers a highly original perspective that combines formal precision with intuitive clarity.
+
+Question 5
+85/100
+IS IT ORIGINAL IN A SUBSTANTIVE SENSE (IN THE SENSE IN WHICH BACH WAS ORIGINAL) OR ONLY IN A FRIVOLOUS TOKEN SENSE (THE SENSE IN WHICH SOMEBODY WHO RANDOMLY BANGS ON A PIANO IS 'ORIGINAL')?
+"If the totality of the facts were as d1-d3 described them, the emergence of a red ball from the tunnel's end would be an instance of ex nihilo creation"
+The originality is substantive rather than merely novel. The analysis of causation through continuity represents a genuine philosophical advance.
+
+Question 6
+90/100
+IS IT BOILERPLATE (OR IF IT, PER SE, IS NOT BOILER PLATE, IS IT THE RESULT OF APPLYING BOILER PLATE PROTOCOLS IN A BOILER PLATE WAY TO SOME DATASET)?
+"We have to work with the data we have, not the data we want."
+Far from boilerplate, the text presents original insights using both technical and accessible language. The approach is fresh and thoughtful rather than formulaic.
+
+Question 7
+85/100
+WOULD SOMEBODY WHO HAD NOT READ IT, BUT WAS OTHERWISE EDUCATED AND INFORMED, COME WAY FROM IT BEING MORE ENGLIGHTED AND BETTER EQUIPPED TO ADJUDICATE INTELLECTUAL QUESTIONS? OR, ON THE CONTRARY, WOULD HE COME UP CONFUSED WITH NOTHING TANGIBLE TO SHOW FOR IT?
+"False hypotheses may do a good job of modeling limited data-sets. But, precisely because they're false, they tend not to model enlargements of such sets."
+Yes, readers would gain significant insights about the nature of explanation and causation, presented in an accessible yet sophisticated way.
+
+Question 8
+88/100
+WOULD SOMEBODY READING IT COME AWAY FROM THE EXPERIENCE WITH INSIGHTS THAT WOULD OTHERWISE BE HARD TO ACQUIRE THAT HOLD UP IN GENERAL? OR WOULD WHATEVER HIS TAKEAWAY WAS HAVE VALIDITY ONLY RELATIVE TO VALIDITIES THAT ARE SPECIFIC TO SOME AUTHOR OR SYSTEM AND PROBABLY DO NOT HAVE MUCH OBJECTIVE LEGITIMACY?
+"To eliminate anomalies is to eliminate discontinuities."
+The insights appear robust and generally applicable, offering a valuable framework for understanding explanation and causation beyond specific philosophical contexts.
+
+Question 9
+95/100
+IF YOU GAVE A ROBOT THE DATASET TO WHICH THE PASSAGE IS A RESPONSE, WOULD THE ROBOT BE ABLE TO GENERATE IT (OR SOMETHING VERY MUCH LIKE IT)? OR, ON THE CONTRARY, DOES IT BUTCHER IDEAS, THIS BEING WHAT GIVES IT A SHEEN OF 'ORIGINALITY'?
+"The ball that rolled into the tunnel is identical with the ball that rolled out of the tunnel"
+The creative linking of abstract principles with concrete examples and the original synthesis of ideas would be very difficult for a robot to replicate.

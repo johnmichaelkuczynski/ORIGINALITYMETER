@@ -1,0 +1,66 @@
+Add a new metric to Originality Meter called “Coherence.”
+
+This metric evaluates whether the passage, despite being original or semantically distant, is logically and conceptually coherent.
+
+🔍 What Coherence Means:
+The passage should:
+
+Maintain internal consistency
+
+Avoid contradiction or conceptual confusion
+
+Present ideas that build logically from one another
+
+Use terms consistently (no semantic drift mid-passage)
+
+Be intelligible as a unified, structured argument or narrative
+
+📊 Coherence Score Output:
+Add a section alongside the existing originality metrics called “Coherence”
+
+Include a numeric score (0–10) and short paragraph explanation
+
+Example:
+
+Score: 8.2/10
+“The passage develops its ideas in a clear sequence, avoids contradiction, and maintains consistent use of terminology.”
+
+🧠 How It Interacts with Originality:
+Coherence must be evaluated independently from originality
+
+If a passage has high originality but low coherence, app should flag that:
+
+“While this passage introduces novel distinctions, it suffers from semantic fragmentation and weak logical progression.”
+
+If both originality and coherence are high, mark as “High-Quality Original Work.”
+
+🧾 In Evaluation Summary Section:
+Add summary labels like:
+
+“Original but incoherent”
+
+“Conventional but coherent”
+
+“Original and coherent” ✅
+
+“Derivative and incoherent” ❌
+
+🔁 Optional Follow-up Actions:
+If coherence is low, add a button:
+
+“Help Me Clarify This” — lets the user enter dialogue with AI to rewrite or restructure the passage to improve coherence
+
+📐 UI Additions
+Component	Location	Functionality
+Coherence score & summary	Same panel as Derivative Index etc.	Shows 0–10 score, with brief diagnosis
+Label under overall summary	“Original and Coherent” badge	Auto-generated classification
+“Help Me Clarify” button	Beneath coherence score	Launches dialog for improvement
+🔄 Example Output
+Coherence Score: 5.6/10
+“The passage introduces compelling ideas, but their interrelation is underdeveloped. It transitions abruptly between arguments and uses key terms in subtly inconsistent ways.”
+
+User clicks: “Help Me Clarify This”
+
+AI says:
+
+“You seem to introduce the term ‘aesthetic autonomy’ midway through without explaining how it relates to ‘formal rationality’ from earlier. Would you like help restructuring the flow?”

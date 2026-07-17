@@ -1,0 +1,28 @@
+Keep the current UI and all user interactions exactly as they are. Do not change the layout or interface in any way. Only modify the logic that calculates the "originality" and "depth" scores.
+
+1. Go to the backend function that handles scoring or evaluation of user-uploaded or user-inputted texts.
+
+2. Completely remove any scoring logic that:
+    - Uses cosine similarity to generic text datasets
+    - Bases scores on sentence length, vocabulary rarity, or word count
+    - Rewards excessive hedging or academic vagueness (e.g. "my aims are modest")
+
+3. Replace the "originality" score logic with the following:
+    - Score higher if the text introduces *new formal structures*, symbols, or definitions (e.g. defining `Cn`, `n-isomorph`, `n-pair`, etc.)
+    - Score higher if the text uses **nonstandard representations** (e.g. `<K, R>n` instead of familiar math notation)
+    - Score lower if the text simply rephrases known ideas without modifying or reconfiguring them
+    - Bonus points for resolving paradoxes or synthesizing divergent views
+
+4. Replace the "depth" score logic with the following:
+    - Score higher if the text develops a multi-step argument or constructs a new system (e.g., resolving a paradox using a novel entity)
+    - Score higher if it uses *second-order logic*, meta-theoretical distinctions, or novel mappings between abstract entities
+    - Score lower if the text is a summary or only reacts to objections without developing an independent position
+    - Bonus points for offering identity conditions, reduction strategies, or logical reformulations
+
+5. Output the new originality and depth scores in the exact same format and location as before.
+
+6. Keep all frontend features unchanged — just swap in the new backend scoring logic using the above criteria.
+
+7. Let the AI assistant explain in comments which parts of the new scoring function correspond to originality vs depth.
+
+Do not remove any buttons, upload boxes, or formatting. This is a backend logic patch, not a full rebuild.

@@ -1,0 +1,72 @@
+INSTRUCTION FOR REPLIT AGENT:
+
+Please add the following advanced comparison function to the Originality Meter app. This function must analyze two input texts (Text A and Text B) and return a structured output in JSON format. The analysis should cover originality, developmental relationship, doctrinal alignment, and psychological profiling of the respective authors. The app must use a deterministic LLM prompt system to obtain reliable and reproducible results.
+
+IMPLEMENT THE FOLLOWING FUNCTIONALITY:
+
+1. **ORIGINALITY & RIPOFF ANALYSIS**
+- Return a score from 0 to 100 indicating how much Text B appears to copy from or be derivative of Text A. (Lower = more derivative.)
+- Boolean: Is B a ripoff of A?
+
+2. **DEVELOPMENTAL RELATIONSHIP**
+- Boolean: Does Text B develop the ideas in Text A?
+- If yes, in what mode? Choose from: "Conceptual", "Methodological", "Rhetorical", "Critical", "Other".
+- Score from 0 to 100 indicating strength of development.
+
+3. **DOCTRINAL ALIGNMENT**
+- Score from 0 to 100 for how doctrinally aligned the texts are.
+- Specify the type of alignment: "Kindred", "Compatible", "Opposed", or "Antithetical".
+- Indicate the axis of alignment: "Content", "Method", "Mentality", "Tone", or "Multiple".
+
+4. **PSYCHOLOGICAL PROFILING OF AUTHORS**
+- For each text, infer the author’s:
+  - Interests (e.g., ["epistemology", "power", "control"])
+  - Biases (e.g., ["liberalism", "rationalism", "resentment"])
+  - Cognitive strengths (e.g., ["semantic density", "analogical layering"])
+  - Posture (e.g., "missionary", "institutionalist", "outsider")
+- Compare the psychoprofiles and return a match score (0–100) plus a short narrative.
+
+5. **SUMMARY PARAGRAPH**
+- Return a final paragraph in natural language giving a verdict: is B derivative, developmental, oppositional, or novel in relation to A?
+- Comment on:
+  - psychological contrast between authors
+  - stylistic differences or overlap
+  - doctrinal affinity
+  - overall originality
+
+FORMAT:
+Return all the above values in a JSON object using this structure:
+
+{
+  "originality_score": [0–100],
+  "is_ripoff": true/false,
+  "is_development": true/false,
+  "development_mode": "...",
+  "development_strength": [0–100],
+  "doctrinal_alignment": {
+    "alignment_score": [0–100],
+    "type": "...",
+    "affinity_axis": "..."
+  },
+  "psychological_profiles": {
+    "text_a": {
+      "interests": [...],
+      "bias": [...],
+      "cognitive_strength": [...],
+      "posture": "..."
+    },
+    "text_b": {
+      "interests": [...],
+      "bias": [...],
+      "cognitive_strength": [...],
+      "posture": "..."
+    },
+    "match_score": [0–100],
+    "narrative_relationship": "..."
+  },
+  "summary": "..."
+}
+
+ENSURE THIS FUNCTION IS FULLY INTEGRATED AND WORKS FOR ANY TEXT INPUTS TO THE ORIGINALITY METER.
+
+DO NOT DEVIATE FROM THIS FORMAT.

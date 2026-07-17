@@ -1,0 +1,111 @@
+Discontinuity-elimination the essence of explanation
+
+  If correct, a given IBE is a case of anomaly-elimination: supposing that d1 dn are the empirical data at our disposal, H is a good IBE to the extent that H fills in the gaps left by d1  dn.
+  Question: What if d1 dn are such that any hypothesis H that fills in the gaps left by them is inevitably false? What if d1 dn is such a limited or otherwise imperfect data-set that, if a hypothesis does a good job of modeling that particular data-set, it stands no chance of being true?
+  Answer: This happens. But we have to work with the data we have, not the data we want. (The data we have: what our eyes, ears, etc. have told us. The data we want: the data that, if appropriately modeled, apprises us of the structure of the world.)
+Question: How do we deal with this fact?
+  Answer: By acquiring more data. False hypotheses may do a good job of modeling limited data-sets. But, precisely because they re false, they tend not to model enlargements of such sets. False hypotheses don t travel well. A lie may work in particular context: you lie to your roommate about eating his powdered doughnuts. But as data comes in, it becomes increasingly difficult to compatibilize the lie with the facts: he turns on the light and sees doughnut powder on your face, the doughnut jelly on your fingertips, etc. The jig is up.
+  Question: Given some relatively large and comprehensive data-set d1 dn ---some data-set that is sufficiently large that false hypotheses are unlikely to model it---what is it to  fill in the gaps  in that data-set?
+  Answer: To eliminate anomalies is to eliminate discontinuities. To explain an event e* is to identify some e that is the cause of e*. e is the cause of e* if, given e, e* s occurrence is not discontinuous with the state of the universe prior to e* s occurrence.
+  Example: You see a red ball roll into an opaque (non-see-through) tunnel. A moment later you see a red ball (that is otherwise the same as the first ball) roll out the other end of the tunnel.
+Hence your data-set:
+d1: Red ball rolls into one end of tunnel, located at place p, at time t.
+d2: Red ball rolls out of other end of tunnel, located at place p* (10 feet away from from p), at time t* (10 seconds after t).
+d3: What you saw, or otherwise perceived, during the spatiotemporal interval defined by the
+distance between p/t and p*/t*, is in no observable way continuous with the sudden emergence, at p*/t*, of a red ball.
+
+Hypothesis (H): The ball that rolled into the tunnel is identical with the ball that rolled out of the tunnel; and while the ball was in the tunnel, it continued to roll, that being why it was able to exit the tunnel, even though it was not observed to roll.
+
+  If the totality of the facts were as d1-d3 described them, the emergence of a red ball from the tunnel s end would be an instance of ex nihilo creation: an event that had no roots in the state of the universe prior to its occurrence. Given both d1-d3 and H, the ball s exiting the tunnel is
+appropriately continuous with the state of the universe prior to its occurrence.
+
+  The reason is that, given d1-d3+H, the ball s emerging at t* from the tunnel is a part of a continuous process.
+Continuity=causality.
+Explanation=continuity-restoration.
+  To model data d1 dn is to posit something X such that, given d1-d3+X, the facts described by d1 dn are fragments of structures/processes that don t comprise discontinuities.
+
+Inductive knowledge as knowledge of continuities of continuities
+Question: What right have we to suppose that the world is continuous? What right have we to posit invisible continuities underlying the visible discontinuities of which observation apprises us?
+Some non-answers: Let us first talk about how not to answer this question.
+We cannot say
+
+(H#): In the past, the unobserved continuities that we posited later came to be observed; so, inductively speaking, it is a good idea to posit continuities.
+
+   H# is off-limits, for the very reasons Hume gives. Nothing we say can presuppose that the past is a good indicator of the future; otherwise, Hume s Argument (HA) will successfully nullify our proposals.
+Further, we cannot say that
+
+(H%): There are laws of nature; we know what those laws are; and those laws being what they are, the future has to be like the past, at least in such respects as enables our knowledge of the past to support certain cases of inductive inference.
+
+   HA nullifies H%. Suppose arguendo that there are laws of nature that, given the present state of the universe, fix the future states of the universe. Given HA, we don t know what those laws are unless the data-sets on the basis of which we put forth our theories as to the identities of those laws is similar to the data-sets that we will have in the future. We can t know that past data-sets resemble future data-sets unless we know of laws that guarantee that they ll resemble each other; and we can t know of such laws unless we know that they ll resemble each other.
+
+The justification for Inference to the Best Explanation
+  Remember that IBE is continuity-restoration. Bearing this in mind, suppose that, at time t*, nothing that occurs is in any way continuous with what occurred at any prior time t. Let U1 be the pre-t* universe and let U2 be the post-t universe. On what basis could it be said that U1 and U2 were both the same universe, that there was some one space-time manifold U such that U1 and U2 are earlier and later parts of U? By supposition, nothing in U2 would be a continuation of anything in U1. None of the memories (or mental contents that, if veridical, would be memories) would be continuations of anything that happened in U1.
+  People might have memory-like mental contents to the effect that, during the pre-t* period, such and such happened. But those mental contents wouldn t really be memories. By hypothesis, they would have no roots in U1; there would be nothing that happened in U1 that, at t*, wasn t cut off; and there would thus be nothing that happened in U1 that left a record R in some pre-t* person s mind, such that R continued to exist until t* and therefore continued to persist. By hypothesis, R was cut off at t*. Any post-t* R-similar mental content wouldn t be R, just as, if your car were destroyed right now, and a similar car were built later, that new car wouldn t be identical with your old car, owing the fact that the new car wasn t a continuation of the old one.
+  For the same reason, no non-psychological post-t* state of affairs would be a continuation of any pre-t* state of affairs. If there were post-t* states of affairs that resembled pre-t states of affairs, the former wouldn t be continuations of the latter; they would no more be identical with the latter than the aforementioned new car is identical with the aforementioned old car.
+  So there wouldn t be any reason to identify any of U2 s occupants with any of U1 s occupants. In fact, none of U2 s occupants would be identical with any of U1 s occupants, for the same reason that the previously mentioned new car isn t identical with the previously mentioned vaporized car. Thus, it would only be if U2-states of affairs were continuations of U1- states of affairs that U1 and U2 would be jointly constitutive of some one space-time manifold U, then U2-states of affairs must be continuations of U1-states of affairs.
+  So nothing in U2 would have anything to do with anything that happened in U1. Nothing in U2 would be an effect or continuation of something that happened in U1. There would be nothing about U2 that connected it to U1. There would thus be no detectable evidence why U2 was a part of the space-time manifold of U1. In fact, there would be no undetectable evidence to that effect. For there would be no undetectable processes---no electron-jumps, nothing too small or too remote to be observable or to have observable consequences---that, if per impossible it were known of, would be a reason to hold that U2 was a continuous of some pre-t* universe.
+  So operationally speaking, U2 would not be a continuation of U1. Operationally speaking, U1 would be as distinct from U2 as a world where Dick Cheney is president in 2014 is from our world. Relative to U2, that is to say, U1 would simply be a hypothetical universe; and, should that hypothetical universe exist, the relation borne by it with respect to U2 is the same as the relation borne by a universe in which Cheney is president in 2014 with respect to our universe.
+   This doesn t mean that U1 doesn t exist. It means that, operationally speaking, it is no more a constituent of any universe of which U2 is a constituent than a 2014 Pres. Cheney Universe is a constituent of a universe of which our universe is also a constituent.
+
+The justification for Inference to the Best Explanation (continued)
+  This reasoning can be taken further. Suppose that that there are non-initial, U2-internal events e1 en that occur ex nihilo, i.e. that there are events e1 en that happen in U2 that happen after t*, the interval between them and t* between non-null, that don t have any roots in preceding
+U2-internal events. ( Ex nihilo  Latin for from nothing. An ex nihilo event is one that has no roots in anything preceding it, its occurrence be no more favored by the preceding state of the universe than its non-occurrence.) Let t# be the time at which each of e1 en begins.
+Here there are two possibilities:
+
+(1) No U2-internal events that begin at t# have any pre-t# basis.
+(2) Some events e*1 e*m that happen at t# have a pre-t# basis.
+
+  If (1), then the post-t# space-time manifold---let U3 be this manifold---bears the same relation to U2 that U2 bears to U1, in which case, operationally speaking, U2 and U3 are no more jointly constitutive of some one space-time manifold than are U1 and U2.
+  If (2), then there are events e^1 e^o such that e^1 e^o precede t# and eventuate, by way of continuous processes, in post-t# events, then U3 s relationship to U2 is not the same as U2 s relationship to U1. Under that circumstance, U2 and U3 do jointly constitute a single space-time manifold. But that does not by itself guarantee that e1 en are constituents of that manifold.
+Suppose that e1 en have no effects on any events in U2 or U3. In that case, they neither cause, nor are caused by, U2-internal events or U3-internal events; and in that case, for now familiar reasons, nothing in U2-U3 has anything to do with them and, operationally speaking, e1 en don t exist as far as U2 and U3 are concerned.
+  By the same token, if, operationally speaking, e1 en are occupants of some manifold of which U2 is a constituent, then there must be events e%1 e%p such that
+
+(a) e%1 e%p begin during U2 and are connected, by continuous event-series, with events in U3
+
+and such that
+
+(b) e1 en affect e%1 e%p.
+
+  If the only events influenced by e1-en are events that do not themselves have affects on events, such as e%1 e%p, that are successors of U2-internal-events, then e1 en, as well as its causal successors, are simply divorced from U2 and also from U3. For, under the circumstance just described, the event-class consisting of e1 en and its causal successors have no effects on anything that interacts with anything beginning in U2 or anything affecting anything beginning in U2; because of which, no event falling into that class is, operationally speaking, part of the same space-time manifold as U2.
+
+Finalizing the justification for Inference to the Best Explanation
+
+  Thus, the supposition that there are ex nihilo events that are U2-internal is predicated on the assumption that those events are causally connected to U2-internal events that do not occur ex nihilo.
+   This means that, if we know e and e* to belong to the same space-time manifold, then we know there to be some causal connection between them; we know that either
+
+(i) e causes e*;
+(ii) e* causes e; or
+(iii) some third event e# causes, or is caused by, both.
+
+  If observation apprises us of such a connection, then, as far as e and e* are concerned, we don t need to posit unobserved continuities. If observation does not apprise us of such a connection, we do have to posit hidden continuities, since the non-existence of such continuities is incompatible with the datum that e and e* are part of the same space-time manifold.
+    But how do you know that they are both part of the same space-time manifold? Whence this  datum  of which you speak? 
+  Because we observed each and were therefore affected by each. Since causally connected events are ipso facto co-occupants of some one space-time manifold, e and e* are such co- occupants.
+  Suppose we posit some continuous event-series E such that e causes e* by way of E. If E actually exists, then each segment s of E that lasts for a non-null time-period must satisfy the following condition: s s existence/occurrence cannot be incompatible with that of event e! that is known to occupy the same space-time manifold as e and e*.
+  If s occupies the same place-time time as e! but is qualitatively different from e!, then E is the wrong series to posit. (It may still be that e causes e*; but if so, e causes e* by way of some event-series that is qualitatively different from E.)
+  This requirement has significant consequences. e and e* aren t the only events whose causal connection to each other is unknown. And, among the other event-pairs whose causal relation to each other is unknown, there is likely to be one consisting of events e1 and e2 such that the event-
+series linking e1 to e2[16] intersects the event-series linking e to e*.[17] This means that, if e$ is the event that connects e1 to e2 and constitutes the intersection-point of the series connecting e1
+and e1 and the series connecting e and e*, then e$ must be continuous with its predecessor and its successor in each of two distinct event-series. By analogous reasoning, for any given segment s$ of series connecting e1 and e2, it must be continuous with its predecessor and successor in each
+of two series.
+  This means that to validate the datum that two events, e and e*, are part of the same space- time manifold, it is necessary to posit unobserved events that link those two events. There are obviously many event-pairs there are that are known to belong to the same space-time manifold but whose link to each other is not given to observation. In fact, given two non-simultaneous events, in order to validate the datum that they belong to the same space-time manifold, it is necessary to posit a continuous process CP connecting them (either directly or way of some third event to which they are both related as cause/effect) such that every segment of CP is identical
+
+with the segment of each of the infinitely many event-series that intersects with CP.
+  Herein lies the justification for positing unobserved continuities to explain observed events in terms of other observed events.
+
+The Concept of Natural Law in relation to the problem of induction
+  Given only that there is a causal connection of some kind between any two co-occupants of some single manifold, how does it follow that the causal connections between past (known) events will bear any resemblance to future (or otherwise unknown) events? How does it follow that the specific IBE s that we make are ever at all principled?[18]
+  We have seen that the integrity of the space-time manifold depends on the integrity of the causal connections hosted by that manifold. A universe of rogue events, none causative of the other, isn t a universe at all. To the extent that events are causally independent of each other, there is no sense in which they co-occupy some single manifold.
+  Hume s attempt to delegitimize induction presupposes that the laws of physics can just be suspended. That presupposition in its turn assumes that the laws of physics are separable from the space-time manifold; it assumes, in other words, that they are not constitutive of that manifold.
+  That assumption is erroneous. Suppose that one or more laws of physics were changed. First of all, it wouldn t be possible to change just one of these laws. Given a universe in which the speed of light were framework-relative, or in which the Inverse Cube Law were operative, or in which any single one of the laws operative in our universe were replaced by some other law, a number of other laws that are operative in our universe would also have to go.
+  Laws are not independent of one another. In actuality, gas-pressure is directly proportional to temperature. If it were inversely proportional to temperature, every one of the laws of mechanics would have to be jettisoned or heavily modified.
+  If the speed of light were framework-relative, then mass and energy would no longer be capable of being converted into each other, at least not in accordance with the same laws that govern such conversions in actuality.
+  Also, if light did not have a framework-constant velocity, all of our metrical conventions would be thrown off. There would be no principled ways of determining position or, therefore, velocity or, therefore, rates of growth or expansion.
+  Bearing in mind the interdependencies among natural laws, suppose that at time t* the laws of physics changed. This would have two consequences.
+  First, relative position, velocity, mass, temperature, and every other physics-relevant parameter, are ascertained by means of procedures that presuppose that certain laws are operative.
+  Second, the values of those parameters---not our ability to determine those values, but those values themselves---are defined in terms of the laws of physics that are operative.
+  Thus, if at time t* the laws of physics changed, then the positions, masses, velocities, temperatures, etc. of many, if not all, of the occupants of the post-t* universe (U2) would be discontinuous from their pre-t* (U1) positions, masses, etc. For already stated reasons, the state of the post-t* universe would not be a causal consequence of the pre-t* universe. (Pre-t universe=U1. Post-t* universe=U2.) This means that, if the laws of physics changed at time t*, the result would be the obliteration of the space-time manifold---the universe---in which those laws were operative.
+  Different laws, different spatiotemporal manifold. Different spatiotemporal manifold, different universe.
+  The space-time manifold isn t an empty vessel that can house different laws; it is defined by the laws that govern its occupants.
+
+  But for the moment, let us suppose arguendo that, even though the laws change at t*, the space-time manifold whose laws have been replaced continues to exist. In that case, we have to ask: What were the laws that governed the changes that happened during t*-inclusive intervals? Let s suppose that, at some pre-t* time T, a bowling ball starts rolling. Up until t*, the laws governing its motion are the standard laws of mechanics.
+  Granting these suppositions, imagine that, during some (short) t*-inclusive interval INT, the ball travels from A to C and that, at t*, it occupies point B.
+  What are the laws that govern the ball s motion during INT? What are the laws that govern the ball s motion when it is at B? In fact, at t* and after t*, what are the laws that bind together the various ball-constitutive molecules? If so much as a single law of physics has changed at t*, practically every other law of physics will have to change as well. If the Inverse Square Law (ISL) changes, then the mutual attractions of all of the ball s constituent particles change. Of course, the cohesive forces in question are largely non-gravitational; but, owing to the change in ISL, the relative masses of those particles would change, and the cohesive forces in question would have to change if the ball were to continue to exist in anything like its previous form, let alone continue rolling; and it is an open question, certainly, whether they changes would be such as to validate our desire that the ball continue to exist and, what s more, to c

@@ -1,0 +1,162 @@
+Cogency Metrics
+Argumentative Continuity
+• Question: Is each claim supported by those before it?
+• High: High: Smooth inferential buildup.
+• Low: Low: Jump-cuts between ideas.
+Error-Resistance
+• Question: Can the argument absorb counterpoints without collapse?
+• High: High: Multiple lines of support or modular robustness.
+• Low: Low: Collapses when one premise is challenged.
+Specificity of Commitment
+• Question: Are claims stated precisely and clearly?
+• High: High: Exact positions and definitions.
+• Low: Low: Vagueness or hedging.
+Provisionality Control
+• Question: Does the author know when to hedge and when to commit?
+• High: High: Balanced modulation between certainty and openness.
+• Low: Low: Blanket certainty or endless disclaimer.
+Load Distribution
+• Question: Are inferential loads distributed efficiently?
+• High: High: No premise bears too much unexplained weight.
+• Low: Low: One hidden assumption props up the whole.
+Error Anticipation
+• Question: Are potential objections built into the argument?
+• High: High: Preempts or fortifies against known critiques.
+• Low: Low: Blind to plausible challenges.
+Epistemic Parsimony
+• Question: Does the argument avoid unnecessary complexity?
+• High: High: Simplicity without loss.
+• Low: Low: Bloated reasoning.
+Scope Clarity
+• Question: Is the domain of applicability clear?
+• High: High: Knows its boundaries.
+• Low: Low: Overreach.
+Evidence Calibration
+• Question: Are claims weighted relative to their support?
+• High: High: Modulates confidence to evidence strength.
+• Low: Low: Overclaims.
+Redundancy Avoidance
+• Question: Are points repeated without need?
+• High: High: No duplication.
+• Low: Low: Filler or rhetorical looping.
+Conceptual Interlock
+• Question: Do definitions and theses cohere together?
+• High: High: Network of meaning is internally consistent.
+• Low: Low: Fraying or contradictory concepts.
+Temporal Stability
+• Question: Does the argument hold over time or over revisions?
+• High: High: Durable logic.
+• Low: Low: Sensitive to small tweaks.
+Distinction Awareness
+• Question: Are relevant distinctions tracked and preserved?
+• High: High: Makes and respects useful cuts.
+• Low: Low: Collapses categories.
+Layered Persuasiveness
+• Question: Does the argument work for multiple levels of reader?
+• High: High: Intuitive and formal appeals present.
+• Low: Low: Only works at one level.
+Signal Discipline
+• Question: Is the signal-to-rhetoric ratio high?
+• High: High: Content-rich claims dominate.
+• Low: Low: Filler prose.
+Causal Alignment
+• Question: Do causal claims line up with evidence and theory?
+• High: High: Mechanistic or probabilistic fit is clear.
+• Low: Low: Post hoc reasoning.
+Counterexample Immunity
+• Question: Is the argument resilient to typical counterexamples?
+• High: High: Survives standard tests.
+• Low: Low: Easily broken.
+Intelligibility of Objection
+• Question: Would a smart opponent know what to attack?
+• High: High: Clear, bold claims.
+• Low: Low: Foggy or elusive.
+Dependence Hierarchy Awareness
+• Question: Are structural dependencies tracked?
+• High: High: Author knows which claims are load-bearing.
+• Low: Low: Flat argument map.
+Context-Bounded Inference
+• Question: Are inferences valid only under clear assumptions?
+• High: High: Arguments specify conditions of validity.
+• Low: Low: Hidden contextual slippage.
+Intelligence Metrics
+Compression Capacity
+• Question: Can complex ideas be expressed in compact form without loss?
+• High: High: Dense formulations yield insight with minimal words.
+• Low: Low: Rambling, bloated expression reveals conceptual weakness.
+Multi-Level Integration
+• Question: Can the author operate across multiple levels (abstract/concrete, meta/object)?
+• High: High: Seamless transitions between layers of analysis.
+• Low: Low: Stuck on one plane.
+Dynamic Constraint Handling
+• Question: Does the thinker maintain coherence under complex constraints?
+• High: High: Manages tradeoffs without collapsing precision.
+• Low: Low: Ignores or oversimplifies conflicting demands.
+Inference Architecture
+• Question: Are ideas constructed with deep, layered inferential scaffolding?
+• High: High: Multi-step reasoning with structural memory.
+• Low: Low: Shallow or linear logic.
+Epistemic Risk Management
+• Question: Does the thinker show awareness of the riskiness of their claims?
+• High: High: Risky claims managed with discipline.
+• Low: Low: Reckless or excessively cautious.
+Cognitive Friction Tolerance
+• Question: Can the thinker endure unresolved tensions?
+• High: High: Holds dissonance productively.
+• Low: Low: Rushes to resolution or avoids it.
+Strategic Ambiguity Deployment
+• Question: Can ambiguity be used intentionally and effectively?
+• High: High: Selective ambiguity to provoke thought.
+• Low: Low: Unintentional or incoherent.
+Representational Versatility
+• Question: Can the thinker switch formats as needed?
+• High: High: Moves between diagrams, prose, math, analogy.
+• Low: Low: Rigidly sticks to one mode.
+Recursive Self-Monitoring
+• Question: Does the thinker reflect on their own moves?
+• High: High: Meta-awareness present.
+• Low: Low: Blind to own method.
+Conceptual Novelty with Coherence
+• Question: Are new ideas viable and structured?
+• High: High: Original and operationalizable.
+• Low: Low: Performative or incoherent.
+Noise Suppression
+• Question: Can the thinker focus on signal?
+• High: High: Ignores distractions.
+• Low: Low: Chases tangents.
+Abductive Strength
+• Question: Are best-explanation arguments creatively but plausibly formed?
+• High: High: Surprising but cogent hypotheses.
+• Low: Low: Appealing but unsupported.
+Causal Finesse
+• Question: Are causal relations modeled with nuance?
+• High: High: Layered causal logic.
+• Low: Low: Simple linear cause-effect.
+Boundary Perception
+• Question: Are the limits of scope/method recognized?
+• High: High: Aware of constraints.
+• Low: Low: Overreach or blind spots.
+Temporal Layering
+• Question: Can change over time be tracked structurally?
+• High: High: Coherent historical/evolutionary logic.
+• Low: Low: Timeless or inert.
+Intellectual Empathy
+• Question: Are opposing views reconstructed fairly?
+• High: High: Strong steelmanning.
+• Low: Low: Straw men.
+Conceptual Mobility
+• Question: Can the thinker shift between domains?
+• High: High: Fluid conceptual transitions.
+• Low: Low: Stuck in one paradigm.
+Error Assimilation
+• Question: Can mistakes be integrated into thinking?
+• High: High: Errors are processed productively.
+• Low: Low: Hidden or denied.
+Pattern Extraction
+• Question: Can deep structure be detected across variation?
+• High: High: Generalizes across difference.
+• Low: Low: Stays at surface.
+Semantic Topology Awareness
+• Question: Are dependencies between ideas tracked?
+• High: High: Conceptual terrain is mapped.
+• Low: Low: Flat or meandering flow.

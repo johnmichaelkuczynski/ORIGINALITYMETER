@@ -1,0 +1,209 @@
+ORIGINALITY METER ANALYSIS - 40 PARAMETERS
+============================================================
+
+Document: Passage A
+Analysis Date: 8/17/2025
+
+1. Novel perspective
+----------------------------------------
+Quotation: "Causal law: A law to the effect that, if one thing occurs (e.g., fire), some other thing must occur (e.g., smoke)."
+Score: 25/100
+
+2. Uncommon connections
+----------------------------------------
+Quotation: "Of course, just a river can fork, so a causal series can branch out. In fact, the forking of a river is a special cause of the branching out of a causal series. But for a river to fork is for it to become two rivers... Similarly, for a causal series to branch is for it to become multiple series."
+Score: 72/100
+
+3. Surprising but apt analogies
+----------------------------------------
+Quotation: "A connective can be thought of as a sentence-level adjective. That is, it can be thought of as an expression C such that, given a sentence S, C yields a new sentence C(S)"
+Score: 68/100
+
+4. Invention of new distinctions
+----------------------------------------
+Quotation: "Class: Synonymous (in this work, though not in others) with 'set.' See 'set.'"
+Score: 35/100
+
+5. Reframing of common problem
+----------------------------------------
+Quotation: "Mere noises aren't linguistic expressions. It is only noises coupled with meanings that are such expressions... Since, therefore, noises must be coupled with meanings in order to qualify as linguistic expressions, it makes no sense to say that what an expression means is a function of how it is used."
+Score: 78/100
+
+6. New conceptual synthesis
+----------------------------------------
+Quotation: "Coherently conceivable circumstance (or scenario): A circumstance is coherently conceivable just in case one is not guilty of self-contradiction in virtue of believing it to hold."
+Score: 42/100
+
+7. Fresh metaphors
+----------------------------------------
+Quotation: "If enough people use the word 'restive' to mean tired, it may well come to have that meaning. But until that time comes, those people are misusing that expression"
+Score: 55/100
+
+8. Generating new questions
+----------------------------------------
+Quotation: "I leave it to the reader as an exercise to produce an explicit definition of the term 'main connective' on the basis of these remarks."
+Score: 48/100
+
+9. Counterintuitive insight that holds
+----------------------------------------
+Quotation: "At first, it appears as though there are exceptions to this. Consider the sentence 'leave!' This seems simple. But it isn't; that is because there is a hidden (or 'phonetically unrealized'... occurrence of 'you'—that sentence means: you—leave."
+Score: 75/100
+
+10. Unusual compression (shortcuts that work)
+----------------------------------------
+Quotation: "Concepts are conditions. To actualize a concept is to fulfill a condition."
+Score: 38/100
+
+11. Distilling cliché into clarity
+----------------------------------------
+Quotation: "'Ceteris paribus': Synonymous with 'other things being equal' and 'holding all other factors constant.'"
+Score: 62/100
+
+12. Reinterpreting tradition
+----------------------------------------
+Quotation: "According to the principle of compositionality, the meaning of a complex expression is a function of the meanings of its constituents... Semanticists express this by saying that TY's meaning is 'a function of' what 'friendly' means."
+Score: 82/100
+
+13. Productive paradox
+----------------------------------------
+Quotation: "Like all series, causal series don't branch. This is a tautology... Of course, just a river can fork, so a causal series can branch out."
+Score: 45/100
+
+14. Idiosyncratic voice
+----------------------------------------
+Quotation: "In their (2001) book The Compositionality Papers, Jerry Fodor and Ernie Lepore put forth several blistering criticisms of CRS. In that work, any gaps in the criticisms of CRS just put forth are very much filled in."
+Score: 32/100
+
+15. Unusual but precise phrasing
+----------------------------------------
+Quotation: "phonetically unrealized, meaning that there is no overt, acoustical, or visual representation of them in that word"
+Score: 58/100
+
+16. Structural inventiveness (form matches thought)
+----------------------------------------
+Quotation: "Causal law: A law to the effect that, if one thing occurs (e.g., fire), some other thing must occur (e.g., smoke)."
+Score: 28/100
+
+17. Surprising yet valid inference
+----------------------------------------
+Quotation: "Since, therefore, noises must be coupled with meanings in order to qualify as linguistic expressions, it makes no sense to say that what an expression means is a function of how it is used. After all, there is no expression to be used until the noises... have been coupled with meanings."
+Score: 71/100
+
+18. Non-standard angle on standard issue
+----------------------------------------
+Quotation: "If enough people thought that 'Stalin the dictator of the Soviet Union from 1923–1953' entailed 'somebody who was over 6 ft tall was the dictator of the Soviet Union from 1923–1953,' the former would entail the latter. But even if the latter were correct (which it isn't since Stalin was barely over 5 ft tall), it wouldn't follow from the first sentence."
+Score: 76/100
+
+19. Repurposing known concept in new domain
+----------------------------------------
+Quotation: "A connective can be thought of as a sentence-level adjective."
+Score: 52/100
+
+20. Avoiding mimicry
+----------------------------------------
+Quotation: "Compatibilism: The doctrine that there can be personal freedom in a deterministic world. 'Incompatibilism' is the doctrine that compatibilism is false."
+Score: 41/100
+
+21. Shunning jargon clichés
+----------------------------------------
+Quotation: "P and Q are compatible statements if they can both be true. Thus, P and Q are compatible if, supposing that the one is true, it doesn't follow that the other is false."
+Score: 35/100
+
+22. Generating conceptual friction
+----------------------------------------
+Quotation: "Expressions that haven't ever been used have determinate meanings. There are infinitely many sentences of English that haven't been used but that have determinate meanings. If this weren't the case, then nobody could ever utter a new sentence of English"
+Score: 67/100
+
+23. Independent pattern recognition
+----------------------------------------
+Quotation: "The contention that is closest to CRS that isn't obviously false is the trivial contention that what noises (and ink-marks and the like) mean is a (partial) causal consequence of what people do with them. (This suggests that CRS is based on a failure to distinguish the concept of a logical consequence from that of a causal consequence.)"
+Score: 73/100
+
+24. Unexpected causal explanation
+----------------------------------------
+Quotation: "In fact, the forking of a river is a special cause of the branching out of a causal series."
+Score: 48/100
+
+25. Tension between domains (philosophy + science, etc.)
+----------------------------------------
+Quotation: "phonetically unrealized, meaning that there is no overt, acoustical, or visual representation of them in that word"
+Score: 55/100
+
+26. Provocative but defensible claim
+----------------------------------------
+Quotation: "Of course, there are different views as to what meanings are, and there are different views as to what it is for noises to be coupled with them. But relative to any such view, CRS is false."
+Score: 79/100
+
+27. Lateral connections (cross-field links)
+----------------------------------------
+Quotation: "All sentences are complex—that is, they consist of multiple expressions... the verb leave has various semantic properties (e.g., tense, mood) that, although they are not phonetically marked, are nonetheless present"
+Score: 61/100
+
+28. Subversion of default framing
+----------------------------------------
+Quotation: "Nowhere in that 900 page book, or in any writings of advocates of CRS, is the existence of any of the following reasonable positions so much as acknowledged, let alone addressed"
+Score: 74/100
+
+29. Detection of neglected detail
+----------------------------------------
+Quotation: "In a world where there are no semantic conventions, a noise just like the noise you make when you say 'snow is white' would mean nothing. If, in such a world, the gases leaving a volcano happened to make that noise, they would mean nothing."
+Score: 80/100
+
+30. Reverse engineering assumptions
+----------------------------------------
+Quotation: "A knowledge of a word's meaning is at least part of what guides a person to use it in the way she does. When the waiter asks you what you would like to eat, you say 'I'd like a bowl of clam chowder,' and not 'I'd like a bowl of rotten entrails.' Why do you say 'clam chowder' instead of 'rotten entrails'? Because you know that, given what it is that you want, 'rotten entrails' has the wrong meaning and 'clam chowder' has the right meaning."
+Score: 77/100
+
+31. Productive misfit with genre/style
+----------------------------------------
+Quotation: "Class: Synonymous (in this work, though not in others) with 'set.' See 'set.'"
+Score: 33/100
+
+32. Intellectually playful but rigorous
+----------------------------------------
+Quotation: "But even if the latter were correct (which it isn't since Stalin was barely over 5 ft tall), it wouldn't follow from the first sentence."
+Score: 44/100
+
+33. Constructive violation of expectations
+----------------------------------------
+Quotation: "At first, it appears as though there are exceptions to this. Consider the sentence 'leave!' This seems simple. But it isn't"
+Score: 39/100
+
+34. Voice not reducible to formula
+----------------------------------------
+Quotation: "See 'coherence and incoherence.' See 'entailment' and 'incompatible.' See 'axiom' and 'axiomatic system.'"
+Score: 31/100
+
+35. Revaluing the obvious
+----------------------------------------
+Quotation: "Mere noises aren't linguistic expressions. It is only noises coupled with meanings that are such expressions."
+Score: 66/100
+
+36. Absence of derivative cadence
+----------------------------------------
+Quotation: "Compatible: P and Q are compatible statements if they can both be true. Thus, P and Q are compatible if, supposing that the one is true, it doesn't follow that the other is false."
+Score: 37/100
+
+37. Independent synthesis of sources
+----------------------------------------
+Quotation: "In his (1963) paper 'Some reflections on language games,' Wilfrid Sellars clearly puts forth a version of CRS. But it's quite definitely present in Wittgenstein's book The Philosophical Investigations, which was completed in the late 40's. In his (1994) book Making it explicit, Robert Brandom advocates CRS."
+Score: 58/100
+
+38. Discovery of hidden symmetry
+----------------------------------------
+Quotation: "But for a river to fork is for it to become two rivers (supposing that the two tributaries don't later merge). It isn't for a river to become two independent streams of water. Similarly, for a causal series to branch is for it to become multiple series."
+Score: 51/100
+
+39. Generating terms others adopt
+----------------------------------------
+Quotation: "Coherently conceivable circumstance (or scenario): A circumstance is coherently conceivable just in case one is not guilty of self-contradiction"
+Score: 29/100
+
+40. Staying power (insight lingers after reading)
+----------------------------------------
+Quotation: "Since, therefore, noises must be coupled with meanings in order to qualify as linguistic expressions, it makes no sense to say that what an expression means is a function of how it is used. After all, there is no expression to be used until the noises (and ink-marks and so forth) have been coupled with meanings."
+Score: 69/100
+
+
+Report generated by Originality Meter
+Analysis completed on 8/17/2025, 1:14:54 PM

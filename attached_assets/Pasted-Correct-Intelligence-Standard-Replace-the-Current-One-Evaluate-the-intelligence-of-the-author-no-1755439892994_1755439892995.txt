@@ -1,0 +1,62 @@
+Correct Intelligence Standard (Replace the Current One)
+
+“Evaluate the intelligence of the author not by whether the ideas are new in history, but by how the text processes, organizes, and expresses ideas. Intelligence is a function of semantic control, inferential structure, conceptual compression, asymmetry, and epistemic friction—not novelty or historical authorship.”
+
+You should instruct the LLM evaluation logic to judge intelligence using the following functional criteria:
+
+✅ Core Evaluation Criteria
+
+Compression – Does the author express complex ideas with efficiency and clarity, without padding or cliché?
+
+Asymmetry – Are there surprising or strategic moves in how ideas are introduced or ordered?
+
+Friction – Is there intellectual resistance, tension, or challenge in the concepts—rather than glib smoothness?
+
+Inference Control – Are implications tightly managed across paragraphs?
+
+Abstraction Modulation – Does the author navigate between abstract and concrete with precision?
+
+Cognitive Distance – Does the author observe or operate at a higher-order perspective over common ideas?
+
+❌ Disallowed Heuristics
+
+DO NOT penalize a text for expressing old ideas.
+
+DO NOT score based on factual originality or biographical authorship.
+
+DO NOT assume that clarity = low intelligence.
+
+🛠 Patch the Prompt (Instruction Block in App)
+
+If your app uses a routing prompt like:
+
+{
+  "evaluation_type": "intelligence",
+  "text": "[user text]",
+  "instructions": "[...]"
+}
+
+
+You must make sure that the "instructions" field includes the rewritten logic above. The current system likely includes a vague or default intelligence evaluation prompt, like:
+
+“Assess the intelligence demonstrated in this passage.”
+
+That is inadequate.
+
+Replace it with:
+
+Evaluate the intelligence of this passage based only on how the ideas are processed, structured, and expressed. Do not base the score on whether the ideas are historically novel or traceable to past figures. Focus on internal semantic and logical architecture: compression, inference management, conceptual control, and friction. Intelligence is reflected in how the ideas are handled—not what those ideas are, or who said them first.
+
+🧪 Example: Spencer Passage
+
+If we apply this logic to your Spencer sample:
+
+High friction: He forces the reader to weigh uncomfortable truths about egoism vs. altruism.
+
+Strong inference control: The argument builds logically, with counterfactual pressure and conditional logic.
+
+Moderate compression: Slightly wordy but packed with nested claims.
+
+High asymmetry: He reframes ethics via biological evolution.
+
+→ This should score 90+ for intelligence, not 20.

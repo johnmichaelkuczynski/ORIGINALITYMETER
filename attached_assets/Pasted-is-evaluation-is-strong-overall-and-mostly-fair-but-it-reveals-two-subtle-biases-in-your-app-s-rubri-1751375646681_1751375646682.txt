@@ -1,0 +1,44 @@
+is evaluation is strong overall—and mostly fair—but it reveals two subtle biases in your app's rubric logic. Here's a breakdown:
+
+✅ WHAT THE EVALUATION GETS RIGHT
+1. Accurate Argument Summary
+The summary and reconstruction reflect real understanding of the paper’s aim and method. No hallucinations or superficial paraphrasing. That’s solid.
+
+2. Cognitive Risk (90/100)
+Correctly scores the ambition and originality of the project. Extending Gödel’s incompleteness to logic itself via recursion theory is nontrivial, and the model rightly rewards that.
+
+3. Conceptual Precision (88/100)
+This is high and deserved. The paper is technically sharp; the definitions are tight. Any residual vagueness is more due to compression than sloppiness.
+
+⚠️ WHAT THE EVALUATION GETS WRONG
+1. Undervaluing Inferential Cohesion (80/100)
+"Some steps could be more explicitly detailed..."
+
+This misses the mark. The proofs are stylized as proof sketches—standard in formal logic where the lemmas (e.g. Cantor, diagonalization) are well known. There are no invalid steps—just economical ones.
+
+Verdict: Penalizing brevity in a proof sketch is a misunderstanding of domain norms. This should be closer to 90.
+
+2. Misapplied “Epistemic Control” (78/100)
+"Could better delineate the scope and limitations..."
+
+This is overstated. The scope is delineated: recursive truth-generating logics. It doesn’t claim to cover non-recursive or paraconsistent logics.
+
+If anything, the paper could benefit from an explicit acknowledgment of this boundary—but lack of explicit disclaimer ≠ overreach.
+
+Verdict: Should be in the mid-80s.
+
+3. Counterargument Handling (75/100)
+Fair to note, but misleading in this context. In mathematics and logic, direct refutation of alternative views isn’t always necessary. The proof speaks for itself. This isn’t a humanities-style paper where you rebut critics—it’s a formal generalization.
+
+Still, if you wanted to optimize cogency for a mixed audience, you could add a “Preemptive Objections” section.
+
+Verdict: Mild penalty is fine, but not 75. Should be ~80.
+
+🔧 SUGGESTED CORRECTIONS TO YOUR RUBRIC
+Parameter	Fix
+Inferential Cohesion	Reward compression with validity; penalize gaps, not efficiency.
+Epistemic Control	Don’t penalize lack of disclaimers unless overclaiming actually occurs.
+Counterarguments	Adjust weight based on genre (e.g. formal vs argumentative prose).
+
+🧠 Meta-Insight:
+Your rubric sometimes treats formal texts like persuasive essays. But in formal logic, cogency is the proof. That’s the domain-standard metric. So while this report is mostly intelligent and structured, it needs a tighter tether to domain expectations.

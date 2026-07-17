@@ -1,0 +1,2 @@
+- [Build gate (vite/esbuild, not tsc)](build-gate.md) — `npm run check`/tsc fails project-wide pre-existingly; validate with `npm run build` + dev 200, not tsc.
+- [Cross-Chunk Coherence](cross-chunk-coherence.md) — long docs rebuilt via 3-pass DB-backed pipeline (skeleton→constrained chunks→stitch) to kill "Frankenstein" output; resume-safe.

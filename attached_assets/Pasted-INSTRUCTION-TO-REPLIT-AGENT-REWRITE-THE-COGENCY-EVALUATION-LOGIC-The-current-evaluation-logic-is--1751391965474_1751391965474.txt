@@ -1,0 +1,59 @@
+INSTRUCTION TO REPLIT AGENT — REWRITE THE COGENCY EVALUATION LOGIC
+
+The current evaluation logic is fundamentally flawed. It applies the same criteria—mechanically and unthinkingly—to every document, regardless of its genre, disciplinary orientation, or argumentative mode. This is unacceptable. You need to rebuild the evaluation logic to meet the following non-negotiable standards:
+
+🧠 I. Genre-Sensitive Scoring
+The evaluation must be genre appropriate.
+The app is not grading 8th-grade essays for a committee of bureaucrats. It is evaluating the cogency of a document on its own terms and within its disciplinary domain.
+
+Examples:
+
+A mathematical logic paper should be scored based on inferential rigor, definition clarity, conceptual architecture, and proof integrity—not on “reader accessibility” or whether it has “examples” for a lay audience.
+
+A philosophical essay should be judged for conceptual depth, argumentative precision, and epistemic friction—not on whether it “feels persuasive” to a general reader.
+
+A literary criticism paper should be assessed based on interpretive control, textual synthesis, and theoretical acuity—not on whether it follows deductive structure.
+
+A religious or theological paper should not be penalized for invoking authority or metaphysical premises that would be inappropriate in a logic paper.
+
+⚙️ II. Abolish One-Size-Fits-All Rubrics
+Get rid of the symmetrical 25/25/25/25 weighting. It is dumb and lazy. Instead:
+
+Assign weights dynamically based on genre.
+
+For formal logic/math: Inferential Structure and Conceptual Control should dominate.
+
+For applied argumentation: Argumentative Integrity and Integration might matter more.
+
+For mixed-mode essays: use heuristics to balance across dimensions intelligently.
+
+🚫 III. No Institutional Brown-Nosing
+The app is not a grading app. It does not simulate what some university committee of mediocrities would think. It does not reward palatability, political correctness, or surface-level compliance. It is designed to measure cogency, rigor, and intellectual seriousness—even if the paper is difficult, controversial, or lacks mass appeal.
+
+🧪 IV. Detect Argumentative Modality Before Scoring
+Before applying any rubric, the app must first detect:
+
+Is this document a proof, a treatise, a manifesto, an analysis, a report, a narrative, or something else?
+
+Then apply the appropriate evaluative lens. If it can’t classify, it should default to asking the user for a genre tag.
+
+✅ V. Preserve Epistemic Integrity
+If a document makes a valid inference chain, defines its terms rigorously, and lands a real conceptual insight, it should get a high score—regardless of whether it uses transitions, rhetorical flair, or explanation for dummies.
+
+Cogency ≠ Comprehensibility.
+Cogency ≠ Popularity.
+Cogency ≠ Compliance.
+
+🧹 IMPLEMENTATION DEMANDS
+Rewrite the scoring logic using conditional logic trees that first detect genre or accept a genre flag from the user.
+
+Rewrite the weighting schema per genre, and allow these weights to be overridden manually via config.
+
+Remove any penalizations tied to “accessibility,” “lack of counterarguments,” or “no illustrative examples” unless those things are essential to the argumentative mode.
+
+Add commentary to the final report explaining why the document was evaluated the way it was (e.g., “This is a formal logic paper, so clarity of definitions and inference were prioritized over accessibility.”)
+
+Never again apply a single static rubric to all documents.
+
+This isn’t optional. Fix it properly or kill the app. It's embarrassing to have serious work misjudged by a knee-jerk scoring model that punishes clarity and rewards mediocrity.
+

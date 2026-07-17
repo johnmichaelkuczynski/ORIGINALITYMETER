@@ -1,0 +1,62 @@
+Replit Instruction: Improvement Protocol Based on Passage Score
+Objective: For each passage, Replit will apply a distinct improvement protocol based on the passage's overall score. If the score is high, the focus will be on deepening and enriching the content by adding examples from other disciplines, providing more factual information, and exploring new perspectives. If the score is low, the focus will be on rewriting the passage for better clarity, structure, and coherence.
+
+1. If the Overall Score is Over 7 (High Quality):
+Protocol:
+
+Goal: Enrich the passage by adding new, intellectually rigorous material.
+
+Focus: Enhance factual richness and intellectual depth by:
+
+Incorporating examples from other disciplines (e.g., mathematics, computer science, psychology, economics, ethics, biology, philosophy, etc.).
+
+Exploring new angles or applications related to the original concept. Add new examples that broaden the scope and deepen the conceptual engagement of the passage.
+
+Provide clear explanations of how each added example or new information relates to the original ideas, expanding the intellectual content without deviating from the original meaning.
+
+Ensure intellectual rigor: The new material should enhance understanding, not simply be decorative. No vague metaphors or unnecessary abstraction. The focus is on adding depth, not just making the text longer.
+
+Example of Instructions:
+"Improve the following passage by adding examples and new material from other disciplines that enhance the intellectual depth of the original content. These examples should provide factual insight, and explain how they relate to the central ideas. Keep the original meaning intact, but broaden the scope with intellectually rich and conceptually relevant examples."
+
+2. If the Overall Score is Below 5 (Low Quality):
+Protocol:
+
+Goal: Improve the clarity, coherence, and structure of the passage.
+
+Focus:
+
+Rewrite for clarity: Ensure the passage is clear, coherent, and precise.
+
+Reorganize and restructure: Improve the internal structure of the text, ensuring that the argument flows logically.
+
+Simplify where necessary: If the passage is overly complex or unclear, break down complex ideas into simpler, more digestible components without losing the intellectual content.
+
+Ensure readability: Focus on improving how the information is presented, while maintaining the original intellectual rigor.
+
+Example of Instructions:
+"Improve the following passage by rewriting it for clarity, structure, and logical flow. Ensure that the ideas are presented clearly and coherently, with a strong internal structure. Focus on simplifying complex ideas without sacrificing intellectual depth. The goal is to make the passage easier to understand and more precise."
+
+3. General Guidelines:
+Always ensure that intellectual rigor is maintained, whether the focus is on adding depth (if the passage scores high) or clarifying and restructuring (if the passage scores low).
+
+Never sacrifice the original meaning of the passage—focus on improving it, not changing its essence.
+
+When adding examples, ensure they are specific, relevant, and conceptually sound. Avoid generalizations or clichés.
+
+Example Implementation in Replit:
+Input Passage:
+"A conceptual analysis is given by a true, non-trivial and non-empirical proposition of the form x is a phi if and only if x is a psi, for example, ‘x is a circle if and only if x is a closed planar figure of uniform curvature.’ According to G.E. Moore, there is a ‘paradox of analysis,' for the reason that if a conceptual analysis is true, then both sides of the ‘if and only if' say the same thing, in which case said analysis is uninformative."
+
+If Score > 7:
+"Improve the following passage by adding examples and new material from other disciplines (e.g., mathematics, computer science, ethics, etc.) that provide additional context and depth to the concept of conceptual analysis. Add specific examples from other fields to illustrate Moore’s paradox, explaining how they relate to the original argument."
+
+If Score < 5:
+"Improve the following passage by rewriting it for clarity and structure. Ensure the explanation of Moore’s paradox is clear, with logical flow and better organization. Focus on improving readability and coherence, breaking down complex ideas into more understandable components."
+
+Why This Will Work:
+By having two distinct protocols—one for passages that score highly and one for those that score poorly—you can ensure that Replit is optimizing the passage in the right way based on its initial evaluation.
+
+This also forces the model to focus on adding intellectual substance in high-scoring cases, and on structural improvement when the passage is less clear or logically deficient.
+
+This process ensures clarity, rigor, and intellectual enrichment, while avoiding vague or verbose language.

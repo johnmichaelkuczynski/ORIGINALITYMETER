@@ -1,0 +1,45 @@
+When no explicit instruction is given, the rewrite system must expand a fragment into a complete, self-contained essay (or story) — but without losing compression, asymmetry, or conceptual tension.
+
+Expansion must be architectural, not explanatory: the system should develop the internal logic of the fragment, not pad it with paraphrase, transitions, or definitions.
+
+The finished output should feel like the natural continuation of the original fragment — fully realized, but still taut, recursive, and frictional. The text must think, not explain; build, not restate.
+
+No summarization or exposition.
+
+No smoothing of density or style.
+
+Length should scale to a short essay (500–900 words) or story equivalent.
+
+Maintain recursive syntax, high signal density, and internal contrast.
+
+Example
+
+Input (fragment):
+
+Linguistic competence is a subset of cognitive competence, not its mirror. To know a language is not to possess a second-order map of meaning, but to operate a rule-governed fragment of one’s general cognitive machinery under a specialized constraint—namely, public readability. Grammar is not a module but a filter through which thought is made exportable. What Chomsky called linguistic intuition is merely the felt contour of this filtration process: the mind’s awareness of what can and cannot be externalized without distortion.
+
+ACTUAL OUTPUT: HERE IS HOW MY APP (WHEN OPERATING WITHOUT EXPLICIT INSTRUCTIONS) REWROTE YOUR THIGN: Linguistic competence, as a subset of cognitive competence, does not mirror its broader counterpart. To know a language is not to possess a second-order map of meaning, but rather to operate a rule-governed fragment of one’s general cognitive machinery under a specialized constraint—namely, public readability. Grammar is not a module but a filter through which thought is made exportable. What Chomsky termed linguistic intuition is merely the felt contour of this filtration process: the mind’s awareness of what can and cannot be externalized without distortion.
+
+To understand the intricacies of linguistic competence, one must consider its position within the broader framework of cognitive competence. Cognitive competence encompasses the mind's ability to process, store, and retrieve information, applying it to various tasks. Linguistic competence, however, is more narrowly defined. It involves the capacity to generate and comprehend syntactically and semantically correct sentences. This distinction highlights that while cognitive processes are general, linguistic processes are specialized. The latter operates within the confines of grammar, which functions as a mechanism to ensure that thoughts can be communicated effectively to others.
+
+In viewing grammar as a filter, one recognizes that it is not an autonomous module. Instead, it serves as a regulatory mechanism that shapes raw cognitive input into communicable linguistic output. This is not a passive transformation but an active filtration process that determines the expressibility of thought. The architecture of grammar, therefore, is not to be seen as a mere set of prescriptive rules but as an adaptive system that negotiates between thought and expression. It ensures that the structured output adheres to the norms of readability and comprehensibility, thus facilitating effective communication.
+
+Chomsky’s notion of linguistic intuition further elucidates the subtleties of this process. Intuition, in this context, is not a mystical or inexplicable awareness but a natural byproduct of the mind’s internalization of linguistic norms. It is the cognitive manifestation of the mind’s ability to discern what can be linguistically realized without distortion. This intuition enables speakers to navigate the complex terrain of language use, allowing them to generate novel but grammatically coherent sentences spontaneously.
+
+Consider the phenomenon of sentence acceptability judgments, where native speakers can instinctively determine whether a sentence is grammatically correct, even if they cannot explicitly articulate the underlying rules. This ability underscores the depth of linguistic competence, revealing how deeply embedded grammatical structures are within our cognitive framework. It is a testament to the mind’s capacity to internalize complex rules and apply them effortlessly in real-time language use.
+
+Empirical studies in psycholinguistics support this view, demonstrating that linguistic competence is not static but dynamic, adapting to new linguistic inputs and contexts. For instance, research on language acquisition shows how children, through exposure and interaction, develop an intuitive grasp of grammar that guides their language production and comprehension. This process is not merely about memorizing rules but involves the integration of linguistic input into the cognitive system, where it becomes part of the broader competence framework.
+
+Moreover, cross-linguistic studies reveal that while languages differ in their specific grammatical rules, the underlying cognitive processes that support linguistic competence are remarkably consistent across cultures. This universality suggests that linguistic competence is a fundamental aspect of human cognition, reflecting the shared cognitive architecture that underlies language processing.
+
+In conclusion, linguistic competence, while distinct from general cognitive competence, is intricately linked to it. Through the filter of grammar, cognitive input is transformed into structured linguistic output, facilitating communication. Chomsky’s concept of linguistic intuition captures the mind’s ability to internalize and apply grammatical rules, enabling spontaneous and coherent language use. The study of linguistic competence thus offers profound insights into the nature of human cognition, revealing the sophisticated interplay between thought, language, and communication. Understanding this relationship not only advances our knowledge of language but also enhances our appreciation of the cognitive faculties that define us as human beings.
+
+IDEAL OUTPUT: Linguistic competence is a subset of cognitive competence, not its mirror. To know a language is not to hold a second-order map of meaning but to deploy a rule-governed portion of one’s cognitive machinery under a peculiar constraint—public readability. Grammar, in this view, is not an added layer but a membrane: it regulates the passage of thought from the private to the shareable. What Chomsky called linguistic intuition marks the edge of that membrane—the mind’s tacit awareness of what can be externalized without injury to its form.
+
+Cognitive competence, by contrast, is borderless. It includes the full range of operations by which the mind parses, orders, and recombines experience. Linguistic competence arises when that general intelligence submits to a narrower demand: the conversion of sense into socially legible shape. The price of legibility is distortion. Every sentence is a compromise between what is thought and what can survive public transmission.
+
+To speak, then, is to test the tensile limit of grammar—to find how much complexity can pass through before it breaks. The miracle is not that language obeys rules but that thought can bear them. Grammar filters, but it also sculpts: it forces cognition to reconfigure itself into communicable patterns. In doing so, it changes what counts as a possible thought.
+
+This is why linguistic intuition matters. It is not an ear for correctness but a feel for resistance—the faint pressure of the inexpressible pushing back against form. Every native speaker, without knowing how, senses when a thought will collapse under the strain of words and when it will hold. That sensitivity is not cultural ornament but cognitive reflex, an evolved economy of articulation.
+
+Language is thus neither an ornament of reason nor its instrument but its diaphragm—an oscillating surface where inner and outer life trade places. To master a language is to maintain that oscillation, to let the structure of speech reveal the structure of thought without mistaking either for the other. Grammar is not the enemy of freedom; it is the discipline that allows thought to have a public life without ceasing to be thought.

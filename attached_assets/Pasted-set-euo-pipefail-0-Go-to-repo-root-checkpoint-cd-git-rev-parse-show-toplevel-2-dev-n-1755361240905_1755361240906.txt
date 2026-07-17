@@ -1,0 +1,59 @@
+set -euo pipefail
+
+# 0) Go to repo root + checkpoint
+cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+git add -A && git commit -m "checkpoint before NUKE_CANNED" || true
+
+# 1) Replace ALL known canned 'assessment' returns with a hard fail
+#    (Creates .bak backups next to edited files)
+_sed() { command -v gsed >/dev/null && gsed "$@" || sed "$@"; }
+
+rg -l 'This text appears mostly human-written\.|This text demonstrates characteristics of authentic human writing' \
+| xargs -I{} _sed -i.bak -E \
+'s/^\s*return\s+"This text appears mostly human-written\.[^"]*";/throw new Error("CANNED_FALLBACK_BLOCKED: remove this and call the provider.");/g' {}
+
+rg -l 'This text appears mostly human-written\.|This text demonstrates characteristics of authentic human writing' \
+| xargs -I{} _sed -i.bak -E \
+'s/^\s*return\s+"This text demonstrates characteristics of authentic human writing\.[^"]*";/throw new Error("CANNED_FALLBACK_BLOCKED: remove this and call the provider.");/g' {}
+
+# 2) QUICK ASSERT: no active canned lines remain
+if rg -n '^\s*return\s+"This text (appears mostly|demonstrates characteristics of) human[- ]written' >/dev/null; then
+  echo "❌ Some canned returns survived. Inspect above and rerun."; exit 1;
+fi
+
+# 3) FAIL THE BUILD IF ASSESSMENT PATHS DON’T HIT A REAL PROVIDER
+#    Heuristic: files that look like assessment handlers but contain NO provider calls.
+#    Provider call indicators (adjust if you use different names):
+#      - anthropicAssess|perplexityAssess|directAssess
+#      - openai|anthropic|/v1/chat/completions|responses.create|messages.create
+ASSESS_FILES=$(rg -l -n --hidden -S -g 'server/**' -g '!node_modules' \
+'assess|Assessment|humaniz(e|er)|routes\.ts' || true)
+
+MISSING_CALLS=()
+if [[ -n "${ASSESS_FILES}" ]]; then
+  while IFS= read -r f; do
+    if ! rg -n 'anthropicAssess|perplexityAssess|directAssess|/v1/chat/completions|responses\.create|messages\.create|openai|anthropic' "$f" >/dev/null; then
+      MISSING_CALLS+=("$f")
+    fi
+  done <<< "$ASSESS_FILES"
+fi
+
+if (( ${#MISSING_CALLS[@]} > 0 )); then
+  echo "❌ Assessment files with NO provider call detected:"
+  printf ' - %s\n' "${MISSING_CALLS[@]}"
+  echo "Hard stop: wire these files to your provider function (e.g., runAssessmentViaProvider) before proceeding."
+  exit 1
+fi
+
+# 4) FLAG common bypasses in assessment path (mock/offline/preview/truncate)
+echo "== BYPASS SCAN (investigate any hits in server/services/** or routes) =="
+rg -n --hidden -S -i -g '!.git' -g '!node_modules' server \
+'canned|hardcod|static_response|__mocks__|responses\.json|useMock|offline|fallbackMode|preview|truncate|\.slice\(\s*0\s*,\s*2\d{2}\s*\)|maxChars' || true
+
+# 5) Show a concise diff of what changed
+echo "== DIFF summary =="
+git --no-pager diff --unified=3 | sed -n '1,300p'
+
+echo "✅ CANNED logic disabled (now throws)."
+echo "✅ Build fails unless assessment files call a real provider."
+echo "➡️ Next: replace the thrown errors with actual provider calls."
