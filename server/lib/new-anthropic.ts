@@ -328,7 +328,10 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }
 
   // PHASE 2: PUSHBACK FOR LOW SCORES
-  const phase2Prompt = `Your position is that ${lowScores.map(([key, result]) => 
+  const phase2Prompt = `TEXT:
+${chunk}
+
+Your position is that ${lowScores.map(([key, result]) => 
     `${100 - result.score}/100 outperform the author with respect to the cognitive metric defined by question ${key}`
   ).join(', ')}: that is your position, am I right? And are you sure about that?
 
@@ -374,7 +377,10 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }
 
   // PHASE 3: WALMART METRIC ENFORCEMENT
-  const phase3Prompt = `You stated that ${stillLowScores.map(([key, result]) => 
+  const phase3Prompt = `TEXT:
+${chunk}
+
+You stated that ${stillLowScores.map(([key, result]) => 
     `${100 - result.score}/100 Walmart patrons outperform the author for question ${key}`
   ).join(', ')}. 
 
@@ -404,7 +410,10 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }
 
   // PHASE 4: FINAL VALIDATION
-  const phase4Prompt = `Before finalizing scores, confirm:
+  const phase4Prompt = `TEXT:
+${chunk}
+
+Before finalizing scores, confirm:
 - Have you penalized the text for not being conventional? If yes, recalibrate.
 - Does the score reflect truth density, not compliance with norms?
 - Is the Walmart metric empirically grounded or a lazy guess?
