@@ -22,7 +22,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { FileEdit, Download, ArrowRight, FileText, Image as ImageIcon, Wand2, Eye, BookOpen, Zap, Copy } from 'lucide-react';
+import { FileEdit, Download, ArrowRight, FileText, Image as ImageIcon, Wand2, Eye, BookOpen, Zap, Copy, X, CheckCircle, AlertCircle } from 'lucide-react';
 import { MathPDFExporter } from './MathPDFExporter';
 import DocumentUpload from './DocumentUpload';
 import { VoiceDictation } from '@/components/ui/voice-dictation';
@@ -98,6 +98,14 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
   } | null>(null);
   const [downloadFormat, setDownloadFormat] = useState<'word' | 'pdf' | 'txt' | 'html'>('html');
   const [inputMethod, setInputMethod] = useState<'upload' | 'type'>('type');
+
+  // Generation modal state
+  const [showGenerationModal, setShowGenerationModal] = useState(false);
+  const [modalText, setModalText] = useState('');
+  const [modalDone, setModalDone] = useState(false);
+  const [modalStatus, setModalStatus] = useState('');
+  const [modalError, setModalError] = useState(false);
+  const modalScrollRef = useRef<HTMLDivElement>(null);
   const [extractedText, setExtractedText] = useState('');
   const [documentStats, setDocumentStats] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -209,6 +217,21 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
     }
   }, [rewriteResult]);
 
+  // Auto-scroll generation modal as text streams in
+  useEffect(() => {
+    if (modalScrollRef.current) {
+      modalScrollRef.current.scrollTop = modalScrollRef.current.scrollHeight;
+    }
+  }, [modalText]);
+
+  const openGenerationModal = (status: string) => {
+    setModalText('');
+    setModalDone(false);
+    setModalError(false);
+    setModalStatus(status);
+    setShowGenerationModal(true);
+  };
+
   const handleDocumentProcessed = (content: string, filename?: string, type?: 'content' | 'style') => {
     if (type === 'content') {
       setContentSource(content);
@@ -252,14 +275,8 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
     // Check if streaming is possible (doc < 800 words)
     const wordCount = sourceText.trim().split(/\s+/).length;
     const canStream = wordCount < 800;
-    
-    // Show initial progress for large documents
-    if (documentStats?.willNeedChunking) {
-      toast({
-        title: "Processing large document",
-        description: `Breaking into ${documentStats.chunkCount} chunks for optimal processing...`,
-      });
-    }
+
+    openGenerationModal(canStream ? 'Streaming generation…' : 'Processing document…');
 
     // STREAMING MODE for smaller documents
     if (canStream) {
@@ -299,12 +316,11 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
                 if (data.chunk) {
                   accumulatedText += data.chunk;
                   setRewriteResult(accumulatedText);
+                  setModalText(accumulatedText);
                 } else if (data.done) {
                   setIsRewriting(false);
-                  toast({
-                    title: "Rewrite complete",
-                    description: "Your document has been successfully rewritten with streaming.",
-                  });
+                  setModalDone(true);
+                  setModalStatus('Complete');
                 } else if (data.error) {
                   throw new Error(data.error);
                 }
@@ -316,6 +332,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
         console.error("Streaming rewrite error:", error);
         setRewriteResult('');
         setIsRewriting(false);
+        setModalDone(true);
+        setModalError(true);
+        setModalStatus('Error');
         toast({
           title: "Streaming error",
           description: error instanceof Error ? error.message : "Failed to stream rewrite",
@@ -326,6 +345,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
     }
 
     // NON-STREAMING MODE for large documents (chunked)
+    const chunkCount = documentStats?.chunkCount;
+    if (chunkCount) setModalStatus(`Processing ${chunkCount} chunks…`);
+
     try{
       const response = await fetch('/api/rewrite-document', {
         method: 'POST',
@@ -350,6 +372,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
 
       const result = await response.json();
       setRewriteResult(result.rewrittenText);
+      setModalText(result.rewrittenText);
+      setModalDone(true);
+      setModalStatus('Complete');
       
       toast({
         title: "Rewrite completed",
@@ -359,6 +384,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
       });
     } catch (error) {
       console.error('Error during rewrite:', error);
+      setModalDone(true);
+      setModalError(true);
+      setModalStatus('Error');
       toast({
         title: "Rewrite failed",
         description: error instanceof Error ? error.message : 'An unknown error occurred',
@@ -388,6 +416,7 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
     setIsReconstructing(true);
     setRewriteResult('');
     setReconstructProgress({ status: 'starting', currentChunk: 0, numChunks: 0 });
+    openGenerationModal('Starting coherent rebuild…');
 
     try {
       const startResp = await fetch('/api/reconstruction/start', {
@@ -436,8 +465,15 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
             numChunks: data.numChunks,
           });
 
+          if (data.currentChunk > 0 && data.numChunks > 0) {
+            setModalStatus(`Rebuilding section ${data.currentChunk} of ${data.numChunks}…`);
+          }
+
           if (data.status === 'complete') {
             setRewriteResult(data.finalOutput || '');
+            setModalText(data.finalOutput || '');
+            setModalDone(true);
+            setModalStatus('Complete');
             setIsReconstructing(false);
             setReconstructProgress(null);
             const conflicts = Array.isArray(data.stitchReport?.conflicts) ? data.stitchReport.conflicts.length : 0;
@@ -449,6 +485,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
           }
 
           if (data.status === 'failed') {
+            setModalDone(true);
+            setModalError(true);
+            setModalStatus('Failed');
             setIsReconstructing(false);
             setReconstructProgress(null);
             toast({
@@ -649,11 +688,8 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
     // Check if streaming is possible (doc < 800 words)
     const wordCount = rewriteResult.trim().split(/\s+/).length;
     const canStream = wordCount < 800;
-    
-    toast({
-      title: "Starting recursive rewrite",
-      description: `Using your updated instructions: "${instructionsToUse.substring(0, 50)}${instructionsToUse.length > 50 ? '...' : ''}"`,
-    });
+
+    openGenerationModal(canStream ? 'Streaming re-write…' : 'Processing document…');
 
     // STREAMING MODE for smaller documents
     if (canStream) {
@@ -693,12 +729,11 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
                 if (data.chunk) {
                   accumulatedText += data.chunk;
                   setRewriteResult(accumulatedText);
+                  setModalText(accumulatedText);
                 } else if (data.done) {
                   setIsRewriting(false);
-                  toast({
-                    title: "Recursive rewrite complete",
-                    description: "Your document has been rewritten with your updated instructions.",
-                  });
+                  setModalDone(true);
+                  setModalStatus('Complete');
                 } else if (data.error) {
                   throw new Error(data.error);
                 }
@@ -710,6 +745,9 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
         console.error("Streaming recursive rewrite error:", error);
         setRewriteResult('');
         setIsRewriting(false);
+        setModalDone(true);
+        setModalError(true);
+        setModalStatus('Error');
         toast({
           title: "Rewrite failed",
           description: error instanceof Error ? error.message : "Failed to rewrite",
@@ -742,13 +780,14 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
 
       const result = await response.json();
       setRewriteResult(result.rewrittenText);
-      
-      toast({
-        title: "Recursive rewrite completed",
-        description: "Your document has been rewritten with your updated instructions.",
-      });
+      setModalText(result.rewrittenText);
+      setModalDone(true);
+      setModalStatus('Complete');
     } catch (error) {
       console.error('Error during recursive rewrite:', error);
+      setModalDone(true);
+      setModalError(true);
+      setModalStatus('Error');
       toast({
         title: "Recursive rewrite failed",
         description: error instanceof Error ? error.message : 'An unknown error occurred',
@@ -760,6 +799,124 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
   };
 
   return (
+    <>
+    {/* ── Generation Streaming Modal ── */}
+    {showGenerationModal && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => { if (modalDone) setShowGenerationModal(false); }}
+        />
+
+        {/* Panel */}
+        <div className="relative z-10 flex flex-col w-[88vw] max-w-5xl h-[82vh] bg-gray-950 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden">
+
+          {/* Header */}
+          <div className={`flex items-center justify-between px-5 py-3 border-b border-gray-800 ${
+            modalError ? 'bg-red-950/60' : modalDone ? 'bg-green-950/60' : 'bg-gray-900'
+          }`}>
+            <div className="flex items-center gap-3">
+              {modalError ? (
+                <AlertCircle className="h-5 w-5 text-red-400" />
+              ) : modalDone ? (
+                <CheckCircle className="h-5 w-5 text-green-400" />
+              ) : (
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500" />
+                </span>
+              )}
+              <span className={`text-sm font-semibold tracking-wide ${
+                modalError ? 'text-red-300' : modalDone ? 'text-green-300' : 'text-blue-300'
+              }`}>
+                {modalStatus}
+              </span>
+              {!modalDone && modalText && (
+                <span className="text-xs text-gray-500 ml-1">
+                  {modalText.trim().split(/\s+/).length.toLocaleString()} words
+                </span>
+              )}
+              {modalDone && modalText && (
+                <span className="text-xs text-gray-400 ml-1">
+                  {modalText.trim().split(/\s+/).length.toLocaleString()} words generated
+                </span>
+              )}
+            </div>
+            <button
+              onClick={() => setShowGenerationModal(false)}
+              disabled={!modalDone}
+              className={`p-1.5 rounded-lg transition-colors ${
+                modalDone
+                  ? 'text-gray-400 hover:text-white hover:bg-gray-700 cursor-pointer'
+                  : 'text-gray-700 cursor-not-allowed'
+              }`}
+              title={modalDone ? 'Close' : 'Generating — please wait…'}
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Body — streaming text */}
+          <div
+            ref={modalScrollRef}
+            className="flex-1 overflow-y-auto px-6 py-5 font-mono text-sm text-gray-200 leading-relaxed whitespace-pre-wrap"
+            style={{ wordBreak: 'break-word' }}
+          >
+            {modalText ? (
+              <>
+                {modalText}
+                {!modalDone && (
+                  <span className="inline-block w-2 h-4 bg-blue-400 ml-0.5 animate-pulse align-text-bottom" />
+                )}
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-gray-500">
+                <div className="flex gap-1.5">
+                  {[0, 1, 2].map(i => (
+                    <span
+                      key={i}
+                      className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    />
+                  ))}
+                </div>
+                <p className="text-sm">{modalStatus}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between px-5 py-3 border-t border-gray-800 bg-gray-900">
+            <span className="text-xs text-gray-600">
+              {modalDone ? 'Result also available below on the page.' : 'Close will become available when generation finishes.'}
+            </span>
+            <div className="flex gap-2">
+              {modalDone && modalText && (
+                <button
+                  onClick={() => { navigator.clipboard.writeText(modalText); }}
+                  className="px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition-colors"
+                >
+                  Copy text
+                </button>
+              )}
+              <button
+                onClick={() => setShowGenerationModal(false)}
+                disabled={!modalDone}
+                className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                  modalDone
+                    ? 'bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'
+                    : 'bg-gray-800 text-gray-600 cursor-not-allowed'
+                }`}
+              >
+                {modalDone ? 'Done' : 'Generating…'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
@@ -1249,5 +1406,6 @@ export default function DocumentRewriter({ onSendToAnalysis, onSendToHomework, i
         )}
       </CardContent>
     </Card>
+    </>
   );
 }
