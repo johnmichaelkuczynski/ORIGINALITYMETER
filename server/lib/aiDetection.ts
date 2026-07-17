@@ -9,7 +9,9 @@ export interface AIDetectionResult {
 
 // GPTZero API Configuration
 const GPTZERO_API_URL = 'https://api.gptzero.me/v2/predict/text';
-const GPTZERO_API_KEY = process.env.GPTZERO_API_KEY;
+
+// Log key status at startup (consistent with other lib modules)
+console.log("GPTZero API Key status:", process.env.GPTZERO_API_KEY ? "Present" : "Missing");
 
 /**
  * Detect if text is AI-generated using GPTZero's specialized API
@@ -41,12 +43,14 @@ export async function detectAIContent(text: string): Promise<AIDetectionResult> 
       };
     }
 
+    // Read key at call time so it reflects the current process environment
+    const gptzeroApiKey = process.env.GPTZERO_API_KEY;
+
     // Check if we have the GPTZero API key
-    if (!GPTZERO_API_KEY) {
-      console.warn("GPTZero API key not found, falling back to probability approximation");
-      // Return a generic response if API key is missing
+    if (!gptzeroApiKey) {
+      console.warn("GPTZero API key not found, detection service unavailable");
       return {
-        isAIGenerated: Math.random() > 0.5, // Random placeholder
+        isAIGenerated: false,
         confidence: "Low",
         details: "API key not configured - detection service unavailable"
       };
@@ -65,7 +69,7 @@ export async function detectAIContent(text: string): Promise<AIDetectionResult> 
       { document: truncatedText },
       {
         headers: {
-          'x-api-key': GPTZERO_API_KEY,
+          'x-api-key': gptzeroApiKey,
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         }

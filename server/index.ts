@@ -37,6 +37,10 @@ app.use((req, res, next) => {
   next();
 });
 
+// Log API key availability for all third-party features at startup
+console.log("Google API Key status:", process.env.GOOGLE_API_KEY ? "Present" : "Missing");
+console.log("Google CSE ID status:", process.env.GOOGLE_CSE_ID ? "Present" : "Missing");
+
 (async () => {
   const server = await registerRoutes(app);
 

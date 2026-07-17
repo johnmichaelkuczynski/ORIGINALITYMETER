@@ -2859,6 +2859,9 @@ Always provide helpful, accurate, and well-formatted responses. When generating 
     if (!passage?.text) {
       return res.status(400).json({ error: "Passage text is required" });
     }
+    if (!['quick', 'comprehensive'].includes(analysisMode)) {
+      return res.status(400).json({ error: "Invalid analysisMode. Must be 'quick' or 'comprehensive'" });
+    }
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');

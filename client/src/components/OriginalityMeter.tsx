@@ -493,22 +493,25 @@ export default function OriginalityMeter() {
 
         for (const line of lines) {
           if (!line.startsWith('data: ')) continue;
+          let event: any;
           try {
-            const event = JSON.parse(line.slice(6));
-            if (event.type === 'status') {
-              setModalStatus(event.message);
-            } else if (event.type === 'chunk') {
-              setModalText(prev => prev + event.text);
-            } else if (event.type === 'done') {
-              setSingleResult(event.result);
-              setComparisonResult(null);
-              setModalStatus('Analysis complete');
-              setModalDone(true);
-            } else if (event.type === 'error') {
-              throw new Error(event.message);
-            }
+            event = JSON.parse(line.slice(6));
           } catch {
             // skip malformed SSE lines
+            continue;
+          }
+          if (event.type === 'status') {
+            setModalStatus(event.message);
+          } else if (event.type === 'chunk') {
+            setModalText(prev => prev + event.text);
+          } else if (event.type === 'done') {
+            setSingleResult(event.result);
+            setComparisonResult(null);
+            setModalStatus('Analysis complete');
+            setModalDone(true);
+          } else if (event.type === 'error') {
+            // Throw outside the JSON-parse try/catch so it reaches the outer handler
+            throw new Error(event.message ?? 'Analysis failed');
           }
         }
       }
