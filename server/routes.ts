@@ -23,7 +23,7 @@ import * as mammoth from 'mammoth';
 import pdfParse from 'pdf-parse';
 
 // NEW ORIGINALITY METER IMPLEMENTATION
-import { analyzeSingleDocument, analyzeTwoDocuments } from "./lib/new-anthropic.js";
+import { analyzeSingleDocument, analyzeTwoDocuments, AnalysisProgressCallback } from "./lib/new-anthropic.js";
 
 // GPT BYPASS IMPORTS
 import { aiProviderService, type RewriteParams } from './lib/aiProviders.js';
@@ -2846,6 +2846,40 @@ Always provide helpful, accurate, and well-formatted responses. When generating 
       res.status(500).json({ 
         error: error instanceof Error ? error.message : "Unknown error" 
       });
+    }
+  });
+
+  // SSE Streaming Analysis Endpoint
+  app.post("/api/analyze/single/:mode/stream", async (req: Request, res: Response) => {
+    const mode = req.params.mode as 'intelligence' | 'originality' | 'cogency' | 'overall_quality';
+    if (!['intelligence', 'originality', 'cogency', 'overall_quality'].includes(mode)) {
+      return res.status(400).json({ error: "Invalid mode" });
+    }
+    const { passage, analysisMode = 'quick' } = req.body;
+    if (!passage?.text) {
+      return res.status(400).json({ error: "Passage text is required" });
+    }
+
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.flushHeaders();
+
+    const send = (data: object) => {
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
+    };
+
+    try {
+      const onProgress: AnalysisProgressCallback = (event) => {
+        send(event);
+      };
+      send({ type: 'status', message: 'Starting analysis…' });
+      const result = await analyzeSingleDocument(passage, mode, analysisMode, onProgress);
+      send({ type: 'done', result });
+    } catch (err: any) {
+      send({ type: 'error', message: err?.message ?? 'Analysis failed' });
+    } finally {
+      res.end();
     }
   });
 

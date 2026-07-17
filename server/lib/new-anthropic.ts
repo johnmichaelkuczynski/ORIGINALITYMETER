@@ -1,6 +1,12 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { generateWithFailover, FAILOVER_PROVIDERS } from './llmFailover.js';
 
+export type AnalysisProgressEvent =
+  | { type: 'status'; message: string }
+  | { type: 'chunk'; text: string };
+
+export type AnalysisProgressCallback = (event: AnalysisProgressEvent) => void;
+
 const DEFAULT_MODEL_STR = "claude-sonnet-4-5-20250929";
 const apiKey = process.env.ANTHROPIC_API_KEY;
 
@@ -237,7 +243,8 @@ function getQuestionsForMode(mode: 'intelligence' | 'originality' | 'cogency' | 
 async function analyzeChunk(
   chunk: string, 
   questions: string[], 
-  mode: 'quick' | 'comprehensive'
+  mode: 'quick' | 'comprehensive',
+  onProgress?: AnalysisProgressCallback
 ): Promise<AnalysisResult> {
   // USER SPEC: Add additional questions for intelligence mode
   const additionalQuestions = [
@@ -301,6 +308,7 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }`).join(',\n  ')}
 }`;
 
+  onProgress?.({ type: 'status', message: 'Phase 1 of 4 — Initial analysis…' });
   const phase1Response = (await generateWithFailover(phase1Prompt, 8000)).text;
   
   // Parse Phase 1 response
@@ -312,6 +320,9 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
     console.error("Original response:", phase1Response.substring(0, 500) + "...");
     throw new Error("Failed to parse analysis results");
   }
+
+  // Stream Phase 1 explanations
+  onProgress?.({ type: 'chunk', text: formatPhaseOutput(1, 'Initial Analysis', phase1Results) });
 
   // If quick mode, return Phase 1 results
   if (mode === 'quick') {
@@ -328,6 +339,7 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }
 
   // PHASE 2: PUSHBACK FOR LOW SCORES
+  onProgress?.({ type: 'status', message: 'Phase 2 of 4 — Challenging low scores…' });
   const phase2Prompt = `TEXT:
 ${chunk}
 
@@ -369,6 +381,8 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
     phase2Results = phase1Results; // Fallback to phase 1
   }
 
+  onProgress?.({ type: 'chunk', text: formatPhaseOutput(2, 'Pushback on Low Scores', phase2Results) });
+
   // Check again for scores below 95
   const stillLowScores = Object.entries(phase2Results).filter(([_, result]) => result.score < 95);
   
@@ -377,6 +391,7 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
   }
 
   // PHASE 3: WALMART METRIC ENFORCEMENT
+  onProgress?.({ type: 'status', message: 'Phase 3 of 4 — Applying Walmart metric…' });
   const phase3Prompt = `TEXT:
 ${chunk}
 
@@ -409,7 +424,10 @@ JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJECTS:
     phase3Results = phase2Results; // Fallback to phase 2
   }
 
+  onProgress?.({ type: 'chunk', text: formatPhaseOutput(3, 'Walmart Metric Enforcement', phase3Results) });
+
   // PHASE 4: FINAL VALIDATION
+  onProgress?.({ type: 'status', message: 'Phase 4 of 4 — Final validation…' });
   const phase4Prompt = `TEXT:
 ${chunk}
 
@@ -439,14 +457,35 @@ FINAL JSON FORMAT - RETURN ALL ${allQuestions.length} QUESTIONS AS NUMBERED OBJE
     finalResults = phase3Results; // Fallback to phase 3
   }
 
+  onProgress?.({ type: 'chunk', text: formatPhaseOutput(4, 'Final Validation', finalResults) });
+
   return finalResults;
+}
+
+// Format phase results into human-readable text for the streaming modal
+function formatPhaseOutput(phase: number, title: string, results: AnalysisResult): string {
+  const separator = '─'.repeat(60);
+  const lines: string[] = [
+    `\n${separator}`,
+    `  PHASE ${phase}: ${title.toUpperCase()}`,
+    `${separator}\n`,
+  ];
+  for (const [key, item] of Object.entries(results)) {
+    lines.push(`Q${key}. ${item.question}`);
+    lines.push(`Score: ${item.score}/100`);
+    if (item.quotation) lines.push(`Quote: "${item.quotation}"`);
+    lines.push(`Analysis: ${item.explanation}`);
+    lines.push('');
+  }
+  return lines.join('\n');
 }
 
 // MAIN ANALYSIS FUNCTIONS
 export async function analyzeSingleDocument(
   passage: PassageData,
   mode: 'intelligence' | 'originality' | 'cogency' | 'overall_quality',
-  analysisMode: 'quick' | 'comprehensive' = 'quick'
+  analysisMode: 'quick' | 'comprehensive' = 'quick',
+  onProgress?: AnalysisProgressCallback
 ): Promise<AnalysisResult> {
   ensureProviderAvailable();
 
@@ -458,7 +497,7 @@ export async function analyzeSingleDocument(
   
   if (wordCount <= 1000) {
     // Single chunk analysis
-    return await analyzeChunk(passage.text, questions, analysisMode);
+    return await analyzeChunk(passage.text, questions, analysisMode, onProgress);
   }
   
   // Multi-chunk analysis
@@ -469,7 +508,8 @@ export async function analyzeSingleDocument(
   
   for (let i = 0; i < chunks.length; i++) {
     console.log(`Processing chunk ${i + 1}/${chunks.length}`);
-    const chunkResult = await analyzeChunk(chunks[i], questions, analysisMode);
+    onProgress?.({ type: 'status', message: `Analyzing chunk ${i + 1} of ${chunks.length}…` });
+    const chunkResult = await analyzeChunk(chunks[i], questions, analysisMode, onProgress);
     chunkResults.push(chunkResult);
     
     // Wait 10 seconds between chunks (except for the last one)

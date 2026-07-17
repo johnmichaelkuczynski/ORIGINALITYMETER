@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download, Upload, Loader2, FileText, Trash2, Zap, FileEdit, GraduationCap } from "lucide-react";
+import { Download, Upload, Loader2, FileText, Trash2, Zap, FileEdit, GraduationCap, X, CheckCircle, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTextSharing } from "@/context/TextSharingContext";
 import { VoiceDictation } from "@/components/ui/voice-dictation";
@@ -110,6 +110,22 @@ export default function OriginalityMeter() {
   // Results
   const [singleResult, setSingleResult] = useState<AnalysisResult | null>(null);
   const [comparisonResult, setComparisonResult] = useState<ComparisonResult | null>(null);
+
+  // Analysis streaming modal state
+  const [showAnalysisModal, setShowAnalysisModal] = useState(false);
+  const [modalText, setModalText] = useState('');
+  const [modalStatus, setModalStatus] = useState('');
+  const [modalDone, setModalDone] = useState(false);
+  const [modalError, setModalError] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const modalScrollRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll the analysis modal as text streams in
+  useEffect(() => {
+    if (modalScrollRef.current) {
+      modalScrollRef.current.scrollTop = modalScrollRef.current.scrollHeight;
+    }
+  }, [modalText]);
 
   // Single Document Analysis
   const singleAnalysisMutation = useMutation({
@@ -428,7 +444,7 @@ export default function OriginalityMeter() {
     });
   };
 
-  const handleSingleAnalysis = () => {
+  const handleSingleAnalysis = async () => {
     if (!passageA.text.trim()) {
       toast({
         title: "Error",
@@ -444,11 +460,70 @@ export default function OriginalityMeter() {
       textToAnalyze = selectedChunksA.map(index => chunksA[index]).join('\n\n');
     }
 
-    singleAnalysisMutation.mutate({
-      passage: { ...passageA, text: textToAnalyze },
-      mode,
-      analysisMode
-    });
+    // Open the streaming modal
+    setModalText('');
+    setModalStatus('Starting analysis…');
+    setModalDone(false);
+    setModalError(false);
+    setShowAnalysisModal(true);
+    setIsAnalyzing(true);
+
+    try {
+      const response = await fetch(`/api/analyze/single/${mode}/stream`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passage: { ...passageA, text: textToAnalyze }, analysisMode }),
+      });
+
+      if (!response.ok || !response.body) {
+        throw new Error('Stream request failed');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          try {
+            const event = JSON.parse(line.slice(6));
+            if (event.type === 'status') {
+              setModalStatus(event.message);
+            } else if (event.type === 'chunk') {
+              setModalText(prev => prev + event.text);
+            } else if (event.type === 'done') {
+              setSingleResult(event.result);
+              setComparisonResult(null);
+              setModalStatus('Analysis complete');
+              setModalDone(true);
+            } else if (event.type === 'error') {
+              throw new Error(event.message);
+            }
+          } catch {
+            // skip malformed SSE lines
+          }
+        }
+      }
+    } catch (err: any) {
+      setModalStatus('Analysis failed');
+      setModalError(true);
+      setModalDone(true);
+      toast({
+        title: "Analysis Failed",
+        description: err?.message ?? 'Unknown error',
+        variant: "destructive",
+      });
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   const handleComparisonAnalysis = () => {
@@ -768,6 +843,112 @@ export default function OriginalityMeter() {
   };
 
   return (
+    <>
+    {/* ── Analysis Streaming Modal ── */}
+    {showAnalysisModal && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => { if (modalDone) setShowAnalysisModal(false); }}
+        />
+        {/* Panel */}
+        <div className="relative z-10 flex flex-col w-[88vw] max-w-5xl h-[82vh] bg-gray-950 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden">
+          {/* Header */}
+          <div className={`flex items-center justify-between px-5 py-3 border-b border-gray-800 ${
+            modalError ? 'bg-red-950/60' : modalDone ? 'bg-green-950/60' : 'bg-gray-900'
+          }`}>
+            <div className="flex items-center gap-3">
+              {modalError ? (
+                <AlertCircle className="h-5 w-5 text-red-400" />
+              ) : modalDone ? (
+                <CheckCircle className="h-5 w-5 text-green-400" />
+              ) : (
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500" />
+                </span>
+              )}
+              <span className={`text-sm font-semibold tracking-wide ${
+                modalError ? 'text-red-300' : modalDone ? 'text-green-300' : 'text-blue-300'
+              }`}>
+                {modalStatus}
+              </span>
+            </div>
+            <button
+              onClick={() => setShowAnalysisModal(false)}
+              disabled={!modalDone}
+              className={`p-1.5 rounded-lg transition-colors ${
+                modalDone
+                  ? 'text-gray-400 hover:text-white hover:bg-gray-700 cursor-pointer'
+                  : 'text-gray-700 cursor-not-allowed'
+              }`}
+              title={modalDone ? 'Close' : 'Analyzing — please wait…'}
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Body — streaming text */}
+          <div
+            ref={modalScrollRef}
+            className="flex-1 overflow-y-auto px-6 py-5 font-mono text-sm text-gray-200 leading-relaxed whitespace-pre-wrap"
+            style={{ wordBreak: 'break-word' }}
+          >
+            {modalText ? (
+              <>
+                {modalText}
+                {!modalDone && (
+                  <span className="inline-block w-2 h-4 bg-blue-400 ml-0.5 animate-pulse align-text-bottom" />
+                )}
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-gray-500">
+                <div className="flex gap-1.5">
+                  {[0, 1, 2].map(i => (
+                    <span
+                      key={i}
+                      className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    />
+                  ))}
+                </div>
+                <p className="text-sm">{modalStatus}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between px-5 py-3 border-t border-gray-800 bg-gray-900">
+            <span className="text-xs text-gray-600">
+              {modalDone ? 'Full structured results are shown below on the page.' : 'Results will appear on the page when analysis finishes.'}
+            </span>
+            <div className="flex gap-2">
+              {modalDone && modalText && (
+                <button
+                  onClick={() => { navigator.clipboard.writeText(modalText); }}
+                  className="px-3 py-1.5 text-xs bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition-colors"
+                >
+                  Copy text
+                </button>
+              )}
+              <button
+                onClick={() => setShowAnalysisModal(false)}
+                disabled={!modalDone}
+                className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                  modalDone
+                    ? 'bg-blue-600 hover:bg-blue-500 text-white cursor-pointer'
+                    : 'bg-gray-800 text-gray-600 cursor-not-allowed'
+                }`}
+              >
+                {modalDone ? 'Done' : 'Analyzing…'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
     <div className="container mx-auto py-8 space-y-6">
       <div className="text-center space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">Originality Meter</h1>
@@ -1292,12 +1473,14 @@ export default function OriginalityMeter() {
         <Button
           onClick={analysisType === 'single' ? handleSingleAnalysis : handleComparisonAnalysis}
           disabled={
-            (analysisType === 'single' ? singleAnalysisMutation.isPending : comparisonAnalysisMutation.isPending)
+            analysisType === 'single'
+              ? isAnalyzing
+              : comparisonAnalysisMutation.isPending
           }
           size="lg"
           data-testid="button-analyze"
         >
-          {(analysisType === 'single' ? singleAnalysisMutation.isPending : comparisonAnalysisMutation.isPending) ? (
+          {(analysisType === 'single' ? isAnalyzing : comparisonAnalysisMutation.isPending) ? (
             <Loader2 className="h-5 w-5 animate-spin mr-2" />
           ) : null}
           {analysisType === 'single' ? 'Analyze Document' : 'Compare Documents'}
@@ -1307,5 +1490,6 @@ export default function OriginalityMeter() {
       {/* Results */}
       {analysisType === 'single' ? renderSingleResults() : renderComparisonResults()}
     </div>
+    </>
   );
 }
