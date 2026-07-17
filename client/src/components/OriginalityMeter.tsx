@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useDraggablePanel } from "@/hooks/useDraggablePanel";
 import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { apiRequest } from '@/lib/queryClient';
@@ -119,6 +120,7 @@ export default function OriginalityMeter() {
   const [modalError, setModalError] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const modalScrollRef = useRef<HTMLDivElement>(null);
+  const { pos: panelPos, onHeaderMouseDown: onPanelMouseDown } = useDraggablePanel();
 
   // Auto-scroll the analysis modal as text streams in
   useEffect(() => {
@@ -847,18 +849,28 @@ export default function OriginalityMeter() {
 
   return (
     <>
-    {/* ── Analysis Streaming Modal ── */}
+    {/* ── Analysis Streaming Modal — draggable & resizable, no backdrop ── */}
     {showAnalysisModal && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-          onClick={() => { if (modalDone) setShowAnalysisModal(false); }}
-        />
-        {/* Panel */}
-        <div className="relative z-10 flex flex-col w-[88vw] max-w-5xl h-[82vh] bg-gray-950 border border-gray-700 rounded-2xl shadow-2xl overflow-hidden">
-          {/* Header */}
-          <div className={`flex items-center justify-between px-5 py-3 border-b border-gray-800 ${
+      <div
+        style={{
+          position: 'fixed',
+          left: panelPos.x,
+          top: panelPos.y,
+          width: 660,
+          height: 480,
+          minWidth: 300,
+          minHeight: 180,
+          resize: 'both',
+          overflow: 'hidden',
+          zIndex: 50,
+        }}
+        className="flex flex-col bg-gray-950 border border-gray-700 rounded-2xl shadow-2xl"
+      >
+          {/* Header — drag handle */}
+          <div
+            onMouseDown={onPanelMouseDown}
+            style={{ cursor: 'grab', userSelect: 'none' }}
+            className={`flex items-center justify-between px-5 py-3 border-b border-gray-800 flex-shrink-0 ${
             modalError ? 'bg-red-950/60' : modalDone ? 'bg-green-950/60' : 'bg-gray-900'
           }`}>
             <div className="flex items-center gap-3">
@@ -949,7 +961,6 @@ export default function OriginalityMeter() {
             </div>
           </div>
         </div>
-      </div>
     )}
 
     <div className="container mx-auto py-8 space-y-6">
